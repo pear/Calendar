@@ -44,7 +44,7 @@ require_once CALENDAR_ROOT.'Decorator.php';
  * @package Calendar
  * @access public
  */
-class Calendar_Util_Textual extends Calendar_Decorator
+class Calendar_Util_Textual
 {
 
     /**

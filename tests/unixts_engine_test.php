@@ -45,6 +45,11 @@ class TestOfUnixTsEngine extends UnitTestCase {
     function testGetWeeksInMonth2() {
         $this->assertEqual($this->engine->getWeeksInMonth(2003, 2, 6), 4); //week starts on saturday
     }
+    function testGetWeeksInMonth3() {
+        // Unusual cases that can cause fails (shows up with example 21.php)
+        $this->assertEqual($this->engine->getWeeksInMonth(2004,2,1),5);
+        $this->assertEqual($this->engine->getWeeksInMonth(2004,8,1),6);
+    }
     function testGetDayOfWeek() {
         $this->assertEqual($this->engine->getDayOfWeek(2003, 11, 18), 2);
     }

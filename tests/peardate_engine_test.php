@@ -7,7 +7,7 @@ require_once('calendar_include.php');
 class TestOfPearDateEngine extends UnitTestCase {
     var $engine;
     function TestOfPearDateEngine() {
-        $this->UnitTestCase('Test of Calendar_Engine_UnixTs');
+        $this->UnitTestCase('Test of Calendar_Engine_PearDate');
     }
     function setUp() {
         $this->engine = new Calendar_Engine_PearDate();
@@ -44,6 +44,11 @@ class TestOfPearDateEngine extends UnitTestCase {
     }
     function testGetWeeksInMonth2() {
         $this->assertEqual($this->engine->getWeeksInMonth(2003, 2, 6), 4); //week starts on saturday
+    }
+    function testGetWeeksInMonth3() {
+        // Unusual cases that can cause fails (shows up with example 21.php)
+        $this->assertEqual($this->engine->getWeeksInMonth(2004,2,1),5);
+        $this->assertEqual($this->engine->getWeeksInMonth(2004,8,1),6);
     }
     function testGetDayOfWeek() {
         $this->assertEqual($this->engine->getDayOfWeek(2003, 11, 18), 2);

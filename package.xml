@@ -181,7 +181,7 @@ on lunar cycles).</description>
         Allowed formats are: 'int', 'timestamp' , 'array' and 'object'. Returns
         data of specified type e.g. $Day = $Hour->prevDay('object');
       * Added factory for creating calendar objects (in conjunction with above change)
-     * Added decorator to determine the day of the week for any calendar object
+      * Added decorator to determine the day of the week for any calendar object
       * Minor bug fix in Decorator
       </notes>
     </release>

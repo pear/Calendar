@@ -175,11 +175,13 @@ class Calendar_Engine_Interface
 
     /**
      * Returns the number of days in a week
-     * @todo this should accept y/m/d for variable week lengths
+     * @param int year (2003)
+     * @param int month (9)
+     * @param int day (4)
      * @return int (e.g. 7)
      * @access protected
      */
-    function getDaysInWeek()
+    function getDaysInWeek($y=NULL, $m=NULL, $d=NULL)
     {
     }
 

@@ -264,10 +264,13 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of days in a week
+     * @param int year (2003)
+     * @param int month (9)
+     * @param int day (4)
      * @return int (7)
      * @access protected
      */
-    function getDaysInWeek()
+    function getDaysInWeek($y=NULL, $m=NULL, $d=NULL)
     {
         return 7;
     }

@@ -173,7 +173,11 @@ class Calendar_Month_Weekdays extends Calendar_Month
      */
     function setWeekMarkers()
     {
-        $dIW  = $this->cE->getDaysInWeek();
+        $dIW  = $this->cE->getDaysInWeek(
+            $this->thisYear(),
+            $this->thisMonth(),
+            $this->thisDay()
+        );
         $sDOM = $this->tableHelper->getNumTableDaysInMonth();
         for ($i=1; $i <= $sDOM; $i+= $dIW) {
             $this->children[$i]->setFirst();

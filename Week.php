@@ -124,8 +124,14 @@ class Calendar_Week extends Calendar
         }
         $this->tableHelper = & new Calendar_Table_Helper($this, $firstDay);
         $this->thisWeek = $this->tableHelper->getWeekStart($y, $m, $d, $firstDay);
-        $this->prevWeek = $this->tableHelper->getWeekStart($y, $m, $d - $this->cE->getDaysInWeek(), $firstDay);
-        $this->nextWeek = $this->tableHelper->getWeekStart($y, $m, $d + $this->cE->getDaysInWeek(), $firstDay);
+        $this->prevWeek = $this->tableHelper->getWeekStart($y, $m, $d - $this->cE->getDaysInWeek(
+            $this->thisYear(),
+            $this->thisMonth(),
+            $this->thisDay()), $firstDay);
+        $this->nextWeek = $this->tableHelper->getWeekStart($y, $m, $d + $this->cE->getDaysInWeek(
+            $this->thisYear(),
+            $this->thisMonth(),
+            $this->thisDay()), $firstDay);
     }
 
     /**
@@ -142,10 +148,16 @@ class Calendar_Week extends Calendar
             $this->year, $this->month, $this->day, $this->firstDay
         );
         $this->prevWeek = $this->tableHelper->getWeekStart(
-            $this->year, $this->month, $this->day - $this->cE->getDaysInWeek(), $this->firstDay
+            $this->year, $this->month, $this->day - $this->cE->getDaysInWeek(
+                $this->thisYear(),
+                $this->thisMonth(),
+                $this->thisDay()), $this->firstDay
         );
         $this->nextWeek = $this->tableHelper->getWeekStart(
-            $this->year, $this->month, $this->day + $this->cE->getDaysInWeek(), $this->firstDay
+            $this->year, $this->month, $this->day + $this->cE->getDaysInWeek(
+                $this->thisYear(),
+                $this->thisMonth(),
+                $this->thisDay()), $this->firstDay
         );
     }
 
@@ -161,7 +173,11 @@ class Calendar_Week extends Calendar
         $year  = $this->cE->stampToYear($this->thisWeek);
         $month = $this->cE->stampToMonth($this->thisWeek);
         $day   = $this->cE->stampToDay($this->thisWeek);
-        $end   = $this->cE->getDaysInWeek();
+        $end   = $this->cE->getDaysInWeek(
+            $this->thisYear(),
+            $this->thisMonth(),
+            $this->thisDay()
+        );
 
         for ($i=1; $i <= $end; $i++) {
             $stamp = $this->cE->dateToStamp($year, $month, $day++);

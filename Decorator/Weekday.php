@@ -53,13 +53,15 @@ require_once CALENDAR_ROOT.'Day.php';
  * @package Calendar
  * @access public
  */
-class Calendar_Decorator_Weekday extends Calendar_Decorator {
+class Calendar_Decorator_Weekday extends Calendar_Decorator
+{
     /**
      * First day of week
      * @var int (default = 1 for Monday)
      * @access private
      */
     var $firstDay = 1;
+
     /**
      * Constructs Calendar_Decorator_Weekday
      * @param object subclass of Calendar
@@ -69,6 +71,7 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator {
     {
         parent::Calendar_Decorator($Calendar);
     }
+
     /**
      * Sets the first day of the week (0 = Sunday, 1 = Monday (default) etc)
      * @param int first day of week
@@ -78,9 +81,10 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator {
     function setFirstDay($firstDay) {
         $this->firstDay = (int)$firstDay;
     }
+
     /**
      * Returns the previous weekday
-     * @param boolean (default = false) whether to return timestamp
+     * @param string (default = 'int') return value format
      * @return int numeric day of week or timestamp
      * @access public
      */
@@ -93,9 +97,10 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator {
         $day = $this->adjustWeekScale($day);
         return $this->returnValue('Day', $format, $ts, $day);
     }
+
     /**
      * Returns the current weekday
-     * @param boolean (default = false) whether to return timestamp
+     * @param string (default = 'int') return value format
      * @return int numeric day of week or timestamp
      * @access public
      */
@@ -106,9 +111,10 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator {
         $day = $this->adjustWeekScale($day);
         return $this->returnValue('Day', $format, $ts, $day);
     }
+
     /**
      * Returns the next weekday
-     * @param boolean (default = false) whether to return timestamp
+     * @param string (default = 'int') return value format
      * @return int numeric day of week or timestamp
      * @access public
      */
@@ -121,6 +127,7 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator {
         $day = $this->adjustWeekScale($day);
         return $this->returnValue('Day', $format, $ts, $day);
     }
+
     /**
      * Adjusts the day of the week relative to the first day of the week
      * @param int day of week calendar from Calendar_Engine

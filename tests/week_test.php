@@ -65,6 +65,13 @@ class TestOfWeek extends TestOfCalendar {
         $stamp = mktime(0,0,0,10,9,2003);
         $this->assertEqual($stamp,$this->cal->getTimeStamp());
     }
+    function testNewTimeStamp() {
+        $stamp = mktime(0,0,0,7,28,2004);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual('30 2004', date('W Y', $this->cal->prevWeek(true)));
+        $this->assertEqual('31 2004', date('W Y', $this->cal->thisWeek(true)));
+        $this->assertEqual('32 2004', date('W Y', $this->cal->nextWeek(true)));
+    }
     function testPrevWeekInMonth() {
         $this->assertEqual(1, $this->cal->prevWeek());
     }

@@ -129,6 +129,27 @@ class Calendar_Week extends Calendar
     }
 
     /**
+     * Defines the calendar by a timestamp (Unix or ISO-8601), replacing values
+     * passed to the constructor
+     * @param int|string Unix or ISO-8601 timestamp
+     * @return void
+     * @access public
+     */
+    function setTimestamp($ts)
+    {
+        parent::setTimestamp($ts);
+        $this->thisWeek = $this->tableHelper->getWeekStart(
+            $this->year, $this->month, $this->day, $this->firstDay
+        );
+        $this->prevWeek = $this->tableHelper->getWeekStart(
+            $this->year, $this->month, $this->day - $this->cE->getDaysInWeek(), $this->firstDay
+        );
+        $this->nextWeek = $this->tableHelper->getWeekStart(
+            $this->year, $this->month, $this->day + $this->cE->getDaysInWeek(), $this->firstDay
+        );
+    }
+
+    /**
      * Builds Calendar_Day objects for this Week
      * @param array (optional) Calendar_Day objects representing selected dates
      * @return boolean

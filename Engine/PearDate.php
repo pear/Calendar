@@ -138,8 +138,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function dateToStamp($y, $m, $d, $h=0, $i=0, $s=0)
     {
-        static $r = array();
-        $this->adjustDate($y, $m, $d, $h, $i, $s);
+        $r = array();
+        Calendar_Engine_PearDate::adjustDate($y, $m, $d, $h, $i, $s);
         $key = $y.$m.$d.$h.$i.$s;
         if (!isset($r[$key])) {
             $r[$key] = sprintf("%04d-%02d-%02d %02d:%02d:%02d",

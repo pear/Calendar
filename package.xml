@@ -35,7 +35,7 @@ on lunar cycles).</description>
   </maintainers>
   <release>
     <version>0.5.2</version>
-    <date>2004-07-28</date>
+    <date>2004-08-03</date>
     <license>PHP</license>
     <state>beta</state>
     <notes>
@@ -45,6 +45,7 @@ on lunar cycles).</description>
     * fix bug #1798 with week selection
     * fix bug #1995: thisWeek, prevWeek, nextWeek were not affected when a new
       timestamp was set (thanks to johnschaefer at gmx dot de)
+    * getMinYears() returned 1970 on all platforms (thanks to Andy Crain)
     * added some new examples
     </notes>
     <deps>
@@ -138,7 +139,7 @@ on lunar cycles).</description>
             <file name="decorator_test.php"/>
             <file name="decorator_tests.php"/>
             <file name="decorator_textual_test.php"/>
-            <file name="decorator_uri_test.php"/>
+           <file name="decorator_uri_test.php"/>
             <file name="helper_test.php"/>
             <file name="hour_test.php"/>
             <file name="minute_test.php"/>

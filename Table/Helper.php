@@ -113,7 +113,11 @@ class Calendar_Table_Helper
      */
     function setFirstDay()
     {
-        $weekDays = $this->cE->getWeekDays();
+        $weekDays = $this->cE->getWeekDays(
+            $this->calendar->thisYear(),
+            $this->calendar->thisMonth(),
+            $this->calendar->thisDay()
+            );
         $endDays  = array();
         $tmpDays  = array();
         $begin = false;

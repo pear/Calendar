@@ -35,7 +35,7 @@ on lunar cycles).</description>
   </maintainers>
   <release>
     <version>0.5.2</version>
-    <date>2004-07-08</date>
+    <date>2004-07-28</date>
     <license>PHP</license>
     <state>beta</state>
     <notes>
@@ -43,6 +43,8 @@ on lunar cycles).</description>
       of date() calls
     * make url default separator xhtml compliant (& => &amp;)
     * fix bug #1798 with week selection
+    * fix bug #1995: thisWeek, prevWeek, nextWeek were not affected when a new
+      timestamp was set (thanks to johnschaefer at gmx dot de)
     * added some new examples
     </notes>
     <deps>

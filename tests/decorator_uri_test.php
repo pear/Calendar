@@ -13,13 +13,13 @@ class TestOfDecoratorUri extends TestOfDecorator {
     function testFragments() {
         $Uri = new Calendar_Decorator_Uri($this->mockcal);
         $Uri->setFragments('year','month','day','hour','minute','second');
-        $this->assertEqual('year=&month=&day=&hour=&minute=&second=',$Uri->this('second'));
+        $this->assertEqual('year=&amp;month=&amp;day=&amp;hour=&amp;minute=&amp;second=',$Uri->this('second'));
     }
     function testScalarFragments() {
         $Uri = new Calendar_Decorator_Uri($this->mockcal);
         $Uri->setFragments('year','month','day','hour','minute','second');
         $Uri->setScalar();
-        $this->assertEqual('&&&&&',$Uri->this('second'));
+        $this->assertEqual('&amp;&amp;&amp;&amp;&amp;',$Uri->this('second'));
     }
     function testSetSeperator() {
         $Uri = new Calendar_Decorator_Uri($this->mockcal);

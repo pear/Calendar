@@ -10,7 +10,7 @@ function getmicrotime(){
 $start = getmicrotime();
 
 // Force UnixTs engine (default setting)
-define('CALENDAR_ENGINE','UnixTs');
+define('CALENDAR_ENGINE','UnixTS');
 
 if (!@include 'Calendar'.DIRECTORY_SEPARATOR.'Calendar.php') {
     define('CALENDAR_ROOT', '../../');

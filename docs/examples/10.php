@@ -1,6 +1,10 @@
 <?php
 /**
 * Description: demonstrates a decorator to provide simple output formatting
+* on the month while still allowing the days to be accessed via the decorator
+* In practice you _wouldn't_ do this - each decorator comes with a performance
+* hit for extra method calls. For this example some simple functions could help
+* format the month while the days are accessed via the normal Month object
 */
 if ( !@include 'Calendar/Calendar.php' ) {
     define('CALENDAR_ROOT','../../');

@@ -37,6 +37,23 @@ require_once 'Date.php';
 class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 {
     /**
+     * Makes sure a given timestamp is only ever parsed once
+     * Uses a static variable to prevent date() being used twice
+     * for a date which is already known
+     * @param mixed Any timestamp format recognized by Pear::Date
+     * @return object Pear::Date object
+     * @access protected
+     */
+    function stampCollection($stamp)
+    {
+        static $stamps = array();
+        if (!isset($stamps[$stamp])) {
+            $stamps[$stamp] = new Date($stamp);
+        }
+        return $stamps[$stamp];
+    }
+
+    /**
      * Returns a numeric year given a iso-8601 datetime
      * @param string iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
      * @return int year (e.g. 2003)
@@ -44,12 +61,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function stampToYear($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $date = new Date($stamp);
-            $r[$stamp] = $date->year;
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_PearDate::stampCollection($stamp);
+        return (int)$date->year;
     }
 
     /**
@@ -60,12 +73,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function stampToMonth($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $date = new Date($stamp);
-            $r[$stamp] = $date->month;
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_PearDate::stampCollection($stamp);
+        return (int)$date->month;
     }
 
     /**
@@ -76,12 +85,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function stampToDay($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $date = new Date($stamp);
-            $r[$stamp] = $date->day;
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_PearDate::stampCollection($stamp);
+        return (int)$date->day;
     }
 
     /**
@@ -92,12 +97,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function stampToHour($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $date = new Date($stamp);
-            $r[$stamp] = $date->hour;
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_PearDate::stampCollection($stamp);
+        return (int)$date->hour;
     }
 
     /**
@@ -108,12 +109,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function stampToMinute($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $date = new Date($stamp);
-            $r[$stamp] = $date->minute;
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_PearDate::stampCollection($stamp);
+        return (int)$date->minute;
     }
 
     /**
@@ -124,12 +121,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function stampToSecond($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $date = new Date($stamp);
-            $r[$stamp] = $date->second;
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_PearDate::stampCollection($stamp);
+        return (int)$date->second;
     }
 
     /**
@@ -307,7 +300,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
         $end_of_week = (int)Date_Calc::nextDayOfWeek($weekEnd, 1, $m, $y, '%e', true);
         $w = 1;
         while ($d > $end_of_week) {
-            ++$w;
+           ++$w;
             $end_of_week += $this->getDaysInWeek();
         }
         return $w;
@@ -359,7 +352,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
         return array(0, 1, 2, 3, 4, 5, 6);
     }
 
-    /**
+   /**
      * Returns the default first day of the week
      * @return int (default 1 = Monday)
      * @access protected

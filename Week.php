@@ -199,16 +199,12 @@ class Calendar_Week extends Calendar
     function setSelection($sDates)
     {
         foreach ($sDates as $sDate) {
-            if ($this->thisYear() == $sDate->thisYear()
-                && $this->thisMonth() == $sDate->thisMonth())
-            {
-                foreach ($this->children as $key => $child) {
-                    if ($child->thisDay() == $sDate->thisDay() &&
-                        $child->thisMonth() == $sDate->thisMonth()
-                    ) {
-                        $sDate->setSelected();
-                        $this->children[$key] = $sDate;
-                    }
+            foreach ($this->children as $key => $child) {
+                if ($child->thisDay() == $sDate->thisDay() &&
+                        $child->thisMonth() == $sDate->thisMonth() &&
+                        $child->thisYear() == $sDate->thisYear()) {
+                    $this->children[$key] = $sDate;
+                    $this->children[$key]->setSelected();
                 }
             }
         }

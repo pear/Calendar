@@ -1,6 +1,8 @@
 <?php
 /**
 * Description: same as 1.php, but using the PEAR::Date engine
+* Notice the use of the CALENDAR_ENGINE constant, which
+* switches the calculation "engine"
 * Note: make sure PEAR::Date is a stable release!!!
 */
 function getmicrotime(){
@@ -65,7 +67,7 @@ echo ( '<p>The first iteration is more "expensive", the calendar data
 $start = getmicrotime();
 $c->build();
 while ( $e = $c->fetch() ) {
-    $class = get_class($e);
+    $class = strtolower(get_class($e));
     $link ="&y=".$e->thisYear()."&m=".$e->thisMonth()."&d=".$e->thisDay().
         "&h=".$e->thisHour()."&i=".$e->thisMinute()."&s=".$e->thisSecond();
     $method = 'this'.str_replace('calendar_','',$class);
@@ -83,7 +85,7 @@ echo ( '<p>This second iteration is faster, the data structures
         being re-used</p>' );
 $start = getmicrotime();
 while ( $e = $c->fetch() ) {
-    $class = get_class($e);
+    $class = strtolower(get_class($e));
     $link ="&y=".$e->thisYear()."&m=".$e->thisMonth()."&d=".$e->thisDay().
         "&h=".$e->thisHour()."&i=".$e->thisMinute()."&s=".$e->thisSecond();
     $method = 'this'.str_replace('calendar_','',$class);

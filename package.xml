@@ -43,6 +43,7 @@ on lunar cycles).</description>
       of date() calls
     * make url default separator xhtml compliant (& => &amp;)
     * fix bug #1798 with week selection
+    * added some new examples
     </notes>
     <deps>
       <dep type="php" rel="ge" version="4.0.5"/>
@@ -98,6 +99,8 @@ on lunar cycles).</description>
             <file name="17.php"/>
             <file name="18.php"/>
             <file name="19.php"/>
+            <file name="20.php"/>
+            <file name="21.php"/>
             <file name="1.phps"/>
             <file name="2.phps"/>
             <file name="3.phps"/>
@@ -117,6 +120,8 @@ on lunar cycles).</description>
             <file name="17.phps"/>
             <file name="18.phps"/>
             <file name="19.phps"/>
+            <file name="20.phps"/>
+            <file name="21.phps"/>
           </dir>
         </dir>
         <dir name="tests" role="test">
@@ -140,7 +145,7 @@ on lunar cycles).</description>
             <file name="month_weeks_test.php"/>
             <file name="peardate_engine_test.php"/>
             <file name="second_test.php"/>
-            <file name="simple_include.php"/>
+           <file name="simple_include.php"/>
             <file name="table_helper_tests.php"/>
             <file name="unixts_engine_test.php"/>
             <file name="validator_error_test.php"/>

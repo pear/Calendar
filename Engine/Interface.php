@@ -249,12 +249,14 @@ class Calendar_Engine_Interface
     /**
      * Returns the default first day of the week as an integer. Must be a
      * member of the array returned from getWeekDays
-     * @todo this should accept y/m/d for variable week lengths
+     * @param int year (2003)
+     * @param int month (9)
+     * @param int day (4)
      * @return int (e.g. 1 for Monday)
      * @see getWeekDays
      * @access protected
      */
-    function getFirstDayOfWeek()
+    function getFirstDayOfWeek($y=NULL, $m=NULL, $d=NULL)
     {
     }
 

@@ -369,10 +369,13 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
    /**
      * Returns the default first day of the week
+     * @param int year (2003)
+     * @param int month (9)
+     * @param int day (4)
      * @return int (default 1 = Monday)
      * @access protected
      */
-    function getFirstDayOfWeek()
+    function getFirstDayOfWeek($y=NULL, $m=NULL, $d=NULL)
     {
         return 1;
     }

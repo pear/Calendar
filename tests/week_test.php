@@ -174,6 +174,28 @@ class TestOfWeekBuild extends TestOfWeek {
         }
         $this->assertTrue($Child->isSelected());
     }
+    function testSelectionCornerCase() {
+        require_once(CALENDAR_ROOT . 'Day.php');
+        $selectedDays = array(
+            new Calendar_Day(2003, 12, 28),
+            new Calendar_Day(2003, 12, 29),
+            new Calendar_Day(2003, 12, 30),
+            new Calendar_Day(2003, 12, 31),
+            new Calendar_Day(2004, 01, 01),
+            new Calendar_Day(2004, 01, 02),
+            new Calendar_Day(2004, 01, 03)
+        );
+        $this->cal = new Calendar_Week(2003, 12, 31, 0);
+        $this->cal->build($selectedDays);
+        while ($Day = $this->cal->fetch()) {
+            $this->assertTrue($Day->isSelected());
+        }
+        $this->cal = new Calendar_Week(2004, 1, 1, 0);
+        $this->cal->build($selectedDays);
+        while ($Day = $this->cal->fetch()) {
+            $this->assertTrue($Day->isSelected());
+        }
+    }
 }
 if (!defined('TEST_RUNNING')) {
     define('TEST_RUNNING', true);

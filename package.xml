@@ -34,16 +34,13 @@ on lunar cycles).</description>
     </maintainer>
   </maintainers>
   <release>
-    <version>0.5.1</version>
-    <date>2004-05-25</date>
+    <version>0.5.2</version>
+    <date>2004-05-28</date>
     <license>PHP</license>
     <state>beta</state>
     <notes>
-    * Fixed bug in Calendar_Week::setSelection():
-      the "selected" property was set, but not the decorated object.
-    * Fixed bug in Calendar_Month_[Weekdays|Weeks]:
-      the number of empty days at the beginning of the month could be
-      wrong when the adjust() method was called to fix an invalid date.
+    * Small refactoring in the date engines to significantly reduce the number
+      of date() calls
     </notes>
     <deps>
       <dep type="php" rel="ge" version="4.0.5"/>
@@ -154,6 +151,19 @@ on lunar cycles).</description>
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.5.1</version>
+      <date>2004-05-25</date>
+      <license>PHP</license>
+      <state>beta</state>
+      <notes>
+      * Fixed bug in Calendar_Week::setSelection():
+        the "selected" property was set, but not the decorated object.
+      * Fixed bug in Calendar_Month_[Weekdays|Weeks]:
+        the number of empty days at the beginning of the month could be
+        wrong when the adjust() method was called to fix an invalid date.
+      </notes>
+    </release>
     <release>
     <version>0.5</version>
       <date>2004-01-29</date>

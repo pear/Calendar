@@ -8,6 +8,7 @@ class UtilTests extends GroupTest {
     function UtilTests() {
         $this->GroupTest('Util Tests');
         $this->addTestFile('util_uri_test.php');
+        $this->addTestFile('util_textual_test.php');
     }
 }
 

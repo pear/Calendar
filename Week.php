@@ -201,8 +201,9 @@ class Calendar_Week extends Calendar
         foreach ($sDates as $sDate) {
             foreach ($this->children as $key => $child) {
                 if ($child->thisDay() == $sDate->thisDay() &&
-                        $child->thisMonth() == $sDate->thisMonth() &&
-                        $child->thisYear() == $sDate->thisYear()) {
+                    $child->thisMonth() == $sDate->thisMonth() &&
+                    $child->thisYear() == $sDate->thisYear()
+                ) {
                     $this->children[$key] = $sDate;
                     $this->children[$key]->setSelected();
                 }

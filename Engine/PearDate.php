@@ -353,10 +353,13 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a list of integer days of the week beginning 0
+     * @param int year (2003)
+     * @param int month (9)
+     * @param int day (4)
      * @return array (0, 1, 2, 3, 4, 5, 6) 1 = Monday
      * @access protected
      */
-    function getWeekDays()
+    function getWeekDays($y=NULL, $m=NULL, $d=NULL)
     {
         return array(0, 1, 2, 3, 4, 5, 6);
     }

@@ -3,6 +3,7 @@
 * Description: Passes through all main calendar classes, beginning with year
 * and down to seconds, skipping weeks. Useful to test Calendar is (basically)
 * working correctly
+*
 */
 function getmicrotime(){
     list($usec, $sec) = explode(" ",microtime());

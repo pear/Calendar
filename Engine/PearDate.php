@@ -303,7 +303,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
         $end_of_week = (int)Date_Calc::nextDayOfWeek($weekEnd, 1, $m, $y, '%e', true);
         $w = 1;
         while ($d > $end_of_week) {
-           ++$w;
+            ++$w;
             $end_of_week += $this->getDaysInWeek();
         }
         return $w;
@@ -320,25 +320,19 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
     function getWeeksInMonth($y, $m, $firstDay=1)
     {
         $FDOM = Date_Calc::firstOfMonthWeekday($m, $y);
-
+        if ($FDOM == 0) {
+            $FDOM = $this->getDaysInWeek();
+        }
         if ($FDOM > $firstDay) {
-            $firstWeekDays = $this->getDaysInWeek() - $FDOM + $firstDay;
+            $daysInTheFirstWeek = $this->getDaysInWeek() - $FDOM + $firstDay;
             $weeks = 1;
         } else {
-            $firstWeekDays = $firstDay - $FDOM;
+            $daysInTheFirstWeek = $firstDay - $FDOM;
             $weeks = 0;
         }
-        
-        $firstWeekDays %= $this->getDaysInWeek();
-        
-        $result = (int)(ceil(($this->getDaysInMonth($y, $m) - $firstWeekDays) /
+        $daysInTheFirstWeek %= $this->getDaysInWeek();
+        return (int)(ceil(($this->getDaysInMonth($y, $m) - $daysInTheFirstWeek) /
                            $this->getDaysInWeek()) + $weeks);
-
-        if ( $FDOM != 0 ) {
-            return $result;
-        } else {
-            return $result + 1;
-        }
     }
 
     /**
@@ -367,7 +361,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
         return array(0, 1, 2, 3, 4, 5, 6);
     }
 
-   /**
+    /**
      * Returns the default first day of the week
      * @param int year (2003)
      * @param int month (9)

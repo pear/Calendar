@@ -276,26 +276,19 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     function getWeeksInMonth($y, $m, $firstDay=1)
     {
         $FDOM = $this->getFirstDayInMonth($y, $m);
-
+        if ($FDOM == 0) {
+            $FDOM = $this->getDaysInWeek();
+        }
         if ($FDOM > $firstDay) {
-            $firstWeekDays = $this->getDaysInWeek() - $FDOM + $firstDay;
+            $daysInTheFirstWeek = $this->getDaysInWeek() - $FDOM + $firstDay;
             $weeks = 1;
         } else {
-            $firstWeekDays = $firstDay - $FDOM;
+            $daysInTheFirstWeek = $firstDay - $FDOM;
             $weeks = 0;
         }
-        
-        $firstWeekDays %= $this->getDaysInWeek();
-
-        $result = (int)(ceil(($this->getDaysInMonth($y, $m) - $firstWeekDays) /
+        $daysInTheFirstWeek %= $this->getDaysInWeek();
+        return (int)(ceil(($this->getDaysInMonth($y, $m) - $daysInTheFirstWeek) /
                            $this->getDaysInWeek()) + $weeks);
-
-        // Hack - 0 as FDOM is a special case
-        if ( $FDOM != 0 ) {
-            return $result;
-        } else {
-            return $result + 1;
-        }
     }
 
     /**

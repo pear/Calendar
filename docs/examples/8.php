@@ -2,7 +2,12 @@
 /**
  * Description: client for the SOAP Calendar Server
  */
-if (!@include('SOAP/Client.php')) {
+if ( version_compare(phpversion(), "5.0.0", ">") ) {
+    die('PHP 5 has problems with PEAR::SOAP Client (8.0RC3)
+        - remove @ before include below to see why');
+}
+
+if (!@include('SOAP'.DIRECTORY_SEPARATOR.'Client.php')) {
     die('You must have PEAR::SOAP installed');
 }
 
@@ -17,7 +22,7 @@ if (!isset($_GET['m'])) $_GET['m'] = date('n');
 
 $wsdl = new SOAP_WSDL ($url);
 
-// echo ( '<pre>'.$wsdl->generateProxyCode().'</pre>' );
+echo ( '<pre>'.$wsdl->generateProxyCode().'</pre>' );
 
 $calendarClient = $wsdl->getProxy();
 

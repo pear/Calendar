@@ -82,7 +82,11 @@ class Calendar_Year extends Calendar
     {
         require_once CALENDAR_ROOT.'Factory.php';
         if (is_null($firstDay)) {
-            $firstDay = $this->cE->getFirstDayOfWeek();
+            $firstDay = $this->cE->getFirstDayOfWeek(
+                $this->thisYear(),
+                $this->thisMonth(),
+                $this->thisDay()
+            );
         }
         $monthsInYear = $this->cE->getMonthsInYear($this->thisYear());
         for ($i=1; $i <= $monthsInYear; $i++) {

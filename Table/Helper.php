@@ -99,7 +99,11 @@ class Calendar_Table_Helper
         $this->calendar = & $calendar;
         $this->cE = & $calendar->getEngine();
         if ($firstDay === false) {
-            $firstDay = $this->cE->getFirstDayOfWeek();
+            $firstDay = $this->cE->getFirstDayOfWeek(
+                $this->calendar->thisYear(),
+                $this->calendar->thisMonth(),
+                $this->calendar->thisDay()
+            );
         }
         $this->firstDay = $firstDay;
         $this->setFirstDay();

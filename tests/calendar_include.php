@@ -1,7 +1,7 @@
 <?php
 // $Id$
 if ( !@include 'Calendar/Calendar.php' ) {
-    @define('CALENDAR_ROOT','../../');
+    @define('CALENDAR_ROOT','../');
 }
 require_once(CALENDAR_ROOT . 'Year.php');
 require_once(CALENDAR_ROOT . 'Month.php');

@@ -46,7 +46,7 @@ require_once CALENDAR_ROOT.'Util'.DIRECTORY_SEPARATOR.'Textual.php';
 /**
  * Decorator to help with fetching textual representations of months and
  * days of the week.
- * <b>Note:</b> for performance you should prefer Calendar_Util_Uri unless you
+ * <b>Note:</b> for performance you should prefer Calendar_Util_Textual unless you
  * have a specific need to use a decorator
  * @package Calendar
  * @access public

@@ -59,11 +59,11 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
     var $uris = array();
 
     /**
-     * String to seperate fragments with
+     * String to separate fragments with
      * @var string
      * @access private
      */
-    var $separator = '&';
+    var $separator = '&amp;';
 
     /**
      * To output a "scalar" string - variable names omitted

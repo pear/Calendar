@@ -153,8 +153,15 @@ class Calendar_Table_Helper
             }
             $this->emptyBefore++;
         }
-        $this->numWeeks = ceil(($daysInMonth + $this->emptyBefore)
-                / $this->cE->getDaysInWeek());
+        $this->numWeeks = ceil(
+            ($daysInMonth + $this->emptyBefore)
+                /
+            $this->cE->getDaysInWeek(
+                $this->calendar->thisYear(),
+                $this->calendar->thisMonth(),
+                $this->calendar->thisDay()
+            )
+        );
         for ($i=1; $i < $this->numWeeks; $i++) {
             $this->daysOfMonth =
                 array_merge($this->daysOfMonth, $this->daysOfWeek);
@@ -238,7 +245,12 @@ class Calendar_Table_Helper
     function getEmptyDaysAfterOffset()
     {
         $eAfter = $this->getEmptyDaysAfter();
-        return $eAfter - ($this->cE->getDaysInWeek() * ($this->numWeeks-1));
+        return $eAfter - (
+            $this->cE->getDaysInWeek(
+                $this->calendar->thisYear(),
+                $this->calendar->thisMonth(),
+                $this->calendar->thisDay()
+            ) * ($this->numWeeks-1) );
     }
 
     /**
@@ -251,7 +263,12 @@ class Calendar_Table_Helper
             $d -= ($dow - $firstDay);
         }
         if ($dow < $firstDay) {
-            $d -= ($this->cE->getDaysInWeek() - $firstDay + $dow);
+            $d -= (
+                $this->cE->getDaysInWeek(
+                    $this->calendar->thisYear(),
+                    $this->calendar->thisMonth(),
+                    $this->calendar->thisDay()
+                ) - $firstDay + $dow);
         }
         return $this->cE->dateToStamp($y, $m, $d);
     }

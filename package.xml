@@ -35,12 +35,14 @@ on lunar cycles).</description>
   </maintainers>
   <release>
     <version>0.5.2</version>
-    <date>2004-05-28</date>
+    <date>2004-07-08</date>
     <license>PHP</license>
     <state>beta</state>
     <notes>
     * Small refactoring in the date engines to significantly reduce the number
       of date() calls
+    * make url default separator xhtml compliant (& => &amp;)
+    * fix bug #1798 with week selection
     </notes>
     <deps>
       <dep type="php" rel="ge" version="4.0.5"/>

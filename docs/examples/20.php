@@ -7,10 +7,13 @@
 //if you use ISO-8601 dates, switch to PearDate engine
 define('CALENDAR_ENGINE', 'PearDate');
 
-require_once 'Calendar/Calendar.php';
-require_once 'Calendar/Month/Weekdays.php';
-require_once 'Calendar/Day.php';
-require_once 'Calendar/Decorator.php';
+if ( !@include 'Calendar/Calendar.php' ) {
+    define('CALENDAR_ROOT','../../');
+}
+
+require_once CALENDAR_ROOT . 'Month/Weekdays.php';
+require_once CALENDAR_ROOT . 'Day.php';
+require_once CALENDAR_ROOT . 'Decorator.php';
 
 // accepts multiple entries
 class DiaryEvent extends Calendar_Decorator
@@ -48,8 +51,8 @@ class MonthPayload_Decorator extends Calendar_Decorator
 
     function build($events=array())
     {
-        require_once 'Calendar/Day.php';
-        require_once 'Calendar/Table/Helper.php';
+        require_once CALENDAR_ROOT . 'Day.php';
+        require_once CALENDAR_ROOT .  'Table/Helper.php';
 
         $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
         $this->cE = & $this->getEngine();

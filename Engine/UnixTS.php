@@ -32,7 +32,7 @@
 class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 {
     /**
-     * Returns an array from timestamp containing;
+     * Makes sure a given timestamp is only ever parsed once
      * <pre>
      * array (
      *  [0] => year (e.g 2003),
@@ -52,7 +52,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * @return array
      * @access protected
      */
-    function stampToArray($stamp)
+    function stampCollection($stamp)
     {
         static $stamps = array();
         if ( !isset($stamps[$stamp]) ) {
@@ -61,6 +61,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
         }
         return $stamps[$stamp];
     }
+
     /**
      * Returns a numeric year given a timestamp
      * @param int Unix timestamp
@@ -69,7 +70,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToYear($stamp)
     {
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return (int)$date[0];
     }
 
@@ -81,7 +82,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToMonth($stamp)
     {
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return (int)$date[1];
     }
 
@@ -93,7 +94,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToDay($stamp)
     {
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return (int)$date[2];
     }
 
@@ -105,7 +106,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToHour($stamp)
     {
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return (int)$date[3];
     }
 
@@ -117,7 +118,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToMinute($stamp)
     {
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return (int)$date[4];
     }
 
@@ -129,7 +130,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToSecond($stamp)
     {
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return (int)$date[5];
     }
 
@@ -193,7 +194,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     function getDaysInMonth($y, $m)
     {
         $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,1);
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[6];
     }
 
@@ -208,7 +209,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     function getFirstDayInMonth($y, $m)
     {
         $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,1);
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[8];
     }
 
@@ -233,7 +234,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     function getWeekNInYear($y, $m, $d)
     {
         $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,$d);
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[7];
     }
 
@@ -295,7 +296,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     function getDayOfWeek($y, $m, $d)
     {
         $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,$d);
-        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[8];
     }
 

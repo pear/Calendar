@@ -39,38 +39,32 @@ if (!defined('CALENDAR_ROOT')) {
 require_once CALENDAR_ROOT.'Decorator.php';
 
 /**
+ * Load the Uri utility
+ */
+require_once CALENDAR_ROOT.'Util'.DIRECTORY_SEPARATOR.'Uri.php';
+
+/**
  * Decorator to help with building HTML links for navigating the calendar<br />
+ * <b>Note:</b> for performance you should prefer Calendar_Util_Uri unless you
+ * have a specific need to use a decorator
  * <code>
  * $Day = new Calendar_Day(2003, 10, 23);
  * $Uri = & new Calendar_Decorator_Uri($Day);
  * $Uri->setFragments('year', 'month', 'day');
  * echo $Uri->getPrev(); // Displays year=2003&month=10&day=22
  * </code>
+ * @see Calendar_Util_Uri
  * @package Calendar
  * @access public
  */
 class Calendar_Decorator_Uri extends Calendar_Decorator
 {
-    /**
-     * Uri fragments for year, month, day etc.
-     * @var array
-     * @access private
-     */
-    var $uris = array();
 
     /**
-     * String to separate fragments with
-     * @var string
-     * @access private
-     */
-    var $separator = '&amp;';
-
-    /**
-     * To output a "scalar" string - variable names omitted
-     * @var boolean
-     * @access private
-     */
-    var $scalar = false;
+    * @var Calendar_Util_Uri
+    * @access private
+    */
+    var $Uri;
 
     /**
      * Constructs Calendar_Decorator_Uri
@@ -94,12 +88,7 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
      * @access public
      */
     function setFragments($y, $m=null, $d=null, $h=null, $i=null, $s=null) {
-        if (!is_null($y)) $this->uris['Year']   = $y;
-        if (!is_null($m)) $this->uris['Month']  = $m;
-        if (!is_null($d)) $this->uris['Day']    = $d;
-        if (!is_null($h)) $this->uris['Hour']   = $h;
-        if (!is_null($i)) $this->uris['Minute'] = $i;
-        if (!is_null($s)) $this->uris['Second'] = $s;
+        $this->Uri = & new Calendar_Util_Uri($y, $m, $d, $h, $i, $s);
     }
 
     /**
@@ -110,7 +99,7 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
      */
     function setSeparator($separator)
     {
-        $this->separator = $separator;
+        $this->Uri->separator = $separator;
     }
 
     /**
@@ -122,7 +111,7 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
      */
     function setScalar($state=true)
     {
-        $this->scalar = $state;
+        $this->Uri->scalar = $state;
     }
 
     /**
@@ -133,9 +122,7 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
      */
     function prev($method)
     {
-        $method = 'prev'.$method;
-        $stamp  = $this->{$method}('timestamp');
-        return $this->buildUriString($method, $stamp);
+        return $this->Uri->prev($this, $method);
     }
 
     /**
@@ -146,9 +133,7 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
      */
     function this($method)
     {
-       $method = 'this'.$method;
-        $stamp  = $this->{$method}('timestamp');
-        return $this->buildUriString($method, $stamp);
+        return $this->Uri->this($this, $method);
     }
 
     /**
@@ -159,34 +144,8 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
      */
     function next($method)
     {
-        $method = 'next'.$method;
-        $stamp  = $this->{$method}('timestamp');
-        return $this->buildUriString($method, $stamp);
+        return $this->Uri->next($this, $method);
     }
 
-    /**
-     * Build the URI string
-     * @param string method substring
-     * @param int timestamp
-     * @return string build uri string
-     * @access private
-     */
-    function buildUriString($method, $stamp)
-    {
-        $uriString = '';
-        $cE = & $this->getEngine();
-        $separator = '';
-        foreach ($this->uris as $unit => $uri) {
-            $call = 'stampTo'.$unit;
-            $uriString .= $separator;
-            if (!$this->scalar) $uriString .= $uri.'=';
-            $uriString .= $cE->{$call}($stamp);
-            $separator = $this->separator;
-            if (strtolower($stamp) == strtolower($method)) {
-                break;
-            }
-        }
-        return $uriString;
-    }
 }
 ?>

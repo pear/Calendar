@@ -125,7 +125,9 @@ echo ( "?y=".$Month->thisYear()."&amp;m=".
 </head>
 <body>
 <h1>Personal Planner Rendered with HTML</h1>
-<p>To view in WML, click <a href="<?php echo ( $_SERVER['PHP_SELF'] ); ?>?mime=wml">here</a> or place a ?mime=wml at the end of any URL. Note that <a href="http://www.opera.com/download">Opera</a> supports WML natively</p>
+<p>To view in WML, click <a href="<?php echo ( $_SERVER['PHP_SELF'] ); ?>?mime=wml">here</a> or place a ?mime=wml at the end of any URL.
+Note that <a href="http://www.opera.com/download">Opera</a> supports WML natively and Mozilla / Firefox has the WMLBrowser
+plugin: <a href="http://wmlbrowser.mozdev.org">wmlbrowser.mozdev.org</a></p>
 <?php
 if ( isset($_GET['viewday']) ) {
 ?>

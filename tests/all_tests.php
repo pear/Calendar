@@ -13,6 +13,7 @@ require_once('./calendar_engine_tests.php');
 require_once('./calendar_engine_tests.php');
 require_once('./table_helper_tests.php');
 require_once('./decorator_tests.php');
+require_once('./util_tests.php');
 
 
 class AllTests extends GroupTest {
@@ -24,6 +25,7 @@ class AllTests extends GroupTest {
         $this->AddTestCase(new CalendarEngineTests());
         $this->AddTestCase(new TableHelperTests());
         $this->AddTestCase(new DecoratorTests());
+        $this->AddTestCase(new UtilTests());
     }
 }
 

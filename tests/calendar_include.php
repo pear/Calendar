@@ -23,4 +23,5 @@ require_once(CALENDAR_ROOT . 'Decorator/Textual.php');
 require_once(CALENDAR_ROOT . 'Decorator/Uri.php');
 require_once(CALENDAR_ROOT . 'Decorator/Weekday.php');
 require_once(CALENDAR_ROOT . 'Decorator/Wrapper.php');
+require_once(CALENDAR_ROOT . 'Util/Uri.php');
 ?>

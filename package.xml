@@ -45,8 +45,14 @@ on lunar cycles).</description>
     * fix bug #1798 with week selection
     * fix bug #1995: thisWeek, prevWeek, nextWeek were not affected when a new
       timestamp was set (thanks to johnschaefer at gmx dot de)
+    * fix bug in return value from Calendar_Week::thisWeek and n_in_month
     * getMinYears() returned 1970 on all platforms (thanks to Andy Crain)
     * added some new examples
+    * Moved logic from Calendar_Decorator_Uri and Calendar_Decorator_Textual to
+       Calendar_Util_Uri and Calendar_Util_Textual (BC preserved) - offers better
+       performance, reducing number of decorators required
+    * extended engine interface for week related methods to meet rare use cases with
+       (not yet implemented) calendar engines
     </notes>
     <deps>
       <dep type="php" rel="ge" version="4.0.5"/>
@@ -79,6 +85,10 @@ on lunar cycles).</description>
           <file name="Weekday.php"/>
           <file name="Wrapper.php"/>
         </dir>
+        <dir name="Util" role="php">
+          <file name="Textual.php"/>
+          <file name="Uri.php"/>
+        </dir>        
         <dir name="docs">
           <file role="doc" name="Readme"/>
           <dir name="examples" role="doc">
@@ -104,6 +114,8 @@ on lunar cycles).</description>
             <file name="19.php"/>
             <file name="20.php"/>
             <file name="21.php"/>
+            <file name="22.php"/>
+            <file name="23.php"/>
             <file name="1.phps"/>
             <file name="2.phps"/>
             <file name="3.phps"/>
@@ -125,6 +137,8 @@ on lunar cycles).</description>
             <file name="19.phps"/>
             <file name="20.phps"/>
             <file name="21.phps"/>
+            <file name="22.phps"/>
+            <file name="23.phps"/>
           </dir>
         </dir>
         <dir name="tests" role="test">

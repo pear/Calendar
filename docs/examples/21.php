@@ -1,6 +1,6 @@
 <?php
 /**
-* Description: a complete year
+* Description: a complete year with numeric week numbers
 */
 function getmicrotime(){
     list($usec, $sec) = explode(" ",microtime());

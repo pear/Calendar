@@ -19,6 +19,15 @@ define ('CALENDAR_MONTH_STATE',CALENDAR_USE_MONTH_WEEKS);
 
 if (!isset($_GET['year'])) $_GET['year'] = date('Y');
 
+$week_types = array(
+    'n_in_year',
+    'n_in_month',
+);
+
+if (!isset($_GET['week_type']) || !in_array($_GET['week_type'],$week_types) ) {
+    $_GET['week_type'] = 'n_in_year';
+}
+
 $Year = new Calendar_Year($_GET['year']);
 
 $Year->build();
@@ -58,6 +67,10 @@ th, td {
     float: right;
     font-size: 70%;
 }
+#week_type {
+    float: none;
+    font-size: 70%;
+}
 .weekNumbers {
     background-color: #e5e5f5;
     padding-right: 3pt;
@@ -69,10 +82,14 @@ th, td {
 <caption class="year">
 <?php echo $Year->thisYear(); ?>
 <div id="next">
-<a href="?year=<?php echo $Year->nextYear(); ?>">>></a>
+<a href="?year=<?php echo $Year->nextYear(); ?>&week_type=<?php echo $_GET['week_type']; ?>">>></a>
 </div>
 <div id="prev">
-<a href="?year=<?php echo $Year->prevYear(); ?>"><<</a>
+<a href="?year=<?php echo $Year->prevYear(); ?>&week_type=<?php echo $_GET['week_type']; ?>"><<</a>
+</div>
+<div id="week_type">
+<a href="?year=<?php echo $Year->thisYear(); ?>&week_type=n_in_year">Weeks by Year</a> : 
+<a href="?year=<?php echo $Year->thisYear(); ?>&week_type=n_in_month">Weeks by Month</a> 
 </div>
 </caption>
 <?php
@@ -100,7 +117,7 @@ while ($Month = $Year->fetch()) {
     $Month->build();
     while ($Week = $Month->fetch()) {
         echo "<tr>\n";
-        echo '<td>'.$Week->thisWeek('n_in_year')."</td>\n";
+        echo '<td>'.$Week->thisWeek($_GET['week_type'])."</td>\n";
         $Week->build();
 
         while ($Day = $Week->fetch()) {

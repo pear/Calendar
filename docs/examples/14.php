@@ -1,6 +1,6 @@
 <?php
 /**
-* Description: same as 1.php, but using the PEAR::Date engine
+* Description: same as 3.php, but using the PEAR::Date engine
 * Note: make sure PEAR::Date is a stable release!!!
 */
 function getmicrotime(){

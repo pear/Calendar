@@ -32,6 +32,36 @@
 class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 {
     /**
+     * Returns an array from timestamp containing;
+     * <pre>
+     * array (
+     *  [0] => year (e.g 2003),
+     *  [1] => month (e.g 9),
+     *  [2] => day (e.g 6),
+     *  [3] => hour (e.g 14),
+     *  [4] => minute (e.g 34),
+     *  [5] => second (e.g 45),
+     *  [6] => num days in month (e.g. 31),
+     *  [7] => week in year (e.g. 50),
+     *  [8] => day in week (e.g. 0 for Sunday)
+     * )
+     * </pre>
+     * Uses a static variable to prevent date() being used twice
+     * for a date which is already known
+     * @param int Unix timestamp
+     * @return array
+     * @access protected
+     */
+    function stampToArray($stamp)
+    {
+        static $stamps = array();
+        if ( !isset($stamps[$stamp]) ) {
+            $date = @date('Y n j H i s t W w',$stamp);
+            $stamps[$stamp] = sscanf($date, "%d %d %d %d %d %d %d %d %d");
+        }
+        return $stamps[$stamp];
+    }
+    /**
      * Returns a numeric year given a timestamp
      * @param int Unix timestamp
      * @return int year (e.g. 2003)
@@ -39,11 +69,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToYear($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $r[$stamp] = @date('Y', $stamp);
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return (int)$date[0];
     }
 
     /**
@@ -54,11 +81,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToMonth($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $r[$stamp] = @date('n', $stamp);
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return (int)$date[1];
     }
 
     /**
@@ -69,11 +93,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToDay($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $r[$stamp] = @date('j', $stamp);
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return (int)$date[2];
     }
 
     /**
@@ -84,11 +105,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToHour($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $r[$stamp] = @date('H', $stamp);
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return (int)$date[3];
     }
 
     /**
@@ -99,11 +117,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToMinute($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $r[$stamp] = @date('i', $stamp);
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return (int)$date[4];
     }
 
     /**
@@ -114,11 +129,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function stampToSecond($stamp)
     {
-        static $r = array();
-        if (!isset($r[$stamp])) {
-            $r[$stamp] = @date('s', $stamp);
-        }
-        return (int)$r[$stamp];
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return (int)$date[5];
     }
 
     /**
@@ -134,7 +146,11 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function dateToStamp($y, $m, $d, $h=0, $i=0, $s=0)
     {
-        return @mktime($h, $i, $s, $m, $d, $y);
+        static $dates = array();
+        if ( !isset($dates[$y][$m][$d][$h][$i][$s]) ) {
+            $dates[$y][$m][$d][$h][$i][$s] = @mktime($h, $i, $s, $m, $d, $y);
+        }
+        return $dates[$y][$m][$d][$h][$i][$s];
     }
 
     /**
@@ -176,7 +192,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getDaysInMonth($y, $m)
     {
-        return @date('t', @mktime(0, 0, 0, $m, 1, $y));
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,1);
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return $date[6];
     }
 
     /**
@@ -189,7 +207,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getFirstDayInMonth($y, $m)
     {
-        return @date('w', @mktime(0, 0, 0, $m, 1, $y));
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,1);
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return $date[8];
     }
 
     /**
@@ -212,7 +232,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getWeekNInYear($y, $m, $d)
     {
-        return @date('W', @mktime(0, 0, 0, $m, $d, $y));
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,$d);
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return $date[7];
     }
 
     /**
@@ -272,7 +294,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getDayOfWeek($y, $m, $d)
     {
-        return @date('w', @mktime(0, 0, 0, $m, $d, $y));
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,$d);
+        $date = Calendar_Engine_UnixTS::stampToArray($stamp);
+        return $date[8];
     }
 
     /**

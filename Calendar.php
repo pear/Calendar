@@ -191,9 +191,9 @@ class Calendar
     }
 
     /**
-     * Defines the calendar by a Unix timestamp, replacing values
+     * Defines the calendar by a timestamp (Unix or ISO-8601), replacing values
      * passed to the constructor
-     * @param int Unix timestamp
+     * @param int|string Unix or ISO-8601 timestamp
      * @return void
      * @access public
      */
@@ -210,7 +210,7 @@ class Calendar
     /**
      * Returns a timestamp from the current date / time values. Format of
      * timestamp depends on Calendar_Engine implementation being used
-     * @return int timestamp
+     * @return int|string timestamp
      * @access public
      */
     function getTimestamp()

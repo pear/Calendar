@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<package version="1.0">
+  <name>Calendar</name>
+  <summary>A package for building Calendar data structures (irrespective of output)</summary>
+  <description>Calendar provides an API for building Calendar data structures. Using
+the simple iterator and it's &quot;query&quot; API, a user interface can easily be
+built on top of the calendar data structure, at the same time easily connecting it
+to some kind of underlying data store, where &quot;event&quot; information is
+being held.
+
+It provides different calculation &quot;engines&quot; the default being based on
+Unix timestamps (offering fastest performance) with an alternative using PEAR::Date
+which extends the calendar past the limitations of Unix timestamps. Other engines
+should be implementable for other types of calendar (e.g. a Chinese Calendar based
+on lunar cycles).</description>
+  <maintainers>
+    <maintainer>
+      <user>hfuecks</user>
+      <name>Harry Fuecks</name>
+      <email>hfuecks@phppatterns.com</email>
+      <role>lead</role>
+    </maintainer>
+    <maintainer>
+      <user>quipo</user>
+      <name>Lorenzo Alberton</name>
+      <email>l.alberton@quipo.it</email>
+      <role>developer</role>
+    </maintainer>
+    <maintainer>
+      <user>cellog</user>
+      <name>Greg Beaver</name>
+      <email>greg@chiaraquartet.net</email>
+      <role>helper</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.5.1</version>
+    <date>2004-05-25</date>
+    <license>PHP</license>
+    <state>beta</state>
+    <notes>
+    * Fixed bug in Calendar_Week::setSelection():
+      the "selected" property was set, but not the decorated object.
+    * Fixed bug in Calendar_Month_[Weekdays|Weeks]:
+      the number of empty days at the beginning of the month could be
+      wrong when the adjust() method was called to fix an invalid date.
+    </notes>
+    <deps>
+      <dep type="php" rel="ge" version="4.0.5"/>
+      <dep type="pkg" rel="has" optional="yes">Date</dep>
+    </deps>
+    <filelist>
+      <dir name="/" baseinstalldir="Calendar">
+        <file role="php" name="Calendar.php"/>
+        <file role="php" name="Factory.php"/>
+        <file role="php" name="Year.php"/>
+        <file role="php" name="Month.php"/>
+        <file role="php" name="Month/Weekdays.php"/>
+        <file role="php" name="Month/Weeks.php"/>
+        <file role="php" name="Week.php"/>
+        <file role="php" name="Table/Helper.php"/>
+        <file role="php" name="Day.php"/>
+        <file role="php" name="Hour.php"/>
+        <file role="php" name="Minute.php"/>
+        <file role="php" name="Second.php"/>
+        <file role="php" name="Validator.php"/>
+        <file role="php" name="Decorator.php"/>
+        <dir name="Engine" role="php">
+          <file name="Interface.php"/>
+          <file name="UnixTS.php"/>
+          <file name="PearDate.php"/>
+        </dir>
+        <dir name="Decorator" role="php">
+          <file name="Textual.php"/>
+          <file name="Uri.php"/>
+          <file name="Weekday.php"/>
+          <file name="Wrapper.php"/>
+        </dir>
+        <dir name="docs">
+          <file role="doc" name="Readme"/>
+          <dir name="examples" role="doc">
+            <file name="index.html"/>
+            <file name="1.php"/>
+            <file name="2.php"/>
+            <file name="3.php"/>
+            <file name="4.php"/>
+            <file name="5.php"/>
+            <file name="6.php"/>
+            <file name="7.php"/>
+            <file name="8.php"/>
+            <file name="9.php"/>
+            <file name="10.php"/>
+            <file name="11.php"/>
+            <file name="12.php"/>
+            <file name="13.php"/>
+            <file name="14.php"/>
+            <file name="15.php"/>
+            <file name="16.php"/>
+            <file name="17.php"/>
+            <file name="18.php"/>
+            <file name="19.php"/>
+            <file name="1.phps"/>
+            <file name="2.phps"/>
+            <file name="3.phps"/>
+            <file name="4.phps"/>
+            <file name="5.phps"/>
+            <file name="6.phps"/>
+            <file name="7.phps"/>
+            <file name="8.phps"/>
+            <file name="9.phps"/>
+            <file name="10.phps"/>
+            <file name="11.phps"/>
+            <file name="12.phps"/>
+            <file name="13.phps"/>
+            <file name="14.phps"/>
+            <file name="15.phps"/>
+            <file name="16.phps"/>
+            <file name="17.phps"/>
+            <file name="18.phps"/>
+            <file name="19.phps"/>
+          </dir>
+        </dir>
+        <dir name="tests" role="test">
+            <file name="README"/>
+            <file name="all_tests.php"/>
+            <file name="calendar_engine_tests.php"/>
+            <file name="calendar_include.php"/>
+            <file name="calendar_tabular_tests.php"/>
+            <file name="calendar_test.php"/>
+            <file name="calendar_tests.php"/>
+            <file name="day_test.php"/>
+            <file name="decorator_test.php"/>
+            <file name="decorator_tests.php"/>
+            <file name="decorator_textual_test.php"/>
+            <file name="decorator_uri_test.php"/>
+            <file name="helper_test.php"/>
+            <file name="hour_test.php"/>
+            <file name="minute_test.php"/>
+            <file name="month_test.php"/>
+            <file name="month_weekdays_test.php"/>
+            <file name="month_weeks_test.php"/>
+            <file name="peardate_engine_test.php"/>
+            <file name="second_test.php"/>
+            <file name="simple_include.php"/>
+            <file name="table_helper_tests.php"/>
+            <file name="unixts_engine_test.php"/>
+            <file name="validator_error_test.php"/>
+            <file name="validator_tests.php"/>
+            <file name="validator_unit_test.php"/>
+            <file name="week_test.php"/>
+            <file name="year_test.php"/>
+        </dir>
+      </dir>
+    </filelist>
+  </release>
+  <changelog>
+    <release>
+    <version>0.5</version>
+      <date>2004-01-29</date>
+      <license>PHP</license>
+      <state>beta</state>
+      <notes>
+      * Added new return-value-formats for each [prev|this|next]*() method
+        Allowed formats are: 'int', 'timestamp' , 'array' and 'object'. Returns
+        data of specified type e.g. $Day = $Hour->prevDay('object');
+      * Added factory for creating calendar objects (in conjunction with above change)
+      * Added decorator to determine the day of the week for any calendar object
+      * Minor bug fix in Decorator
+      </notes>
+    </release>
+    <release>
+    <version>0.4</version>
+      <date>2003-11-22</date>
+      <license>PHP</license>
+      <state>beta</state>
+      <notes>
+      * Fixed bug in setTimeStamp where year wasn't set
+      * Fixed bugs and changed API for Calendar_Week
+      * Added Calendar::adjust method to adjust invalid dates
+      * Added Calendar_Decorator_Uri to help with building links
+      * Added Calendar_Decorator_Textual to help fetching month and weekday names
+      * Added Calendar_Decorator_Wrapper to help apply decorators to built calendar
+        objects
+      </notes>
+    </release>
+    <release>
+      <version>0.3</version>
+      <date>2003-10-30</date>
+      <license>PHP</license>
+      <state>beta</state>
+      <notes>
+      * Fixed bugs in Calendar_Validator for day and month ranges
+      * Fixed bug with first day of week as 0
+      * Modified weeks to extend beyond current month with prevWeek() and nextWeek()
+      * More unit tests
+      </notes>
+    </release>
+    <release>
+      <version>0.2</version>
+      <date>2003-10-28</date>
+      <license>PHP</license>
+      <state>beta</state>
+      <notes>First release</notes>
+    </release>
+  </changelog>
+</package>

@@ -139,7 +139,9 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
         if ( $dayOfWeek >= 0 ) {
             return $dayOfWeek;
         } else {
-            return $this->calendar->cE->getDaysInWeek() + $dayOfWeek;
+            return $this->calendar->cE->getDaysInWeek(
+                $this->calendar->year,$this->calendar->month,$this->calendar->day
+                ) + $dayOfWeek;
         }
     }
 }

@@ -164,6 +164,9 @@ on lunar cycles).</description>
             <file name="second_test.php"/>
             <file name="simple_include.php"/>
             <file name="table_helper_tests.php"/>
+            <file name="util_tests.php"/>
+            <file name="util_textual_test.php"/>
+            <file name="util_uri_test.php"/>
             <file name="unixts_engine_test.php"/>
             <file name="validator_error_test.php"/>
             <file name="validator_tests.php"/>

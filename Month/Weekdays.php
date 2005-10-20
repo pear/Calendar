@@ -45,7 +45,7 @@ require_once CALENDAR_ROOT.'Month.php';
 /**
  * Represents a Month and builds Days in tabular form<br>
  * <code>
- * require_once 'Calendar'.DIRECTORY_SEPARATOR.'Month'.DIRECTORY_SEPARATOR.'Weekdays.php';
+ * require_once 'Calendar/Month/Weekdays.php';
  * $Month = & new Calendar_Month_Weekdays(2003, 10); // Oct 2003
  * $Month->build(); // Build Calendar_Day objects
  * while ($Day = & $Month->fetch()) {
@@ -132,6 +132,7 @@ class Calendar_Month_Weekdays extends Calendar_Month
                                 $this->cE->stampToMonth($stamp),
                                 $this->cE->stampToDay($stamp));
             $Day->setEmpty();
+            $Day->adjust();
             array_unshift($this->children, $Day);
         }
     }
@@ -161,6 +162,7 @@ class Calendar_Month_Weekdays extends Calendar_Month
         for ($i = 1; $i <= $sDOM-$eAfter; $i++) {
             $Day = new Calendar_Day($this->year, $this->month+1, $i);
             $Day->setEmpty();
+            $Day->adjust();
             array_push($this->children, $Day);
         }
     }

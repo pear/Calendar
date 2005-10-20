@@ -1,5 +1,6 @@
 <?php
 // $Id$
+define('CALENDAR_FIRST_DAY_OF_WEEK', 1); //force firstDay = monday
 
 require_once('simple_include.php');
 require_once('calendar_include.php');
@@ -11,7 +12,7 @@ class TestOfWeek extends TestOfCalendar {
         $this->UnitTestCase('Test of Week');
     }
     function setUp() {
-        $this->cal = new Calendar_Week(2003, 10, 9, 1); //force firstDay = monday
+        $this->cal = Calendar_Factory::create('Week', 2003, 10, 9);
         //print_r($this->cal);
     }
     function testPrevDay () {
@@ -74,21 +75,47 @@ class TestOfWeek extends TestOfCalendar {
     }
     function testPrevWeekInMonth() {
         $this->assertEqual(1, $this->cal->prevWeek());
+        $stamp = mktime(0,0,0,2,3,2005);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual(0, $this->cal->prevWeek());
     }
     function testThisWeekInMonth() {
+        $this->assertEqual(2, $this->cal->thisWeek());
+        $stamp = mktime(0,0,0,2,3,2005);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual(1, $this->cal->thisWeek());
+        $stamp = mktime(0,0,0,1,1,2005);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual(1, $this->cal->thisWeek());
+        $stamp = mktime(0,0,0,1,3,2005);
+        $this->cal->setTimestamp($stamp);
         $this->assertEqual(2, $this->cal->thisWeek());
     }
     function testNextWeekInMonth() {
         $this->assertEqual(3, $this->cal->nextWeek());
+        $stamp = mktime(0,0,0,2,3,2005);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual(2, $this->cal->nextWeek());
     }
     function testPrevWeekInYear() {
-        $this->assertEqual(40, $this->cal->prevWeek('n_in_year'));
+        $this->assertEqual(date('W', $this->cal->prevWeek('timestamp')), $this->cal->prevWeek('n_in_year'));
+        $stamp = mktime(0,0,0,1,1,2004);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual(date('W', $this->cal->nextWeek('timestamp')), $this->cal->nextWeek('n_in_year'));
     }
     function testThisWeekInYear() {
-        $this->assertEqual(41, $this->cal->thisWeek('n_in_year'));
+        $this->assertEqual(date('W', $this->cal->thisWeek('timestamp')), $this->cal->thisWeek('n_in_year'));
+        $stamp = mktime(0,0,0,1,1,2004);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual(date('W', $this->cal->thisWeek('timestamp')), $this->cal->thisWeek('n_in_year'));
+    }
+    function testFirstWeekInYear() {
+        $stamp = mktime(0,0,0,1,4,2004);
+        $this->cal->setTimestamp($stamp);
+        $this->assertEqual(1, $this->cal->thisWeek('n_in_year'));
     }
     function testNextWeekInYear() {
-        $this->assertEqual(42, $this->cal->nextWeek('n_in_year'));
+        $this->assertEqual(date('W', $this->cal->nextWeek('timestamp')), $this->cal->nextWeek('n_in_year'));
     }
     function testPrevWeekArray() {
         $testArray = array(
@@ -124,19 +151,19 @@ class TestOfWeek extends TestOfCalendar {
         $this->assertEqual($testArray, $this->cal->nextWeek('array'));
     }
     function testPrevWeekObject() {
-        $testWeek = new Calendar_Week(2003,9,29);
+        $testWeek = Calendar_Factory::create('Week', 2003, 9, 29); //week starts on monday
         $Week = $this->cal->prevWeek('object');
-        $this->assertEqual($testWeek->getTimeStamp(),$Week->getTimeStamp());
+        $this->assertEqual($testWeek->getTimeStamp(), $Week->getTimeStamp());
     }
     function testThisWeekObject() {
-        $testWeek = new Calendar_Week(2003,10,6);
+        $testWeek = Calendar_Factory::create('Week', 2003, 10, 6); //week starts on monday
         $Week = $this->cal->thisWeek('object');
-        $this->assertEqual($testWeek->getTimeStamp(),$Week->getTimeStamp());
+        $this->assertEqual($testWeek->getTimeStamp(), $Week->getTimeStamp());
     }
     function testNextWeekObject() {
-        $testWeek = new Calendar_Week(2003,10,13);
+        $testWeek = Calendar_Factory::create('Week', 2003, 10, 13); //week starts on monday
         $Week = $this->cal->nextWeek('object');
-        $this->assertEqual($testWeek->getTimeStamp(),$Week->getTimeStamp());
+        $this->assertEqual($testWeek->getTimeStamp(), $Week->getTimeStamp());
     }
 }
 
@@ -170,12 +197,12 @@ class TestOfWeekBuild extends TestOfWeek {
 
     function testSelection() {
         require_once(CALENDAR_ROOT . 'Day.php');
-        $selection = array(new Calendar_Day(2003, 10, 7));
+        $selection = array(Calendar_Factory::create('Day', 2003, 10, 7));
         $this->cal->build($selection);
         $i = 1;
         while ($Child = $this->cal->fetch()) {
             if ($i == 2) {
-                break; //07-10-2003 is the 2nd day of the week
+                break; //07-10-2003 is the 2nd day of the week (starting on monday)
             }
             $i++;
         }
@@ -184,20 +211,20 @@ class TestOfWeekBuild extends TestOfWeek {
     function testSelectionCornerCase() {
         require_once(CALENDAR_ROOT . 'Day.php');
         $selectedDays = array(
-            new Calendar_Day(2003, 12, 28),
-            new Calendar_Day(2003, 12, 29),
-            new Calendar_Day(2003, 12, 30),
-            new Calendar_Day(2003, 12, 31),
-            new Calendar_Day(2004, 01, 01),
-            new Calendar_Day(2004, 01, 02),
-            new Calendar_Day(2004, 01, 03)
+            Calendar_Factory::create('Day', 2003, 12, 29),
+            Calendar_Factory::create('Day', 2003, 12, 30),
+            Calendar_Factory::create('Day', 2003, 12, 31),
+            Calendar_Factory::create('Day', 2004, 01, 01),
+            Calendar_Factory::create('Day', 2004, 01, 02),
+            Calendar_Factory::create('Day', 2004, 01, 03),
+            Calendar_Factory::create('Day', 2004, 01, 04)
         );
-        $this->cal = new Calendar_Week(2003, 12, 31, 0);
+        $this->cal = Calendar_Factory::create('Week', 2003, 12, 31, 0);
         $this->cal->build($selectedDays);
         while ($Day = $this->cal->fetch()) {
             $this->assertTrue($Day->isSelected());
         }
-        $this->cal = new Calendar_Week(2004, 1, 1, 0);
+        $this->cal = Calendar_Factory::create('Week', 2004, 1, 1, 0);
         $this->cal->build($selectedDays);
         while ($Day = $this->cal->fetch()) {
             $this->assertTrue($Day->isSelected());

@@ -34,25 +34,16 @@ on lunar cycles).</description>
     </maintainer>
   </maintainers>
   <release>
-    <version>0.5.2</version>
-    <date>2004-08-03</date>
+    <version>0.5.3</version>
+    <date>2005-10-20</date>
     <license>PHP</license>
     <state>beta</state>
     <notes>
-    * Small refactoring in the date engines to significantly reduce the number
-      of date() calls
-    * make url default separator xhtml compliant (& => &amp;)
-    * fix bug #1798 with week selection
-    * fix bug #1995: thisWeek, prevWeek, nextWeek were not affected when a new
-      timestamp was set (thanks to johnschaefer at gmx dot de)
-    * fix bug in return value from Calendar_Week::thisWeek and n_in_month
-    * getMinYears() returned 1970 on all platforms (thanks to Andy Crain)
-    * added some new examples
-    * Moved logic from Calendar_Decorator_Uri and Calendar_Decorator_Textual to
-       Calendar_Util_Uri and Calendar_Util_Textual (BC preserved) - offers better
-       performance, reducing number of decorators required
-    * extended engine interface for week related methods to meet rare use cases with
-       (not yet implemented) calendar engines
+    * fixed bug #3073, Calendar_Month_Weekdays invalid empty days at year change
+    * fixed bug #3445, thisWeek('n_in_month') was off by one in some cases
+    * use CALENDAR_FIRST_DAY_OF_WEEK constant in Calendar_Year
+    * fixed return by reference NOTICEs
+    * added new tests
     </notes>
     <deps>
       <dep type="php" rel="ge" version="4.0.5"/>
@@ -171,6 +162,7 @@ on lunar cycles).</description>
             <file name="validator_error_test.php"/>
             <file name="validator_tests.php"/>
             <file name="validator_unit_test.php"/>
+            <file name="week_firstday_0_test.php"/>
             <file name="week_test.php"/>
             <file name="year_test.php"/>
         </dir>
@@ -178,6 +170,28 @@ on lunar cycles).</description>
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.5.2</version>
+      <date>2004-08-03</date>
+      <license>PHP</license>
+      <state>beta</state>
+      <notes>
+      * Small refactoring in the date engines to significantly reduce the number
+        of date() calls
+      * make url default separator xhtml compliant (& => &amp;)
+      * fix bug #1798 with week selection
+      * fix bug #1995: thisWeek, prevWeek, nextWeek were not affected when a new
+        timestamp was set (thanks to johnschaefer at gmx dot de)
+      * fix bug in return value from Calendar_Week::thisWeek and n_in_month
+      * getMinYears() returned 1970 on all platforms (thanks to Andy Crain)
+      * added some new examples
+      * Moved logic from Calendar_Decorator_Uri and Calendar_Decorator_Textual to
+         Calendar_Util_Uri and Calendar_Util_Textual (BC preserved) - offers better
+         performance, reducing number of decorators required
+      * extended engine interface for week related methods to meet rare use cases with
+         (not yet implemented) calendar engines
+      </notes>
+    </release>
     <release>
       <version>0.5.1</version>
       <date>2004-05-25</date>

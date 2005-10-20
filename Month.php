@@ -40,7 +40,7 @@ require_once CALENDAR_ROOT.'Calendar.php';
 /**
  * Represents a Month and builds Days
  * <code>
- * require_once 'Calendar'.DIRECTORY_SEPARATOR.'Month.php';
+ * require_once 'Calendar/Month.php';
  * $Month = & new Calendar_Month(2003, 10); // Oct 2003
  * $Month->build(); // Build Calendar_Day objects
  * while ($Day = & $Month->fetch()) {
@@ -94,13 +94,13 @@ class Calendar_Month extends Calendar
     {
         foreach ($sDates as $sDate) {
             if ($this->year == $sDate->thisYear()
-                && $this->month == $sDate->thisMonth() )
-            {
+                && $this->month == $sDate->thisMonth()
+            ) {
                 $key = $sDate->thisDay();
                 if (isset($this->children[$key])) {
                     $sDate->setSelected();
                     $class = strtolower(get_class($sDate));
-                    if ( $class == 'calendar_day' || $class == 'calendar_decorator' ) {
+                    if ($class == 'calendar_day' || $class == 'calendar_decorator') {
                         $sDate->setFirst($this->children[$key]->isFirst());
                         $sDate->setLast($this->children[$key]->isLast());
                     }

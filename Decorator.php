@@ -283,7 +283,8 @@ class Calendar_Decorator
      */
     function & getValidator()
     {
-        return $this->calendar->getValidator();
+        $validator = $this->calendar->getValidator();
+        return $validator;
     }
 
     /**

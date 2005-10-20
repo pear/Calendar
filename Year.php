@@ -88,6 +88,9 @@ class Calendar_Year extends Calendar
                 $this->thisDay()
             );
         }
+        if (!defined ('CALENDAR_FIRST_DAY_OF_WEEK')) {
+            define ('CALENDAR_FIRST_DAY_OF_WEEK', $firstDay);
+        }
         $monthsInYear = $this->cE->getMonthsInYear($this->thisYear());
         for ($i=1; $i <= $monthsInYear; $i++) {
             $this->children[$i] = Calendar_Factory::create('Month',$this->year,$i);

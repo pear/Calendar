@@ -117,7 +117,7 @@ class Calendar_Week extends Calendar
      */
     function Calendar_Week($y, $m, $d, $firstDay=false)
     {
-        require_once CALENDAR_ROOT.'Table'.DIRECTORY_SEPARATOR.'Helper.php';
+        require_once CALENDAR_ROOT.'Table/Helper.php';
         Calendar::Calendar($y, $m, $d);
         if ($firstDay !== false) {
             $this->firstDay = $firstDay;
@@ -300,14 +300,14 @@ class Calendar_Week extends Calendar
                 }
                 if ($this->lastWeek) {
                     return $this->cE->getWeeksInMonth(
-                        $this->cE->stampToYear($this->thisWeek),
-                        $this->cE->stampToMonth($this->thisWeek),
+                        $this->thisYear(),
+                        $this->thisMonth(),
                         $this->firstDay);
                 }
                 return $this->cE->getWeekNInMonth(
-                    $this->cE->stampToYear($this->thisWeek),
-                    $this->cE->stampToMonth($this->thisWeek),
-                    $this->cE->stampToDay($this->thisWeek),
+                    $this->thisYear(),
+                    $this->thisMonth(),
+                    $this->thisDay(),
                     $this->firstDay);
                 break;
             case 'n_in_year':

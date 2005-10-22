@@ -81,19 +81,10 @@ class Calendar_Year extends Calendar
     function build($sDates = array(), $firstDay = null)
     {
         require_once CALENDAR_ROOT.'Factory.php';
-        if (is_null($firstDay)) {
-            $firstDay = $this->cE->getFirstDayOfWeek(
-                $this->thisYear(),
-                $this->thisMonth(),
-                $this->thisDay()
-            );
-        }
-        if (!defined ('CALENDAR_FIRST_DAY_OF_WEEK')) {
-            define ('CALENDAR_FIRST_DAY_OF_WEEK', $firstDay);
-        }
+        $this->firstDay = $this->defineFirstDayOfWeek($firstDay);
         $monthsInYear = $this->cE->getMonthsInYear($this->thisYear());
         for ($i=1; $i <= $monthsInYear; $i++) {
-            $this->children[$i] = Calendar_Factory::create('Month',$this->year,$i);
+            $this->children[$i] = Calendar_Factory::create('Month', $this->year, $i);
         }
         if (count($sDates) > 0) {
             $this->setSelection($sDates);

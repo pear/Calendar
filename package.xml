@@ -35,13 +35,13 @@ on lunar cycles).</description>
   </maintainers>
   <release>
     <version>0.5.3</version>
-    <date>2005-10-20</date>
+    <date>2005-10-22</date>
     <license>PHP</license>
     <state>beta</state>
     <notes>
-    * fixed bug #3073, Calendar_Month_Weekdays invalid empty days at year change
-    * fixed bug #3445, thisWeek('n_in_month') was off by one in some cases
-    * use CALENDAR_FIRST_DAY_OF_WEEK constant in Calendar_Year
+    * fixed bug #3073, Calendar_Month_Weekdays: invalid empty days at year change
+    * fixed bug #3445, thisWeek('n_in_month') off by one in some cases
+    * use CALENDAR_FIRST_DAY_OF_WEEK constant throughout the package
     * fixed return by reference NOTICEs
     * added new tests
     </notes>

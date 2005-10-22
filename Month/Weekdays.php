@@ -88,10 +88,9 @@ class Calendar_Month_Weekdays extends Calendar_Month
      * @param int (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
      * @access public
      */
-    function Calendar_Month_Weekdays($y, $m, $firstDay=false)
+    function Calendar_Month_Weekdays($y, $m, $firstDay=null)
     {
-        Calendar_Month::Calendar_Month($y, $m);
-        $this->firstDay = $firstDay;
+        Calendar_Month::Calendar_Month($y, $m, $firstDay);
     }
 
     /**
@@ -107,7 +106,7 @@ class Calendar_Month_Weekdays extends Calendar_Month
      */
     function build($sDates=array())
     {
-        require_once CALENDAR_ROOT.'Table'.DIRECTORY_SEPARATOR.'Helper.php';
+        require_once CALENDAR_ROOT.'Table/Helper.php';
         $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
         Calendar_Month::build($sDates);
         $this->buildEmptyDaysBefore();

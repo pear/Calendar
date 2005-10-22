@@ -94,11 +94,11 @@ class Calendar_Table_Helper
      * @param int (optional) first day of the week e.g. 1 for Monday
      * @access protected
      */
-    function Calendar_Table_Helper(& $calendar, $firstDay=false)
+    function Calendar_Table_Helper(& $calendar, $firstDay=null)
     {
         $this->calendar = & $calendar;
         $this->cE = & $calendar->getEngine();
-        if ($firstDay === false) {
+        if (is_null($firstDay)) {
             $firstDay = $this->cE->getFirstDayOfWeek(
                 $this->calendar->thisYear(),
                 $this->calendar->thisMonth(),
@@ -121,12 +121,12 @@ class Calendar_Table_Helper
             $this->calendar->thisYear(),
             $this->calendar->thisMonth(),
             $this->calendar->thisDay()
-            );
+        );
         $endDays  = array();
         $tmpDays  = array();
         $begin = false;
         foreach ($weekDays as $day) {
-            if ($begin == true) {
+            if ($begin) {
                 $endDays[] = $day;
             } else if ($day === $this->firstDay) {
                 $begin = true;

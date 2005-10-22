@@ -408,13 +408,44 @@ class Calendar
 
     /**
      * Returns a reference to the current Calendar_Engine being used. Useful
-     * for Calendar_Table_Helper and Caledar_Validator
+     * for Calendar_Table_Helper and Calendar_Validator
      * @return object implementing Calendar_Engine_Inteface
-     * @access private
+     * @access protected
      */
     function & getEngine()
     {
         return $this->cE;
+    }
+
+    /**
+     * Set the CALENDAR_FIRST_DAY_OF_WEEK constant to the $firstDay value
+     * if the constant is not set yet.
+     * @throws E_USER_WARNING this method throws a WARNING if the
+     *    CALENDAR_FIRST_DAY_OF_WEEK constant is already defined and
+     *    the $firstDay parameter is set to a different value
+     * @param integer $firstDay first day of the week (0=sunday, 1=monday, ...)
+     * @return integer
+     * @access protected
+     */
+    function defineFirstDayOfWeek($firstDay = null)
+    {
+        if (defined('CALENDAR_FIRST_DAY_OF_WEEK')) {
+            if (!is_null($firstDay) && ($firstDay != CALENDAR_FIRST_DAY_OF_WEEK)) {
+                $msg = 'CALENDAR_FIRST_DAY_OF_WEEK constant already defined.'
+                  .' The $firstDay parameter will be ignored.';
+                trigger_error($msg, E_USER_WARNING);
+            }
+            return CALENDAR_FIRST_DAY_OF_WEEK;
+        }
+        if (is_null($firstDay)) {
+            $firstDay = $this->cE->getFirstDayOfWeek(
+                $this->thisYear(),
+                $this->thisMonth(),
+                $this->thisDay()
+            );
+        }
+        define ('CALENDAR_FIRST_DAY_OF_WEEK', $firstDay);
+        return CALENDAR_FIRST_DAY_OF_WEEK;
     }
 
     /**

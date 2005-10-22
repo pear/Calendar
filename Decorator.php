@@ -289,7 +289,7 @@ class Calendar_Decorator
 
     /**
      * Returns a reference to the current Calendar_Engine being used. Useful
-     * for Calendar_Table_Helper and Caledar_Validator
+     * for Calendar_Table_Helper and Calendar_Validator
      * @return object implementing Calendar_Engine_Inteface
      * @access private
      */

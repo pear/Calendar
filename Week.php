@@ -115,23 +115,21 @@ class Calendar_Week extends Calendar
      * @param int (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
      * @access public
      */
-    function Calendar_Week($y, $m, $d, $firstDay=false)
+    function Calendar_Week($y, $m, $d, $firstDay=null)
     {
         require_once CALENDAR_ROOT.'Table/Helper.php';
         Calendar::Calendar($y, $m, $d);
-        if ($firstDay !== false) {
-            $this->firstDay = $firstDay;
-        }
-        $this->tableHelper = & new Calendar_Table_Helper($this, $firstDay);
-        $this->thisWeek = $this->tableHelper->getWeekStart($y, $m, $d, $firstDay);
+        $this->firstDay = $this->defineFirstDayOfWeek($firstDay);
+        $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
+        $this->thisWeek = $this->tableHelper->getWeekStart($y, $m, $d, $this->firstDay);
         $this->prevWeek = $this->tableHelper->getWeekStart($y, $m, $d - $this->cE->getDaysInWeek(
             $this->thisYear(),
             $this->thisMonth(),
-            $this->thisDay()), $firstDay);
+            $this->thisDay()), $this->firstDay);
         $this->nextWeek = $this->tableHelper->getWeekStart($y, $m, $d + $this->cE->getDaysInWeek(
             $this->thisYear(),
             $this->thisMonth(),
-            $this->thisDay()), $firstDay);
+            $this->thisDay()), $this->firstDay);
     }
 
     /**
@@ -274,7 +272,7 @@ class Calendar_Week extends Calendar
                 break;
             case 'object':
                 require_once CALENDAR_ROOT.'Factory.php';
-                return Calendar_Factory::createByTimestamp('Week',$this->prevWeek);
+                return Calendar_Factory::createByTimestamp('Week', $this->prevWeek);
                 break;
             case 'timestamp':
             default:
@@ -321,7 +319,7 @@ class Calendar_Week extends Calendar
                 break;
             case 'object':
                 require_once CALENDAR_ROOT.'Factory.php';
-                return Calendar_Factory::createByTimestamp('Week',$this->thisWeek);
+                return Calendar_Factory::createByTimestamp('Week', $this->thisWeek);
                 break;
             case 'timestamp':
             default:
@@ -355,7 +353,7 @@ class Calendar_Week extends Calendar
                 break;
             case 'object':
                 require_once CALENDAR_ROOT.'Factory.php';
-                return Calendar_Factory::createByTimestamp('Week',$this->nextWeek);
+                return Calendar_Factory::createByTimestamp('Week', $this->nextWeek);
                 break;
             case 'timestamp':
             default:

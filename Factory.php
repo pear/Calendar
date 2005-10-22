@@ -39,13 +39,6 @@ if (!defined('CALENDAR_ROOT')) {
 require_once CALENDAR_ROOT.'Calendar.php';
 
 /**
- * Constant for the first day of the week (integer e.g. 0-6)
- */
-if ( !defined ('CALENDAR_FIRST_DAY_OF_WEEK') ) {
-    define ('CALENDAR_FIRST_DAY_OF_WEEK',1);
-}
-
-/**
  * Contains a factory method to return a Singleton instance of a class
  * implementing the Calendar_Engine_Interface.<br>
  * For Month objects, to control type of month returned, use CALENDAR_MONTH_STATE
@@ -79,11 +72,11 @@ class Calendar_Factory
      */
     function create($type, $y = 2000, $m = 1, $d = 1, $h = 0, $i = 0, $s = 0)
     {
-        switch ( $type ) {
+        $firstDay = defined('CALENDAR_FIRST_DAY_OF_WEEK') ? CALENDAR_FIRST_DAY_OF_WEEK : 1;
+        switch ($type) {
             case 'Day':
                 require_once CALENDAR_ROOT.'Day.php';
                 return new Calendar_Day($y,$m,$d);
-            break;
             case 'Month':
                 // Set default state for which month type to build
                 if (!defined('CALENDAR_MONTH_STATE')) {
@@ -91,11 +84,11 @@ class Calendar_Factory
                 }
                 switch (CALENDAR_MONTH_STATE) {
                     case CALENDAR_USE_MONTH_WEEKDAYS:
-                        require_once CALENDAR_ROOT.'Month'.DIRECTORY_SEPARATOR.'Weekdays.php';
+                        require_once CALENDAR_ROOT.'Month/Weekdays.php';
                         $class = 'Calendar_Month_Weekdays';
                         break;
                     case CALENDAR_USE_MONTH_WEEKS:
-                        require_once CALENDAR_ROOT.'Month'.DIRECTORY_SEPARATOR.'Weeks.php';
+                        require_once CALENDAR_ROOT.'Month/Weeks.php';
                         $class = 'Calendar_Month_Weeks';
                         break;
                     case CALENDAR_USE_MONTH:
@@ -104,35 +97,28 @@ class Calendar_Factory
                         $class = 'Calendar_Month';
                         break;
                 }
-                return new $class($y,$m,CALENDAR_FIRST_DAY_OF_WEEK);
-            break;
+                return new $class($y, $m, $firstDay);
             case 'Week':
                 require_once CALENDAR_ROOT.'Week.php';
-                return new Calendar_Week($y,$m,$d,CALENDAR_FIRST_DAY_OF_WEEK);
-            break;
+                return new Calendar_Week($y, $m, $d, $firstDay);
             case 'Hour':
                 require_once CALENDAR_ROOT.'Hour.php';
-                return new Calendar_Hour($y,$m,$d,$h);
-            break;
+                return new Calendar_Hour($y, $m, $d, $h);
             case 'Minute':
                 require_once CALENDAR_ROOT.'Minute.php';
-                return new Calendar_Minute($y,$m,$d,$h,$i);
-            break;
+                return new Calendar_Minute($y, $m, $d, $h, $i);
             case 'Second':
                 require_once CALENDAR_ROOT.'Second.php';
                 return new Calendar_Second($y,$m,$d,$h,$i,$s);
-            break;
             case 'Year':
                 require_once CALENDAR_ROOT.'Year.php';
                 return new Calendar_Year($y);
-            break;
             default:
                 require_once 'PEAR.php';
                 PEAR::raiseError(
                     'Calendar_Factory::create() unrecognised type: '.$type, null, PEAR_ERROR_TRIGGER,
                     E_USER_NOTICE, 'Calendar_Factory::create()');
                 return false;
-            break;
         }
     }
     /**

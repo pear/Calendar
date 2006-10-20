@@ -34,15 +34,13 @@ on lunar cycles).</description>
     </maintainer>
   </maintainers>
   <release>
-    <version>0.5.3</version>
-    <date>2005-10-22</date>
+    <version>0.5.4</version>
+    <date>2006-10-20</date>
     <license>PHP</license>
     <state>beta</state>
     <notes>
-    * fixed bug #3073, Calendar_Month_Weekdays: invalid empty days at year change
-    * fixed bug #3445, thisWeek('n_in_month') off by one in some cases
-    * use CALENDAR_FIRST_DAY_OF_WEEK constant throughout the package
-    * fixed return by reference NOTICEs
+    * fixed return by reference NOTICE in Decorator
+    * fixed Calendar_Week::thisYear() according the ISO-8601 standard (bug #8758)
     * added new tests
     </notes>
     <deps>
@@ -170,6 +168,19 @@ on lunar cycles).</description>
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.5.3</version>
+      <date>2005-10-22</date>
+      <license>PHP</license>
+      <state>beta</state>
+      <notes>
+      * fixed bug #3073, Calendar_Month_Weekdays: invalid empty days at year change
+      * fixed bug #3445, thisWeek('n_in_month') off by one in some cases
+      * use CALENDAR_FIRST_DAY_OF_WEEK constant throughout the package
+      * fixed return by reference NOTICEs
+      * added new tests
+      </notes>
+    </release>
     <release>
       <version>0.5.2</version>
       <date>2004-08-03</date>

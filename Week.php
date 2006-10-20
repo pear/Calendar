@@ -248,6 +248,35 @@ class Calendar_Week extends Calendar
     }
 
     /**
+     * Returns the value for this year
+     *
+     * When a on the first/last week of the year, the year of the week is
+     * calculated according to ISO-8601
+     *
+     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @return int e.g. 2003 or timestamp
+     * @access public
+     */
+    function thisYear($format = 'int')
+    {
+        $tmp_cal = new Calendar();
+        $tmp_cal->setTimestamp($this->thisWeek);
+        $first_dow = $tmp_cal->thisDay('array');
+        $days_in_week = $tmp_cal->cE->getDaysInWeek($tmp_cal->year, $tmp_cal->month, $tmp_cal->day);
+        $tmp_cal->day += $days_in_week;
+        $last_dow  = $tmp_cal->thisDay('array');
+        
+        if ($first_dow['year'] == $last_dow['year']) {
+            return $first_dow['year'];
+        }
+        
+        if ($last_dow['day'] > floor($days_in_week / 2)) {
+            return $last_dow['year'];
+        }
+        return $first_dow['year'];
+    }
+
+    /**
      * Gets the value of the previous week, according to the requested format
      *
      * @param string $format ['timestamp' | 'n_in_month' | 'n_in_year' | 'array']

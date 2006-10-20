@@ -295,7 +295,8 @@ class Calendar_Decorator
      */
     function & getEngine()
     {
-        return $this->calendar->getEngine();
+        $engine = $this->calendar->getEngine();
+        return $engine;
     }
 
     /**

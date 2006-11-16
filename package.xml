@@ -189,7 +189,7 @@ on lunar cycles).</description>
       <notes>
       * Small refactoring in the date engines to significantly reduce the number
         of date() calls
-      * make url default separator xhtml compliant (& => &amp;)
+      * make url default separator xhtml compliant (&amp; => &amp;amp;)
       * fix bug #1798 with week selection
       * fix bug #1995: thisWeek, prevWeek, nextWeek were not affected when a new
         timestamp was set (thanks to johnschaefer at gmx dot de)

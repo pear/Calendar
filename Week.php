@@ -39,17 +39,18 @@ if (!defined('CALENDAR_ROOT')) {
 require_once CALENDAR_ROOT.'Calendar.php';
 
 /**
- * Represents a Week and builds Days in tabular format<br>
+ * Represents a Week and builds Days in tabular format<br />
  * <code>
  * require_once 'Calendar'.DIRECTORY_SEPARATOR.'Week.php';
- * $Week = & new Calendar_Week(2003, 10, 1); Oct 2003, 1st tabular week
+ * $Week = & new Calendar_Week(2003, 10, 1); //Oct 2003, 1st tabular week
+ * $Week->build();
  * echo '<tr>';
  * while ($Day = & $Week->fetch()) {
  *     if ($Day->isEmpty()) {
  *         echo '<td>&nbsp;</td>';
  *     } else {
  *         echo '<td>'.$Day->thisDay().'</td>';
- *      }
+ *     }
  * }
  * echo '</tr>';
  * </code>

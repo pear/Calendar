@@ -49,7 +49,7 @@ on lunar cycles).
  <license uri="http://www.php.net/license">PHP</license>
  <notes>* fixed return by reference NOTICE in Decorator
 * fixed Calendar_Week::thisYear() according the ISO-8601 standard (bug #8758)
-* added new tests
+* added new tests and fixed test to consider the CALENDAR_FIRST_DAY_OF_WEEK constant
 * switched to package.xml v.2
 * updated header comment blocks according to the Coding Standards
  </notes>

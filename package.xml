@@ -36,8 +36,8 @@ on lunar cycles).
   <email>greg@chiaraquartet.net</email>
   <active>yes</active>
  </helper>
- <date>2007-01-31</date>
- <time>15:00:45</time>
+ <date>2007-10-22</date>
+ <time>13:47:45</time>
  <version>
   <release>0.5.4</release>
   <api>0.5.4</api>
@@ -51,6 +51,7 @@ on lunar cycles).
 * fixed Calendar_Week::thisYear() according the ISO-8601 standard (bug #8758)
 * added new tests
 * switched to package.xml v.2
+* updated header comment blocks according to the Coding Standards
  </notes>
  <contents>
   <dir name="/">

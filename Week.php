@@ -1,28 +1,40 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
-//
-// +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
-// +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2002 The PHP Group                                |
-// +----------------------------------------------------------------------+
-// | This source file is subject to version 2.02 of the PHP license,      |
-// | that is bundled with this package in the file LICENSE, and is        |
-// | available at through the world-wide-web at                           |
-// | http://www.php.net/license/3_0.txt.                                  |
-// | If you did not receive a copy of the PHP license and are unable to   |
-// | obtain it through the world-wide-web, please send a note to          |
-// | license@php.net so we can mail you a copy immediately.               |
-// +----------------------------------------------------------------------+
-// | Authors: Harry Fuecks <hfuecks@phppatterns.com>                      |
-// |          Lorenzo Alberton <l dot alberton at quipo dot it>           |
-// +----------------------------------------------------------------------+
-//
-// $Id$
-//
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
 /**
- * @package Calendar
- * @version $Id$
+ * Contains the Calendar_Week class
+ *
+ * PHP versions 4 and 5
+ *
+ * LICENSE: Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. The name of the author may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE FREEBSD PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * @category   Date and Time
+ * @package    Calendar
+ * @author     Harry Fuecks <hfuecks@phppatterns.com>
+ * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
+ * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version    CVS: $Id$
+ * @link       http://pear.php.net/package/Pager
  */
 
 /**
@@ -39,23 +51,28 @@ if (!defined('CALENDAR_ROOT')) {
 require_once CALENDAR_ROOT.'Calendar.php';
 
 /**
- * Represents a Week and builds Days in tabular format<br />
+ * Represents a Week and builds Days in tabular format<br>
  * <code>
- * require_once 'Calendar'.DIRECTORY_SEPARATOR.'Week.php';
- * $Week = & new Calendar_Week(2003, 10, 1); //Oct 2003, 1st tabular week
- * $Week->build();
+ * require_once 'Calendar/Week.php';
+ * $Week = & new Calendar_Week(2003, 10, 1); Oct 2003, 1st tabular week
  * echo '<tr>';
  * while ($Day = & $Week->fetch()) {
  *     if ($Day->isEmpty()) {
  *         echo '<td>&nbsp;</td>';
  *     } else {
  *         echo '<td>'.$Day->thisDay().'</td>';
- *     }
+ *      }
  * }
  * echo '</tr>';
  * </code>
- * @package Calendar
- * @access public
+ *
+ * @category   Date and Time
+ * @package    Calendar
+ * @author     Harry Fuecks <hfuecks@phppatterns.com>
+ * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
+ * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link       http://pear.php.net/package/Calendar
  */
 class Calendar_Week extends Calendar
 {
@@ -266,11 +283,11 @@ class Calendar_Week extends Calendar
         $days_in_week = $tmp_cal->cE->getDaysInWeek($tmp_cal->year, $tmp_cal->month, $tmp_cal->day);
         $tmp_cal->day += $days_in_week;
         $last_dow  = $tmp_cal->thisDay('array');
-        
+
         if ($first_dow['year'] == $last_dow['year']) {
             return $first_dow['year'];
         }
-        
+
         if ($last_dow['day'] > floor($days_in_week / 2)) {
             return $last_dow['year'];
         }

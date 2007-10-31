@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -61,20 +61,22 @@ require_once CALENDAR_ROOT.'Util'.DIRECTORY_SEPARATOR.'Textual.php';
  * <b>Note:</b> for performance you should prefer Calendar_Util_Textual unless you
  * have a specific need to use a decorator
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access     public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Decorator_Textual extends Calendar_Decorator
 {
     /**
      * Constructs Calendar_Decorator_Textual
+     *
      * @param object subclass of Calendar
+     *
      * @access public
      */
     function Calendar_Decorator_Textual(&$Calendar)
@@ -84,7 +86,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns an array of 12 month names (first index = 1)
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return array
      * @access public
      * @static
@@ -96,7 +100,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns an array of 7 week day names (first index = 0)
-     * @param string (optional) format of returned days (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned days (one|two|short|long)
+     *
      * @return array
      * @access public
      * @static
@@ -108,7 +114,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns textual representation of the previous month of the decorated calendar object
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return string
      * @access public
      */
@@ -119,7 +127,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns textual representation of the month of the decorated calendar object
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return string
      * @access public
      */
@@ -130,7 +140,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns textual representation of the next month of the decorated calendar object
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return string
      * @access public
      */
@@ -141,7 +153,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns textual representation of the previous day of week of the decorated calendar object
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return string
      * @access public
      */
@@ -152,7 +166,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns textual representation of the day of week of the decorated calendar object
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return string
      * @access public
      */
@@ -163,7 +179,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
 
     /**
      * Returns textual representation of the next day of week of the decorated calendar object
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return string
      * @access public
      */
@@ -176,7 +194,9 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
      * Returns the days of the week using the order defined in the decorated
      * calendar object. Only useful for Calendar_Month_Weekdays, Calendar_Month_Weeks
      * and Calendar_Week. Otherwise the returned array will begin on Sunday
-     * @param string (optional) format of returned months (one,two,short or long)
+     *
+     * @param string $format (optional) format of returned months (one|two|short|long)
+     *
      * @return array ordered array of week day names
      * @access public
      */

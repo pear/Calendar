@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -66,13 +66,13 @@ require_once CALENDAR_ROOT.'Calendar.php';
  * echo '</tr>';
  * </code>
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
  */
 class Calendar_Week extends Calendar
 {
@@ -127,13 +127,15 @@ class Calendar_Week extends Calendar
 
     /**
      * Constructs Week
-     * @param int year e.g. 2003
-     * @param int month e.g. 5
-     * @param int a day of the desired week
-     * @param int (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
+     *
+     * @param int $y        year e.g. 2003
+     * @param int $m        month e.g. 5
+     * @param int $d        a day of the desired week
+     * @param int $firstDay (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
+     *
      * @access public
      */
-    function Calendar_Week($y, $m, $d, $firstDay=null)
+    function Calendar_Week($y, $m, $d, $firstDay = null)
     {
         require_once CALENDAR_ROOT.'Table/Helper.php';
         Calendar::Calendar($y, $m, $d);
@@ -153,7 +155,9 @@ class Calendar_Week extends Calendar
     /**
      * Defines the calendar by a timestamp (Unix or ISO-8601), replacing values
      * passed to the constructor
-     * @param int|string Unix or ISO-8601 timestamp
+     *
+     * @param int|string $ts Unix or ISO-8601 timestamp
+     *
      * @return void
      * @access public
      */
@@ -179,7 +183,9 @@ class Calendar_Week extends Calendar
 
     /**
      * Builds Calendar_Day objects for this Week
-     * @param array (optional) Calendar_Day objects representing selected dates
+     *
+     * @param array $sDates (optional) Calendar_Day objects representing selected dates
+     *
      * @return boolean
      * @access public
      */
@@ -224,7 +230,10 @@ class Calendar_Week extends Calendar
     }
 
     /**
-     * @param boolean
+     * Set as first week of the month
+     *
+     * @param boolean $state
+     *
      * @return void
      * @access private
      */
@@ -234,7 +243,10 @@ class Calendar_Week extends Calendar
     }
 
     /**
-     * @param boolean
+     * Set as last week of the month
+     *
+     * @param boolean $state
+     *
      * @return void
      * @access private
      */
@@ -245,7 +257,9 @@ class Calendar_Week extends Calendar
 
     /**
      * Called from build()
-     * @param array
+     *
+     * @param array $sDates
+     *
      * @return void
      * @access private
      */
@@ -271,7 +285,8 @@ class Calendar_Week extends Calendar
      * When a on the first/last week of the year, the year of the week is
      * calculated according to ISO-8601
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int' | 'timestamp' | 'object' | 'array']
+     *
      * @return int e.g. 2003 or timestamp
      * @access public
      */
@@ -298,6 +313,7 @@ class Calendar_Week extends Calendar
      * Gets the value of the previous week, according to the requested format
      *
      * @param string $format ['timestamp' | 'n_in_month' | 'n_in_year' | 'array']
+     *
      * @return mixed
      * @access public
      */
@@ -332,6 +348,7 @@ class Calendar_Week extends Calendar
      * Gets the value of the current week, according to the requested format
      *
      * @param string $format ['timestamp' | 'n_in_month' | 'n_in_year' | 'array']
+     *
      * @return mixed
      * @access public
      */
@@ -379,6 +396,7 @@ class Calendar_Week extends Calendar
      * Gets the value of the following week, according to the requested format
      *
      * @param string $format ['timestamp' | 'n_in_month' | 'n_in_year' | 'array']
+     *
      * @return mixed
      * @access public
      */
@@ -412,6 +430,7 @@ class Calendar_Week extends Calendar
     /**
      * Returns the instance of Calendar_Table_Helper.
      * Called from Calendar_Validator::isValidWeek
+     *
      * @return Calendar_Table_Helper
      * @access protected
      */
@@ -422,6 +441,7 @@ class Calendar_Week extends Calendar
 
     /**
      * Makes sure theres a value for $this->day
+     *
      * @return void
      * @access private
      */

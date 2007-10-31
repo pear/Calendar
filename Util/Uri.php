@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -50,14 +50,14 @@
  * echo $Uri->prev($Day,'day'); // Displays 2003/10/22
  * </code>
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access     public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Util_Uri
 {
@@ -88,12 +88,14 @@ class Calendar_Util_Uri
     /**
      * Constructs Calendar_Decorator_Uri
      * The term "fragment" means <i>name</i> of a calendar GET variables in the URL
+     *
      * @param string URI fragment for year
      * @param string (optional) URI fragment for month
      * @param string (optional) URI fragment for day
      * @param string (optional) URI fragment for hour
      * @param string (optional) URI fragment for minute
      * @param string (optional) URI fragment for second
+     *
      * @access public
      */
     function Calendar_Util_Uri($y, $m=null, $d=null, $h=null, $i=null, $s=null)
@@ -103,12 +105,14 @@ class Calendar_Util_Uri
 
     /**
      * Sets the URI fragment names
+     *
      * @param string URI fragment for year
      * @param string (optional) URI fragment for month
      * @param string (optional) URI fragment for day
      * @param string (optional) URI fragment for hour
      * @param string (optional) URI fragment for minute
      * @param string (optional) URI fragment for second
+     *
      * @return void
      * @access public
      */
@@ -123,8 +127,10 @@ class Calendar_Util_Uri
 
     /**
      * Gets the URI string for the previous calendar unit
+     *
      * @param object subclassed from Calendar e.g. Calendar_Month
      * @param string calendar unit ( must be year, month, week, day, hour, minute or second)
+     *
      * @return string
      * @access public
      */
@@ -137,8 +143,10 @@ class Calendar_Util_Uri
 
     /**
      * Gets the URI string for the current calendar unit
+     *
      * @param object subclassed from Calendar e.g. Calendar_Month
      * @param string calendar unit ( must be year, month, week, day, hour, minute or second)
+     *
      * @return string
      * @access public
      */
@@ -151,8 +159,10 @@ class Calendar_Util_Uri
 
     /**
      * Gets the URI string for the next calendar unit
+     *
      * @param object subclassed from Calendar e.g. Calendar_Month
      * @param string calendar unit ( must be year, month, week, day, hour, minute or second)
+     *
      * @return string
      * @access public
      */
@@ -165,8 +175,10 @@ class Calendar_Util_Uri
 
     /**
      * Build the URI string
+     *
      * @param string method substring
      * @param int timestamp
+     *
      * @return string build uri string
      * @access private
      */

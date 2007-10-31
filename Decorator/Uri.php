@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -67,14 +67,14 @@ require_once CALENDAR_ROOT.'Util'.DIRECTORY_SEPARATOR.'Uri.php';
  * </code>
  * @see Calendar_Util_Uri
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access     public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Decorator_Uri extends Calendar_Decorator
 {
@@ -97,12 +97,14 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
 
     /**
      * Sets the URI fragment names
+     *
      * @param string URI fragment for year
      * @param string (optional) URI fragment for month
      * @param string (optional) URI fragment for day
      * @param string (optional) URI fragment for hour
      * @param string (optional) URI fragment for minute
      * @param string (optional) URI fragment for second
+     *
      * @return void
      * @access public
      */
@@ -112,7 +114,9 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
 
     /**
      * Sets the separator string between fragments
-     * @param string separator e.g. /
+     *
+     * @param string $separator url fragment separator e.g. /
+     *
      * @return void
      * @access public
      */
@@ -122,20 +126,23 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
     }
 
     /**
-     * Puts Uri decorator into "scalar mode" - URI variable names are not
-     * returned
-     * @param boolean (optional)
+     * Puts Uri decorator into "scalar mode" - URI variable names are not returned
+     *
+     * @param boolean $state (optional)
+     *
      * @return void
      * @access public
      */
-    function setScalar($state=true)
+    function setScalar($state = true)
     {
         $this->Uri->scalar = $state;
     }
 
     /**
      * Gets the URI string for the previous calendar unit
-     * @param string calendar unit to fetch uri for (year,month,week or day etc)
+     *
+     * @param string $method calendar unit to fetch uri for (year, month, week or day etc)
+     *
      * @return string
      * @access public
      */
@@ -146,7 +153,9 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
 
     /**
      * Gets the URI string for the current calendar unit
-     * @param string calendar unit to fetch uri for (year,month,week or day etc)
+     *
+     * @param string $method calendar unit to fetch uri for (year,month,week or day etc)
+     *
      * @return string
      * @access public
      */
@@ -157,7 +166,9 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
 
     /**
      * Gets the URI string for the next calendar unit
-     * @param string calendar unit to fetch uri for (year,month,week or day etc)
+     *
+     * @param string $method calendar unit to fetch uri for (year,month,week or day etc)
+     *
      * @return string
      * @access public
      */
@@ -165,6 +176,5 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
     {
         return $this->Uri->next($this, $method);
     }
-
 }
 ?>

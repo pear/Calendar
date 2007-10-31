@@ -27,13 +27,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -51,13 +51,13 @@ if (!defined('CALENDAR_VALUE_TOOLARGE')) {
  * can be obtained from any data object using the getValidator method
  * @see Calendar::getValidator()
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Validator
 {
@@ -84,10 +84,12 @@ class Calendar_Validator
 
     /**
      * Constructs Calendar_Validator
-     * @param object subclass of Calendar
+     *
+     * @param object &$calendar subclass of Calendar
+     *
      * @access public
      */
-    function Calendar_Validator(& $calendar)
+    function Calendar_Validator(&$calendar)
     {
         $this->calendar = & $calendar;
         $this->cE = & $calendar->getEngine();
@@ -95,6 +97,7 @@ class Calendar_Validator
 
     /**
      * Calls all the other isValidXXX() methods in the validator
+     *
      * @return boolean
      * @access public
      */
@@ -113,6 +116,7 @@ class Calendar_Validator
 
     /**
      * Check whether this is a valid year
+     *
      * @return boolean
      * @access public
      */
@@ -136,6 +140,7 @@ class Calendar_Validator
 
     /**
      * Check whether this is a valid month
+     *
      * @return boolean
      * @access public
      */
@@ -159,6 +164,7 @@ class Calendar_Validator
 
     /**
      * Check whether this is a valid day
+     *
      * @return boolean
      * @access public
      */
@@ -183,6 +189,7 @@ class Calendar_Validator
 
     /**
      * Check whether this is a valid hour
+     *
      * @return boolean
      * @access public
      */
@@ -206,6 +213,7 @@ class Calendar_Validator
 
     /**
      * Check whether this is a valid minute
+     *
      * @return boolean
      * @access public
      */
@@ -229,6 +237,7 @@ class Calendar_Validator
 
     /**
      * Check whether this is a valid second
+     *
      * @return boolean
      * @access public
      */
@@ -252,6 +261,7 @@ class Calendar_Validator
 
     /**
      * Iterates over any validation errors
+     *
      * @return mixed either Calendar_Validation_Error or false
      * @access public
      */
@@ -269,6 +279,7 @@ class Calendar_Validator
 
 /**
  * For Validation Error messages
+ *
  * @see Calendar::fetch()
  * @package Calendar
  * @access public
@@ -298,9 +309,11 @@ class Calendar_Validation_Error
 
     /**
      * Constructs Calendar_Validation_Error
+     *
      * @param string Date unit (e.g. month,hour,second)
      * @param int Value of unit which failed test
      * @param string Validation error message
+     *
      * @access protected
      */
     function Calendar_Validation_Error($unit,$value,$message)
@@ -312,6 +325,7 @@ class Calendar_Validation_Error
 
     /**
      * Returns the Date unit
+     *
      * @return string
      * @access public
      */
@@ -322,6 +336,7 @@ class Calendar_Validation_Error
 
     /**
      * Returns the value of the unit
+     *
      * @return int
      * @access public
      */
@@ -332,6 +347,7 @@ class Calendar_Validation_Error
 
     /**
      * Returns the validation error message
+     *
      * @return string
      * @access public
      */
@@ -342,6 +358,7 @@ class Calendar_Validation_Error
 
     /**
      * Returns a string containing the unit, value and error message
+     *
      * @return string
      * @access public
      */

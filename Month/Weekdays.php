@@ -27,13 +27,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -75,13 +75,13 @@ require_once CALENDAR_ROOT.'Month.php';
  * }
  * </code>
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Month_Weekdays extends Calendar_Month
 {
@@ -101,9 +101,11 @@ class Calendar_Month_Weekdays extends Calendar_Month
 
     /**
      * Constructs Calendar_Month_Weekdays
-     * @param int year e.g. 2003
-     * @param int month e.g. 5
-     * @param int (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
+     *
+     * @param int $y        year e.g. 2003
+     * @param int $m        month e.g. 5
+     * @param int $firstDay (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
+     *
      * @access public
      */
     function Calendar_Month_Weekdays($y, $m, $firstDay=null)
@@ -115,14 +117,16 @@ class Calendar_Month_Weekdays extends Calendar_Month
      * Builds Day objects in tabular form, to allow display of calendar month
      * with empty cells if the first day of the week does not fall on the first
      * day of the month.
+     *
+     * @param array $sDates (optional) Calendar_Day objects representing selected dates
+     *
+     * @return boolean
+     * @access public
      * @see Calendar_Day::isEmpty()
      * @see Calendar_Day_Base::isFirst()
      * @see Calendar_Day_Base::isLast()
-     * @param array (optional) Calendar_Day objects representing selected dates
-     * @return boolean
-     * @access public
      */
-    function build($sDates=array())
+    function build($sDates = array())
     {
         require_once CALENDAR_ROOT.'Table/Helper.php';
         $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
@@ -136,6 +140,7 @@ class Calendar_Month_Weekdays extends Calendar_Month
 
     /**
      * Prepends empty days before the real days in the month
+     *
      * @return void
      * @access private
      */
@@ -156,12 +161,13 @@ class Calendar_Month_Weekdays extends Calendar_Month
 
     /**
      * Shifts the array of children forward, if necessary
+     *
      * @return void
      * @access private
      */
     function shiftDays()
     {
-        if (isset ($this->children[0])) {
+        if (isset($this->children[0])) {
             array_unshift($this->children, null);
             unset($this->children[0]);
         }
@@ -169,14 +175,15 @@ class Calendar_Month_Weekdays extends Calendar_Month
 
     /**
      * Appends empty days after the real days in the month
+     *
      * @return void
      * @access private
      */
     function buildEmptyDaysAfter()
     {
         $eAfter = $this->tableHelper->getEmptyDaysAfter();
-        $sDOM = $this->tableHelper->getNumTableDaysInMonth();
-        for ($i = 1; $i <= $sDOM-$eAfter; $i++) {
+        $sDOM   = $this->tableHelper->getNumTableDaysInMonth();
+        for ($i=1; $i <= $sDOM-$eAfter; $i++) {
             $Day = new Calendar_Day($this->year, $this->month+1, $i);
             $Day->setEmpty();
             $Day->adjust();
@@ -187,12 +194,13 @@ class Calendar_Month_Weekdays extends Calendar_Month
     /**
      * Sets the "markers" for the beginning and of a of week, in the
      * built Calendar_Day children
+     *
      * @return void
      * @access private
      */
     function setWeekMarkers()
     {
-        $dIW  = $this->cE->getDaysInWeek(
+        $dIW = $this->cE->getDaysInWeek(
             $this->thisYear(),
             $this->thisMonth(),
             $this->thisDay()

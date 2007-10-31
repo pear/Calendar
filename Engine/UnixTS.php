@@ -27,26 +27,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
  * Performs calendar calculations based on the PHP date() function and
  * Unix timestamps (using PHP's mktime() function).
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access protected
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    protected
  */
 class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 {
@@ -67,7 +67,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * </pre>
      * Uses a static variable to prevent date() being used twice
      * for a date which is already known
-     * @param int Unix timestamp
+     *
+     * @param int $stamp Unix timestamp
+     *
      * @return array
      * @access protected
      */
@@ -83,7 +85,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric year given a timestamp
-     * @param int Unix timestamp
+     *
+     * @param int $stamp Unix timestamp
+     *
      * @return int year (e.g. 2003)
      * @access protected
      */
@@ -95,7 +99,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric month given a timestamp
-     * @param int Unix timestamp
+     *
+     * @param int $stamp Unix timestamp
+     *
      * @return int month (e.g. 9)
      * @access protected
      */
@@ -107,7 +113,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric day given a timestamp
-     * @param int Unix timestamp
+     *
+     * @param int $stamp Unix timestamp
+     *
      * @return int day (e.g. 15)
      * @access protected
      */
@@ -119,7 +127,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric hour given a timestamp
-     * @param int Unix timestamp
+     *
+     * @param int $stamp Unix timestamp
+     *
      * @return int hour (e.g. 13)
      * @access protected
      */
@@ -131,7 +141,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric minute given a timestamp
-     * @param int Unix timestamp
+     *
+     * @param int $stamp Unix timestamp
+     *
      * @return int minute (e.g. 34)
      * @access protected
      */
@@ -143,7 +155,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric second given a timestamp
-     * @param int Unix timestamp
+     *
+     * @param int $stamp Unix timestamp
+     *
      * @return int second (e.g. 51)
      * @access protected
      */
@@ -155,12 +169,14 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a timestamp
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (13)
-     * @param int hour (13)
-     * @param int minute (34)
-     * @param int second (53)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (13)
+     * @param int $h hour (13)
+     * @param int $i minute (34)
+     * @param int $s second (53)
+     *
      * @return int Unix timestamp
      * @access protected
      */
@@ -175,6 +191,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * The upper limit on years that the Calendar Engine can work with
+     *
      * @return int (2037)
      * @access protected
      */
@@ -185,6 +202,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * The lower limit on years that the Calendar Engine can work with
+     *
      * @return int (1970 if it's Windows and 1902 for all other OSs)
      * @access protected
      */
@@ -195,8 +213,9 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of months in a year
+     *
      * @return int (12)
-    * @access protected
+     * @access protected
      */
     function getMonthsInYear($y=null)
     {
@@ -205,8 +224,10 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of days in a month, given year and month
-     * @param int year (2003)
-     * @param int month (9)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     *
      * @return int days in month
      * @access protected
      */
@@ -220,8 +241,10 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     /**
      * Returns numeric representation of the day of the week in a month,
      * given year and month
-     * @param int year (2003)
-     * @param int month (9)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     *
      * @return int from 0 to 6
      * @access protected
      */
@@ -234,9 +257,11 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of days in a week
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int (7)
      * @access protected
      */
@@ -247,9 +272,11 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of the week in the year (ISO-8601), given a date
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int week number
      * @access protected
      */
@@ -262,10 +289,12 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of the week in the month, given a date
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
-     * @param int first day of the week (default: monday)
+     *
+     * @param int $y        year (2003)
+     * @param int $m        month (9)
+     * @param int $d        day (4)
+     * @param int $firstDay first day of the week (default: monday)
+     *
      * @return int week number
      * @access protected
      */
@@ -286,13 +315,15 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of weeks in the month
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int first day of the week (default: monday)
+     *
+     * @param int $y        year (2003)
+     * @param int $m        month (9)
+     * @param int $firstDay first day of the week (default: monday)
+     *
      * @return int weeks number
      * @access protected
      */
-    function getWeeksInMonth($y, $m, $firstDay=1)
+    function getWeeksInMonth($y, $m, $firstDay = 1)
     {
         $FDOM = $this->getFirstDayInMonth($y, $m);
         if ($FDOM == 0) {
@@ -312,9 +343,11 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of the day of the week (0=sunday, 1=monday...)
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int weekday number
      * @access protected
      */
@@ -327,9 +360,11 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a list of integer days of the week beginning 0
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return array (0,1,2,3,4,5,6) 1 = Monday
      * @access protected
      */
@@ -340,9 +375,11 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the default first day of the week
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int (default 1 = Monday)
      * @access protected
      */
@@ -353,6 +390,11 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of hours in a day
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int (24)
      * @access protected
      */
@@ -363,6 +405,12 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of minutes in an hour
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     * @param int $h hour
+     *
      * @return int (60)
      * @access protected
      */
@@ -373,6 +421,13 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of seconds in a minutes
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     * @param int $h hour
+     * @param int $i minute
+     *
      * @return int (60)
      * @access protected
      */

@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -66,14 +66,14 @@ require_once CALENDAR_ROOT.'Month.php';
  * }
  * </code>
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access     public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Month_Weeks extends Calendar_Month
 {
@@ -93,9 +93,11 @@ class Calendar_Month_Weeks extends Calendar_Month
 
     /**
      * Constructs Calendar_Month_Weeks
-     * @param int year e.g. 2003
-     * @param int month e.g. 5
-     * @param int (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
+     *
+     * @param int $y        year e.g. 2003
+     * @param int $m        month e.g. 5
+     * @param int $firstDay (optional) first day of week (e.g. 0 for Sunday, 2 for Tuesday etc.)
+     *
      * @access public
      */
     function Calendar_Month_Weeks($y, $m, $firstDay=null)
@@ -106,11 +108,13 @@ class Calendar_Month_Weeks extends Calendar_Month
     /**
      * Builds Calendar_Week objects for the Month. Note that Calendar_Week
      * builds Calendar_Day object in tabular form (with Calendar_Day->empty)
-     * @param array (optional) Calendar_Week objects representing selected dates
+     *
+     * @param array $sDates (optional) Calendar_Week objects representing selected dates
+     *
      * @return boolean
      * @access public
      */
-    function build($sDates=array())
+    function build($sDates = array())
     {
         require_once CALENDAR_ROOT.'Table/Helper.php';
         $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
@@ -139,7 +143,9 @@ class Calendar_Month_Weeks extends Calendar_Month
 
     /**
      * Called from build()
-     * @param array
+     *
+     * @param array $sDates
+     *
      * @return void
      * @access private
      */

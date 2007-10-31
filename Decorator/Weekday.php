@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -63,14 +63,14 @@ require_once CALENDAR_ROOT.'Day.php';
  * echo $Weekday->thisWeekDay(); // Displays 5 - fifth day of week relative to Sun
  * </code>
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access     public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Decorator_Weekday extends Calendar_Decorator
 {
@@ -83,17 +83,21 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
 
     /**
      * Constructs Calendar_Decorator_Weekday
-     * @param object subclass of Calendar
+     *
+     * @param object &$Calendar subclass of Calendar
+     *
      * @access public
      */
-    function Calendar_Decorator_Weekday(& $Calendar)
+    function Calendar_Decorator_Weekday(&$Calendar)
     {
         parent::Calendar_Decorator($Calendar);
     }
 
     /**
      * Sets the first day of the week (0 = Sunday, 1 = Monday (default) etc)
-     * @param int first day of week
+     *
+     * @param int $firstDay first day of week
+     *
      * @return void
      * @access public
      */
@@ -103,8 +107,10 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
 
     /**
      * Returns the previous weekday
+     *
      * @param string (default = 'int') return value format
-     * @return int numeric day of week or timestamp
+     *
+     * @return int $format numeric day of week or timestamp
      * @access public
      */
     function prevWeekDay($format = 'int')
@@ -119,7 +125,9 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
 
     /**
      * Returns the current weekday
-     * @param string (default = 'int') return value format
+     *
+     * @param string $format (default = 'int') return value format
+     *
      * @return int numeric day of week or timestamp
      * @access public
      */
@@ -133,7 +141,9 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
 
     /**
      * Returns the next weekday
-     * @param string (default = 'int') return value format
+     *
+     * @param string $format (default = 'int') return value format
+     *
      * @return int numeric day of week or timestamp
      * @access public
      */
@@ -149,7 +159,9 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
 
     /**
      * Adjusts the day of the week relative to the first day of the week
-     * @param int day of week calendar from Calendar_Engine
+     *
+     * @param int $dayOfWeek day of week calendar from Calendar_Engine
+     *
      * @return int day of week adjusted to first day
      * @access private
      */

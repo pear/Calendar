@@ -27,13 +27,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -60,23 +60,25 @@ require_once CALENDAR_ROOT.'Calendar.php';
  * }
  * </code>
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Minute extends Calendar
 {
     /**
      * Constructs Minute
-     * @param int year e.g. 2003
-     * @param int month e.g. 5
-     * @param int day e.g. 11
-     * @param int hour e.g. 13
-     * @param int minute e.g. 31
+     *
+     * @param int $y year e.g. 2003
+     * @param int $m month e.g. 5
+     * @param int $d day e.g. 11
+     * @param int $h hour e.g. 13
+     * @param int $i minute e.g. 31
+     *
      * @access public
      */
     function Calendar_Minute($y, $m, $d, $h, $i)
@@ -86,11 +88,13 @@ class Calendar_Minute extends Calendar
 
     /**
      * Builds the Calendar_Second objects
-     * @param array (optional) Calendar_Second objects representing selected dates
+     *
+     * @param array $sDates (optional) Calendar_Second objects representing selected dates
+     *
      * @return boolean
      * @access public
      */
-    function build($sDates=array())
+    function build($sDates = array())
     {
         require_once CALENDAR_ROOT.'Second.php';
         $sIM = $this->cE->getSecondsInMinute($this->year, $this->month,
@@ -107,7 +111,9 @@ class Calendar_Minute extends Calendar
 
     /**
      * Called from build()
-     * @param array
+     *
+     * @param array $sDates
+     *
      * @return void
      * @access private
      */

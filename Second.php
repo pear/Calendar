@@ -27,13 +27,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -54,24 +54,25 @@ require_once CALENDAR_ROOT.'Calendar.php';
  * <b>Note:</b> Seconds do not build other objects
  * so related methods are overridden to return NULL
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Second extends Calendar
 {
     /**
      * Constructs Second
-     * @param int year e.g. 2003
-     * @param int month e.g. 5
-     * @param int day e.g. 11
-     * @param int hour e.g. 13
-     * @param int minute e.g. 31
-     * @param int second e.g. 45
+     *
+     * @param int $y year e.g. 2003
+     * @param int $m month e.g. 5
+     * @param int $d day e.g. 11
+     * @param int $h hour e.g. 13
+     * @param int $i minute e.g. 31
+     * @param int $s second e.g. 45
      */
     function Calendar_Second($y, $m, $d, $h, $i, $s)
     {
@@ -80,6 +81,7 @@ class Calendar_Second extends Calendar
 
     /**
      * Overwrite build
+     *
      * @return NULL
      */
     function build()
@@ -89,6 +91,7 @@ class Calendar_Second extends Calendar
 
     /**
      * Overwrite fetch
+     *
      * @return NULL
      */
     function fetch()
@@ -98,6 +101,7 @@ class Calendar_Second extends Calendar
 
     /**
      * Overwrite fetchAll
+     *
      * @return NULL
      */
     function fetchAll()
@@ -107,6 +111,7 @@ class Calendar_Second extends Calendar
 
     /**
      * Overwrite size
+     *
      * @return NULL
      */
     function size()

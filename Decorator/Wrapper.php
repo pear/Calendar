@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -53,20 +53,22 @@ require_once CALENDAR_ROOT.'Decorator.php';
 /**
  * Decorator to help with wrapping built children in another decorator
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access     public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Decorator_Wrapper extends Calendar_Decorator
 {
     /**
      * Constructs Calendar_Decorator_Wrapper
-     * @param object subclass of Calendar
+     *
+     * @param object &$Calendar subclass of Calendar
+     *
      * @access public
      */
     function Calendar_Decorator_Wrapper(&$Calendar)
@@ -76,7 +78,9 @@ class Calendar_Decorator_Wrapper extends Calendar_Decorator
 
     /**
      * Wraps objects returned from fetch in the named Decorator class
-     * @param string name of Decorator class to wrap with
+     *
+     * @param string $decorator name of Decorator class to wrap with
+     *
      * @return object instance of named decorator
      * @access public
      */
@@ -93,7 +97,9 @@ class Calendar_Decorator_Wrapper extends Calendar_Decorator
 
     /**
      * Wraps the returned calendar objects from fetchAll in the named decorator
-     * @param string name of Decorator class to wrap with
+     *
+     * @param string $decorator name of Decorator class to wrap with
+     *
      * @return array
      * @access public
      */

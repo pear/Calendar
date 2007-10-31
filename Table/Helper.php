@@ -27,25 +27,25 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
  * Used by Calendar_Month_Weekdays, Calendar_Month_Weeks and Calendar_Week to
  * help with building the calendar in tabular form
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
  * @access public
  */
 class Calendar_Table_Helper
@@ -108,8 +108,10 @@ class Calendar_Table_Helper
 
     /**
      * Constructs Calendar_Table_Helper
+     *
      * @param object Calendar_Month_Weekdays, Calendar_Month_Weeks, Calendar_Week
      * @param int (optional) first day of the week e.g. 1 for Monday
+     *
      * @access protected
      */
     function Calendar_Table_Helper(& $calendar, $firstDay=null)
@@ -130,6 +132,7 @@ class Calendar_Table_Helper
 
     /**
      * Constructs $this->daysOfWeek based on $this->firstDay
+     *
      * @return void
      * @access private
      */
@@ -158,6 +161,7 @@ class Calendar_Table_Helper
 
     /**
      * Constructs $this->daysOfMonth
+     *
      * @return void
      * @access private
      */
@@ -192,9 +196,10 @@ class Calendar_Table_Helper
 
     /**
      * Returns the first day of the month
-     * @see Calendar_Engine_Interface::getFirstDayOfWeek()
+     *
      * @return int
      * @access protected
+     * @see Calendar_Engine_Interface::getFirstDayOfWeek()
      */
     function getFirstDay()
     {
@@ -203,6 +208,7 @@ class Calendar_Table_Helper
 
     /**
      * Returns the order array of days in a week
+     *
      * @return int
      * @access protected
      */
@@ -213,6 +219,7 @@ class Calendar_Table_Helper
 
     /**
      * Returns the number of tabular weeks in a month
+     *
      * @return int
      * @access protected
      */
@@ -223,6 +230,7 @@ class Calendar_Table_Helper
 
     /**
      * Returns the number of real days + empty days
+     *
      * @return int
      * @access protected
      */
@@ -233,6 +241,7 @@ class Calendar_Table_Helper
 
     /**
      * Returns the number of empty days before the real days begin
+     *
      * @return int
      * @access protected
      */
@@ -243,6 +252,7 @@ class Calendar_Table_Helper
 
     /**
      * Returns the index of the last real day in the month
+     *
      * @todo Potential performance optimization with static
      * @return int
      * @access protected
@@ -261,6 +271,7 @@ class Calendar_Table_Helper
     /**
      * Returns the index of the last real day in the month, relative to the
      * beginning of the tabular week it is part of
+     *
      * @return int
      * @access protected
      */
@@ -272,11 +283,12 @@ class Calendar_Table_Helper
                 $this->calendar->thisYear(),
                 $this->calendar->thisMonth(),
                 $this->calendar->thisDay()
-            ) * ($this->numWeeks-1) );
+            ) * ($this->numWeeks-1));
     }
 
     /**
      * Returns the timestamp of the first day of the current week
+     *
      */
     function getWeekStart($y, $m, $d, $firstDay=1)
     {

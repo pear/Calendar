@@ -27,13 +27,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -60,21 +60,23 @@ require_once CALENDAR_ROOT.'Calendar.php';
  * }
  * </code>
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @copyright  2003-2007 Harry Fuecks
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @access public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @access    public
  */
 class Calendar_Month extends Calendar
 {
     /**
      * Constructs Calendar_Month
+     *
      * @param int $y year e.g. 2003
      * @param int $m month e.g. 5
      * @param int $firstDay first day of the week [optional]
+     *
      * @access public
      */
     function Calendar_Month($y, $m, $firstDay=null)
@@ -86,11 +88,13 @@ class Calendar_Month extends Calendar
     /**
      * Builds Day objects for this Month. Creates as many Calendar_Day objects
      * as there are days in the month
-     * @param array (optional) Calendar_Day objects representing selected dates
+     *
+     * @param array $sDates (optional) Calendar_Day objects representing selected dates
+     *
      * @return boolean
      * @access public
      */
-    function build($sDates=array())
+    function build($sDates = array())
     {
         require_once CALENDAR_ROOT.'Day.php';
         $daysInMonth = $this->cE->getDaysInMonth($this->year, $this->month);
@@ -105,7 +109,9 @@ class Calendar_Month extends Calendar
 
     /**
      * Called from build()
-     * @param array
+     *
+     * @param array $sDates
+     *
      * @return void
      * @access private
      */

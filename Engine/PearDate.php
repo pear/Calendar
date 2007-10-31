@@ -27,13 +27,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -45,12 +45,12 @@ require_once 'Date.php';
  * Performs calendar calculations based on the PEAR::Date class
  * Timestamps are in the ISO-8601 format (YYYY-MM-DD HH:MM:SS)
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
  * @access protected
  */
 class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
@@ -59,7 +59,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      * Makes sure a given timestamp is only ever parsed once
      * Uses a static variable to prevent date() being used twice
      * for a date which is already known
-     * @param mixed Any timestamp format recognized by Pear::Date
+     *
+     * @param mixed $stamp Any timestamp format recognized by Pear::Date
+     *
      * @return object Pear::Date object
      * @access protected
      */
@@ -74,7 +76,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric year given a iso-8601 datetime
-     * @param string iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
+     * @param string $stamp iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
      * @return int year (e.g. 2003)
      * @access protected
      */
@@ -86,7 +90,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric month given a iso-8601 datetime
-     * @param string iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
+     * @param string $stamp iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
      * @return int month (e.g. 9)
      * @access protected
      */
@@ -98,7 +104,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric day given a iso-8601 datetime
-     * @param string iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
+     * @param string $stamp iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
      * @return int day (e.g. 15)
      * @access protected
      */
@@ -110,7 +118,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric hour given a iso-8601 datetime
-     * @param string iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
+     * @param string $stamp iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
      * @return int hour (e.g. 13)
      * @access protected
      */
@@ -122,7 +132,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric minute given a iso-8601 datetime
-     * @param string iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
+     * @param string $stamp iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
      * @return int minute (e.g. 34)
      * @access protected
      */
@@ -134,7 +146,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a numeric second given a iso-8601 datetime
-     * @param string iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
+     * @param string $stamp iso-8601 datetime (YYYY-MM-DD HH:MM:SS)
+     *
      * @return int second (e.g. 51)
      * @access protected
      */
@@ -146,12 +160,14 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a iso-8601 datetime
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (13)
-     * @param int hour (13)
-     * @param int minute (34)
-     * @param int second (53)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (13)
+     * @param int $h hour (13)
+     * @param int $i minute (34)
+     * @param int $s second (53)
+     *
      * @return string iso-8601 datetime
      * @access protected
      */
@@ -169,12 +185,14 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Set the correct date values (useful for math operations on dates)
-     * @param int year   (2003)
-     * @param int month  (9)
-     * @param int day    (13)
-     * @param int hour   (13)
-     * @param int minute (34)
-     * @param int second (53)
+     *
+     * @param int $y year   (2003)
+     * @param int $m month  (9)
+     * @param int $d day    (13)
+     * @param int $h hour   (13)
+     * @param int $i minute (34)
+     * @param int $s second (53)
+     *
      * @access protected
      */
     function adjustDate(&$y, &$m, &$d, &$h, &$i, &$s)
@@ -228,6 +246,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * The upper limit on years that the Calendar Engine can work with
+     *
      * @return int 9999
      * @access protected
      */
@@ -238,6 +257,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * The lower limit on years that the Calendar Engine can work with
+     *
      * @return int 0
      * @access protected
      */
@@ -248,6 +268,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of months in a year
+     *
      * @return int (12)
      * @access protected
      */
@@ -258,8 +279,10 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of days in a month, given year and month
-     * @param int year (2003)
-     * @param int month (9)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     *
      * @return int days in month
      * @access protected
      */
@@ -271,8 +294,10 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
     /**
      * Returns numeric representation of the day of the week in a month,
      * given year and month
-     * @param int year (2003)
-     * @param int month (9)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     *
      * @return int from 0 to 7
      * @access protected
      */
@@ -283,9 +308,11 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of days in a week
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int (7)
      * @access protected
      */
@@ -296,9 +323,11 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of the week in the year (ISO-8601), given a date
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int week number
      * @access protected
      */
@@ -309,10 +338,12 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of the week in the month, given a date
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
-     * @param int first day of the week (default: monday)
+     *
+     * @param int $y        year (2003)
+     * @param int $m        month (9)
+     * @param int $d        day (4)
+     * @param int $firstDay first day of the week (default: monday)
+     *
      * @return int week number
      * @access protected
      */
@@ -330,9 +361,11 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of weeks in the month
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int first day of the week (default: monday)
+     *
+     * @param int $y        year (2003)
+     * @param int $m        month (9)
+     * @param int $firstDay first day of the week (default: monday)
+     *
      * @return int weeks number
      * @access protected
      */
@@ -356,9 +389,11 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of the day of the week (0=sunday, 1=monday...)
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int weekday number
      * @access protected
      */
@@ -369,9 +404,11 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns a list of integer days of the week beginning 0
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return array (0, 1, 2, 3, 4, 5, 6) 1 = Monday
      * @access protected
      */
@@ -382,9 +419,11 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the default first day of the week
-     * @param int year (2003)
-     * @param int month (9)
-     * @param int day (4)
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int (default 1 = Monday)
      * @access protected
      */
@@ -395,6 +434,11 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of hours in a day
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     *
      * @return int (24)
      * @access protected
      */
@@ -405,6 +449,12 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of minutes in an hour
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     * @param int $h hour
+     *
      * @return int (60)
      * @access protected
      */
@@ -415,6 +465,13 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
 
     /**
      * Returns the number of seconds in a minutes
+     *
+     * @param int $y year (2003)
+     * @param int $m month (9)
+     * @param int $d day (4)
+     * @param int $h hour
+     * @param int $i minute
+     *
      * @return int (60)
      * @access protected
      */

@@ -27,14 +27,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @version    CVS: $Id$
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @version   CVS: $Id$
+ * @link      http://pear.php.net/package/Calendar
  */
 
 /**
@@ -65,26 +65,28 @@ require_once CALENDAR_ROOT.'Calendar.php';
  * Use the constract CALENDAR_FIRST_DAY_OF_WEEK to control the first day of the week
  * for Month or Week objects (e.g. 0 = Sunday, 6 = Saturday)
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l dot alberton at quipo dot it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
  * @access protected
  */
 class Calendar_Factory
 {
     /**
      * Creates a calendar object given the type and units
-     * @param string class of calendar object to create
-     * @param int year
-     * @param int month
-     * @param int day
-     * @param int hour
-     * @param int minute
-     * @param int second
+     *
+     * @param string $type class of calendar object to create
+     * @param int    $y year
+     * @param int    $m month
+     * @param int    $d day
+     * @param int    $h hour
+     * @param int    $i minute
+     * @param int    $s second
+     *
      * @return object subclass of Calendar
      * @access public
      * @static
@@ -143,8 +145,10 @@ class Calendar_Factory
 
     /**
      * Creates an instance of a calendar object, given a type and timestamp
-     * @param string type of object to create
-     * @param mixed timestamp (depending on Calendar engine being used)
+     *
+     * @param string $type  type of object to create
+     * @param mixed  $stamp timestamp (depending on Calendar engine being used)
+     *
      * @return object subclass of Calendar
      * @access public
      * @static

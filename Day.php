@@ -94,9 +94,9 @@ class Calendar_Day extends Calendar
     /**
      * Constructs Calendar_Day
      *
-     * @param int year e.g. 2003
-     * @param int month e.g. 8
-     * @param int day e.g. 15
+     * @param int $y year e.g. 2003
+     * @param int $m month e.g. 8
+     * @param int $d day e.g. 15
      *
      * @access public
      */
@@ -115,11 +115,11 @@ class Calendar_Day extends Calendar
      */
     function build($sDates = array())
     {
-        require_once CALENDAR_ROOT.'Hour.php';
+        include_once CALENDAR_ROOT.'Hour.php';
 
         $hID = $this->cE->getHoursInDay($this->year, $this->month, $this->day);
         for ($i=0; $i < $hID; $i++) {
-            $this->children[$i]=
+            $this->children[$i] =
                 new Calendar_Hour($this->year, $this->month, $this->day, $i);
         }
         if (count($sDates) > 0) {
@@ -187,7 +187,8 @@ class Calendar_Day extends Calendar
      * @return boolean
      * @access public
      */
-    function isFirst() {
+    function isFirst() 
+    {
         return $this->first;
     }
 

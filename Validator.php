@@ -49,7 +49,6 @@ if (!defined('CALENDAR_VALUE_TOOLARGE')) {
 /**
  * Used to validate any given Calendar date object. Instances of this class
  * can be obtained from any data object using the getValidator method
- * @see Calendar::getValidator()
  *
  * @category  Date and Time
  * @package   Calendar
@@ -57,6 +56,7 @@ if (!defined('CALENDAR_VALUE_TOOLARGE')) {
  * @copyright 2003-2007 Harry Fuecks
  * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
  * @link      http://pear.php.net/package/Calendar
+ * @see       Calendar::getValidator()
  * @access    public
  */
 class Calendar_Validator
@@ -92,7 +92,7 @@ class Calendar_Validator
     function Calendar_Validator(&$calendar)
     {
         $this->calendar = & $calendar;
-        $this->cE = & $calendar->getEngine();
+        $this->cE       = & $calendar->getEngine();
     }
 
     /**
@@ -105,7 +105,7 @@ class Calendar_Validator
     {
         $checks = array('isValidYear', 'isValidMonth', 'isValidDay',
             'isValidHour', 'isValidMinute', 'isValidSecond');
-        $valid = true;
+        $valid  = true;
         foreach ($checks as $check) {
             if (!$this->{$check}()) {
                 $valid = false;
@@ -122,10 +122,10 @@ class Calendar_Validator
      */
     function isValidYear()
     {
-        $y = $this->calendar->thisYear();
+        $y   = $this->calendar->thisYear();
         $min = $this->cE->getMinYears();
         if ($min > $y) {
-           $this->errors[] = new Calendar_Validation_Error(
+            $this->errors[] = new Calendar_Validation_Error(
                 'Year', $y, CALENDAR_VALUE_TOOSMALL.$min);
             return false;
         }
@@ -178,7 +178,9 @@ class Calendar_Validator
             return false;
         }
         $max = $this->cE->getDaysInMonth(
-            $this->calendar->thisYear(), $this->calendar->thisMonth());
+            $this->calendar->thisYear(), 
+            $this->calendar->thisMonth()
+        );
         if ($d > $max) {
             $this->errors[] = new Calendar_Validation_Error(
                 'Day', $d, CALENDAR_VALUE_TOOLARGE.$max);
@@ -267,7 +269,7 @@ class Calendar_Validator
      */
     function fetch()
     {
-        $error = each ($this->errors);
+        $error = each($this->errors);
         if ($error) {
             return $error['value'];
         } else {
@@ -280,9 +282,14 @@ class Calendar_Validator
 /**
  * For Validation Error messages
  *
- * @see Calendar::fetch()
- * @package Calendar
- * @access public
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @copyright 2003-2007 Harry Fuecks
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @see       Calendar::fetch()
+ * @access    public
  */
 class Calendar_Validation_Error
 {
@@ -310,13 +317,13 @@ class Calendar_Validation_Error
     /**
      * Constructs Calendar_Validation_Error
      *
-     * @param string Date unit (e.g. month,hour,second)
-     * @param int Value of unit which failed test
-     * @param string Validation error message
+     * @param string $unit    Date unit (e.g. month,hour,second)
+     * @param int    $value   Value of unit which failed test
+     * @param string $message Validation error message
      *
      * @access protected
      */
-    function Calendar_Validation_Error($unit,$value,$message)
+    function Calendar_Validation_Error($unit, $value, $message)
     {
         $this->unit    = $unit;
         $this->value   = $value;

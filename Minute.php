@@ -96,7 +96,7 @@ class Calendar_Minute extends Calendar
      */
     function build($sDates = array())
     {
-        require_once CALENDAR_ROOT.'Second.php';
+        include_once CALENDAR_ROOT.'Second.php';
         $sIM = $this->cE->getSecondsInMinute($this->year, $this->month,
                 $this->day, $this->hour, $this->minute);
         for ($i=0; $i < $sIM; $i++) {
@@ -112,7 +112,7 @@ class Calendar_Minute extends Calendar
     /**
      * Called from build()
      *
-     * @param array $sDates
+     * @param array $sDates Calendar_Second objects representing selected dates
      *
      * @return void
      * @access private

@@ -186,13 +186,14 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
     /**
      * Set the correct date values (useful for math operations on dates)
      *
-     * @param int $y year   (2003)
-     * @param int $m month  (9)
-     * @param int $d day    (13)
-     * @param int $h hour   (13)
-     * @param int $i minute (34)
-     * @param int $s second (53)
+     * @param int &$y year   (2003)
+     * @param int &$m month  (9)
+     * @param int &$d day    (13)
+     * @param int &$h hour   (13)
+     * @param int &$i minute (34)
+     * @param int &$s second (53)
      *
+     * @return void
      * @access protected
      */
     function adjustDate(&$y, &$m, &$d, &$h, &$i, &$s)
@@ -269,6 +270,8 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
     /**
      * Returns the number of months in a year
      *
+     * @param int $y year
+     *
      * @return int (12)
      * @access protected
      */
@@ -316,7 +319,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      * @return int (7)
      * @access protected
      */
-    function getDaysInWeek($y=NULL, $m=NULL, $d=NULL)
+    function getDaysInWeek($y=null, $m=null, $d=null)
     {
         return 7;
     }
@@ -412,7 +415,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      * @return array (0, 1, 2, 3, 4, 5, 6) 1 = Monday
      * @access protected
      */
-    function getWeekDays($y=NULL, $m=NULL, $d=NULL)
+    function getWeekDays($y=null, $m=null, $d=null)
     {
         return array(0, 1, 2, 3, 4, 5, 6);
     }
@@ -427,7 +430,7 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      * @return int (default 1 = Monday)
      * @access protected
      */
-    function getFirstDayOfWeek($y=NULL, $m=NULL, $d=NULL)
+    function getFirstDayOfWeek($y=null, $m=null, $d=null)
     {
         return 1;
     }

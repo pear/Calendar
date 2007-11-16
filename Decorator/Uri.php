@@ -65,7 +65,6 @@ require_once CALENDAR_ROOT.'Util'.DIRECTORY_SEPARATOR.'Uri.php';
  * $Uri->setFragments('year', 'month', 'day');
  * echo $Uri->getPrev(); // Displays year=2003&month=10&day=22
  * </code>
- * @see Calendar_Util_Uri
  *
  * @category  Date and Time
  * @package   Calendar
@@ -74,20 +73,23 @@ require_once CALENDAR_ROOT.'Util'.DIRECTORY_SEPARATOR.'Uri.php';
  * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
  * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
  * @link      http://pear.php.net/package/Calendar
+ * @see       Calendar_Util_Uri
  * @access    public
  */
 class Calendar_Decorator_Uri extends Calendar_Decorator
 {
 
     /**
-    * @var Calendar_Util_Uri
-    * @access private
-    */
+     * @var Calendar_Util_Uri
+     * @access private
+     */
     var $Uri;
 
     /**
      * Constructs Calendar_Decorator_Uri
-     * @param object subclass of Calendar
+     *
+     * @param object &$Calendar subclass of Calendar
+     *
      * @access public
      */
     function Calendar_Decorator_Uri(&$Calendar)
@@ -98,12 +100,12 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
     /**
      * Sets the URI fragment names
      *
-     * @param string URI fragment for year
-     * @param string (optional) URI fragment for month
-     * @param string (optional) URI fragment for day
-     * @param string (optional) URI fragment for hour
-     * @param string (optional) URI fragment for minute
-     * @param string (optional) URI fragment for second
+     * @param string $y URI fragment for year
+     * @param string $m (optional) URI fragment for month
+     * @param string $d (optional) URI fragment for day
+     * @param string $h (optional) URI fragment for hour
+     * @param string $i (optional) URI fragment for minute
+     * @param string $s (optional) URI fragment for second
      *
      * @return void
      * @access public

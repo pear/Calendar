@@ -109,8 +109,8 @@ class Calendar_Table_Helper
     /**
      * Constructs Calendar_Table_Helper
      *
-     * @param object Calendar_Month_Weekdays, Calendar_Month_Weeks, Calendar_Week
-     * @param int (optional) first day of the week e.g. 1 for Monday
+     * @param object &$calendar Calendar_Month_Weekdays, Calendar_Month_Weeks, Calendar_Week
+     * @param int    $firstDay  (optional) first day of the week e.g. 1 for Monday
      *
      * @access protected
      */
@@ -260,11 +260,11 @@ class Calendar_Table_Helper
     function getEmptyDaysAfter()
     {
         // Causes bug when displaying more than one month
-//        static $index;
-//        if (!isset($index)) {
+        //static $index;
+        //if (!isset($index)) {
             $index = $this->getEmptyDaysBefore() + $this->cE->getDaysInMonth(
                 $this->calendar->thisYear(), $this->calendar->thisMonth());
-//        }
+        //}
         return $index;
     }
 
@@ -289,6 +289,12 @@ class Calendar_Table_Helper
     /**
      * Returns the timestamp of the first day of the current week
      *
+     * @param int $y        year
+     * @param int $m        month
+     * @param int $d        day
+     * @param int $firstDay first day of the week (default 1 = Monday)
+     *
+     * @return int timestamp
      */
     function getWeekStart($y, $m, $d, $firstDay=1)
     {

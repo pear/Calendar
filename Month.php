@@ -73,8 +73,8 @@ class Calendar_Month extends Calendar
     /**
      * Constructs Calendar_Month
      *
-     * @param int $y year e.g. 2003
-     * @param int $m month e.g. 5
+     * @param int $y        year e.g. 2003
+     * @param int $m        month e.g. 5
      * @param int $firstDay first day of the week [optional]
      *
      * @access public
@@ -96,7 +96,7 @@ class Calendar_Month extends Calendar
      */
     function build($sDates = array())
     {
-        require_once CALENDAR_ROOT.'Day.php';
+        include_once CALENDAR_ROOT.'Day.php';
         $daysInMonth = $this->cE->getDaysInMonth($this->year, $this->month);
         for ($i=1; $i<=$daysInMonth; $i++) {
             $this->children[$i] = new Calendar_Day($this->year, $this->month, $i);
@@ -110,7 +110,7 @@ class Calendar_Month extends Calendar
     /**
      * Called from build()
      *
-     * @param array $sDates
+     * @param array $sDates Calendar_Day objects representing selected dates
      *
      * @return void
      * @access private

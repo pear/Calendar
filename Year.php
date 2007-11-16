@@ -72,7 +72,9 @@ class Calendar_Year extends Calendar
 {
     /**
      * Constructs Calendar_Year
-     * @param int year e.g. 2003
+     *
+     * @param int $y year e.g. 2003
+     *
      * @access public
      */
     function Calendar_Year($y)
@@ -102,7 +104,7 @@ class Calendar_Year extends Calendar
      */
     function build($sDates = array(), $firstDay = null)
     {
-        require_once CALENDAR_ROOT.'Factory.php';
+        include_once CALENDAR_ROOT.'Factory.php';
         $this->firstDay = $this->defineFirstDayOfWeek($firstDay);
         $monthsInYear = $this->cE->getMonthsInYear($this->thisYear());
         for ($i=1; $i <= $monthsInYear; $i++) {
@@ -117,12 +119,13 @@ class Calendar_Year extends Calendar
     /**
      * Called from build()
      *
-     * @param array $sDates
+     * @param array $sDates array of Calendar_Month objects representing selected dates
      *
      * @return void
      * @access private
      */
-    function setSelection($sDates) {
+    function setSelection($sDates) 
+    {
         foreach ($sDates as $sDate) {
             if ($this->year == $sDate->thisYear()) {
                 $key = $sDate->thisMonth();

@@ -128,7 +128,7 @@ class Calendar_Month_Weekdays extends Calendar_Month
      */
     function build($sDates = array())
     {
-        require_once CALENDAR_ROOT.'Table/Helper.php';
+        include_once CALENDAR_ROOT.'Table/Helper.php';
         $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
         Calendar_Month::build($sDates);
         $this->buildEmptyDaysBefore();

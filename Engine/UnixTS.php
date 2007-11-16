@@ -77,7 +77,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     {
         static $stamps = array();
         if ( !isset($stamps[$stamp]) ) {
-            $date = @date('Y n j H i s t W w',$stamp);
+            $date = @date('Y n j H i s t W w', $stamp);
             $stamps[$stamp] = sscanf($date, "%d %d %d %d %d %d %d %d %d");
         }
         return $stamps[$stamp];
@@ -183,7 +183,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     function dateToStamp($y, $m, $d, $h=0, $i=0, $s=0)
     {
         static $dates = array();
-        if ( !isset($dates[$y][$m][$d][$h][$i][$s]) ) {
+        if (!isset($dates[$y][$m][$d][$h][$i][$s])) {
             $dates[$y][$m][$d][$h][$i][$s] = @mktime($h, $i, $s, $m, $d, $y);
         }
         return $dates[$y][$m][$d][$h][$i][$s];
@@ -214,6 +214,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     /**
      * Returns the number of months in a year
      *
+     * @param int $y year
+     *
      * @return int (12)
      * @access protected
      */
@@ -233,8 +235,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getDaysInMonth($y, $m)
     {
-        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,1);
-        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y, $m, 1);
+        $date  = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[6];
     }
 
@@ -250,8 +252,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getFirstDayInMonth($y, $m)
     {
-        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,1);
-        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y, $m, 1);
+        $date  = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[8];
     }
 
@@ -265,7 +267,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * @return int (7)
      * @access protected
      */
-    function getDaysInWeek($y=NULL, $m=NULL, $d=NULL)
+    function getDaysInWeek($y=null, $m=null, $d=null)
     {
         return 7;
     }
@@ -282,8 +284,8 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getWeekNInYear($y, $m, $d)
     {
-        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,$d);
-        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y, $m, $d);
+        $date  = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[7];
     }
 
@@ -300,7 +302,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getWeekNInMonth($y, $m, $d, $firstDay=1)
     {
-        $weekEnd = ($firstDay == 0) ? $this->getDaysInWeek()-1 : $firstDay-1;
+        $weekEnd = (0 == $firstDay) ? $this->getDaysInWeek()-1 : $firstDay-1;
         $end_of_week = 1;
         while (@date('w', @mktime(0, 0, 0, $m, $end_of_week, $y)) != $weekEnd) {
             ++$end_of_week; //find first weekend of the month
@@ -353,7 +355,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      */
     function getDayOfWeek($y, $m, $d)
     {
-        $stamp = Calendar_Engine_UnixTS::dateToStamp($y,$m,$d);
+        $stamp = Calendar_Engine_UnixTS::dateToStamp($y, $m, $d);
         $date = Calendar_Engine_UnixTS::stampCollection($stamp);
         return $date[8];
     }
@@ -368,7 +370,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * @return array (0,1,2,3,4,5,6) 1 = Monday
      * @access protected
      */
-    function getWeekDays($y=NULL, $m=NULL, $d=NULL)
+    function getWeekDays($y=null, $m=null, $d=null)
     {
         return array(0, 1, 2, 3, 4, 5, 6);
     }
@@ -383,7 +385,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * @return int (default 1 = Monday)
      * @access protected
      */
-    function getFirstDayOfWeek($y=NULL, $m=NULL, $d=NULL)
+    function getFirstDayOfWeek($y=null, $m=null, $d=null)
     {
         return 1;
     }
@@ -398,7 +400,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * @return int (24)
      * @access protected
      */
-    function getHoursInDay($y=null,$m=null,$d=null)
+    function getHoursInDay($y=null, $m=null, $d=null)
     {
         return 24;
     }
@@ -414,7 +416,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * @return int (60)
      * @access protected
      */
-    function getMinutesInHour($y=null,$m=null,$d=null,$h=null)
+    function getMinutesInHour($y=null, $m=null, $d=null, $h=null)
     {
         return 60;
     }
@@ -431,7 +433,7 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
      * @return int (60)
      * @access protected
      */
-    function getSecondsInMinute($y=null,$m=null,$d=null,$h=null,$i=null)
+    function getSecondsInMinute($y=null, $m=null, $d=null, $h=null, $i=null)
     {
         return 60;
     }

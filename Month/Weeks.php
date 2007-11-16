@@ -116,9 +116,9 @@ class Calendar_Month_Weeks extends Calendar_Month
      */
     function build($sDates = array())
     {
-        require_once CALENDAR_ROOT.'Table/Helper.php';
+        include_once CALENDAR_ROOT.'Table/Helper.php';
         $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
-        require_once CALENDAR_ROOT.'Week.php';
+        include_once CALENDAR_ROOT.'Week.php';
         $numWeeks = $this->tableHelper->getNumWeeks();
         for ($i=1, $d=1; $i<=$numWeeks; $i++,
             $d+=$this->cE->getDaysInWeek(
@@ -144,7 +144,7 @@ class Calendar_Month_Weeks extends Calendar_Month
     /**
      * Called from build()
      *
-     * @param array $sDates
+     * @param array $sDates Calendar_Week objects representing selected dates
      *
      * @return void
      * @access private

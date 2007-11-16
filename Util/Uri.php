@@ -89,12 +89,12 @@ class Calendar_Util_Uri
      * Constructs Calendar_Decorator_Uri
      * The term "fragment" means <i>name</i> of a calendar GET variables in the URL
      *
-     * @param string URI fragment for year
-     * @param string (optional) URI fragment for month
-     * @param string (optional) URI fragment for day
-     * @param string (optional) URI fragment for hour
-     * @param string (optional) URI fragment for minute
-     * @param string (optional) URI fragment for second
+     * @param string $y URI fragment for year
+     * @param string $m (optional) URI fragment for month
+     * @param string $d (optional) URI fragment for day
+     * @param string $h (optional) URI fragment for hour
+     * @param string $i (optional) URI fragment for minute
+     * @param string $s (optional) URI fragment for second
      *
      * @access public
      */
@@ -106,17 +106,18 @@ class Calendar_Util_Uri
     /**
      * Sets the URI fragment names
      *
-     * @param string URI fragment for year
-     * @param string (optional) URI fragment for month
-     * @param string (optional) URI fragment for day
-     * @param string (optional) URI fragment for hour
-     * @param string (optional) URI fragment for minute
-     * @param string (optional) URI fragment for second
+     * @param string $y URI fragment for year
+     * @param string $m (optional) URI fragment for month
+     * @param string $d (optional) URI fragment for day
+     * @param string $h (optional) URI fragment for hour
+     * @param string $i (optional) URI fragment for minute
+     * @param string $s (optional) URI fragment for second
      *
      * @return void
      * @access public
      */
-    function setFragments($y, $m=null, $d=null, $h=null, $i=null, $s=null) {
+    function setFragments($y, $m=null, $d=null, $h=null, $i=null, $s=null) 
+    {
         if (!is_null($y)) $this->uris['Year']   = $y;
         if (!is_null($m)) $this->uris['Month']  = $m;
         if (!is_null($d)) $this->uris['Day']    = $d;
@@ -128,8 +129,8 @@ class Calendar_Util_Uri
     /**
      * Gets the URI string for the previous calendar unit
      *
-     * @param object subclassed from Calendar e.g. Calendar_Month
-     * @param string calendar unit ( must be year, month, week, day, hour, minute or second)
+     * @param object $Calendar subclassed from Calendar e.g. Calendar_Month
+     * @param string calendar  unit (year|month|week|day|hour|minute|second)
      *
      * @return string
      * @access public
@@ -144,8 +145,8 @@ class Calendar_Util_Uri
     /**
      * Gets the URI string for the current calendar unit
      *
-     * @param object subclassed from Calendar e.g. Calendar_Month
-     * @param string calendar unit ( must be year, month, week, day, hour, minute or second)
+     * @param object $Calendar subclassed from Calendar e.g. Calendar_Month
+     * @param string calendar  unit (year|month|week|day|hour|minute|second)
      *
      * @return string
      * @access public
@@ -160,8 +161,8 @@ class Calendar_Util_Uri
     /**
      * Gets the URI string for the next calendar unit
      *
-     * @param object subclassed from Calendar e.g. Calendar_Month
-     * @param string calendar unit ( must be year, month, week, day, hour, minute or second)
+     * @param object $Calendar subclassed from Calendar e.g. Calendar_Month
+     * @param string $unit     calendar unit (year|month|week|day|hour|minute|second)
      *
      * @return string
      * @access public
@@ -176,8 +177,9 @@ class Calendar_Util_Uri
     /**
      * Build the URI string
      *
-     * @param string method substring
-     * @param int timestamp
+     * @param object $Calendar subclassed from Calendar e.g. Calendar_Month
+     * @param string $method   method substring
+     * @param int    $stamp    timestamp
      *
      * @return string build uri string
      * @access private
@@ -190,7 +192,9 @@ class Calendar_Util_Uri
         foreach ($this->uris as $unit => $uri) {
             $call = 'stampTo'.$unit;
             $uriString .= $separator;
-            if (!$this->scalar) $uriString .= $uri.'=';
+            if (!$this->scalar) {
+                $uriString .= $uri.'=';
+            }
             $uriString .= $cE->{$call}($stamp);
             $separator = $this->separator;
         }

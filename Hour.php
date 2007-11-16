@@ -85,7 +85,7 @@ class Calendar_Hour extends Calendar
         Calendar::Calendar($y, $m, $d, $h);
     }
 
-   /**
+    /**
      * Builds the Minutes in the Hour
      *
      * @param array $sDates (optional) Calendar_Minute objects representing selected dates
@@ -95,7 +95,7 @@ class Calendar_Hour extends Calendar
      */
     function build($sDates = array())
     {
-        require_once CALENDAR_ROOT.'Minute.php';
+        include_once CALENDAR_ROOT.'Minute.php';
         $mIH = $this->cE->getMinutesInHour($this->year, $this->month, $this->day,
                            $this->hour);
         for ($i=0; $i < $mIH; $i++) {
@@ -112,7 +112,7 @@ class Calendar_Hour extends Calendar
     /**
      * Called from build()
      *
-     * @param array $sDates
+     * @param array $sDates Calendar_Minute objects representing selected dates
      *
      * @return void
      * @access private

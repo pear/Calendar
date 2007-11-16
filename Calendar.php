@@ -65,15 +65,15 @@ define('CALENDAR_USE_MONTH_WEEKS',    3);
  * Calendar_Engines. The engine used can be controlled with the constant
  * CALENDAR_ENGINE
  *
- * @category   Date and Time
- * @package    Calendar
- * @author     Harry Fuecks <hfuecks@phppatterns.com>
- * @author     Lorenzo Alberton <l.alberton@quipo.it>
- * @copyright  2003-2007 Harry Fuecks, Lorenzo Alberton
- * @license    http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
- * @link       http://pear.php.net/package/Calendar
- * @see        Calendar_Engine_Interface
- * @access     protected
+ * @category  Date and Time
+ * @package   Calendar
+ * @author    Harry Fuecks <hfuecks@phppatterns.com>
+ * @author    Lorenzo Alberton <l.alberton@quipo.it>
+ * @copyright 2003-2007 Harry Fuecks, Lorenzo Alberton
+ * @license   http://www.debian.org/misc/bsd.license  BSD License (3 Clause)
+ * @link      http://pear.php.net/package/Calendar
+ * @see       Calendar_Engine_Interface
+ * @access    protected
  */
 class Calendar_Engine_Factory
 {
@@ -87,17 +87,17 @@ class Calendar_Engine_Factory
     {
         static $engine = false;
         switch (CALENDAR_ENGINE) {
-            case 'PearDate':
-                $class = 'Calendar_Engine_PearDate';
-                break;
-            case 'UnixTS':
-            default:
-                $class = 'Calendar_Engine_UnixTS';
+        case 'PearDate':
+            $class = 'Calendar_Engine_PearDate';
+            break;
+        case 'UnixTS':
+        default:
+            $class = 'Calendar_Engine_UnixTS';
             break;
         }
         if (!$engine) {
             if (!class_exists($class)) {
-                require_once CALENDAR_ROOT.'Engine'.DIRECTORY_SEPARATOR.CALENDAR_ENGINE.'.php';
+                include_once CALENDAR_ROOT.'Engine'.DIRECTORY_SEPARATOR.CALENDAR_ENGINE.'.php';
             }
             $engine = new $class;
         }
@@ -139,7 +139,7 @@ class Calendar
      * @access private
      * @var int
      */
-   var $year;
+    var $year;
 
     /**
      * Month for this calendar object e.g. 9
@@ -194,12 +194,12 @@ class Calendar
     /**
      * Constructs the Calendar
      *
-     * @param int year
-     * @param int month
-     * @param int day
-     * @param int hour
-     * @param int minute
-     * @param int second
+     * @param int $y year
+     * @param int $m month
+     * @param int $d day
+     * @param int $h hour
+     * @param int $i minute
+     * @param int $s second
      *
      * @access protected
      */
@@ -209,7 +209,7 @@ class Calendar
         if (!isset($cE)) {
             $cE = & Calendar_Engine_Factory::getEngine();
         }
-        $this->cE = & $cE;
+        $this->cE     = & $cE;
         $this->year   = (int)$y;
         $this->month  = (int)$m;
         $this->day    = (int)$d;
@@ -222,7 +222,7 @@ class Calendar
      * Defines the calendar by a timestamp (Unix or ISO-8601), replacing values
      * passed to the constructor
      *
-     * @param int|string Unix or ISO-8601 timestamp
+     * @param int|string $ts Unix or ISO-8601 timestamp
      *
      * @return void
      * @access public
@@ -254,7 +254,7 @@ class Calendar
     /**
      * Defines calendar object as selected (e.g. for today)
      *
-     * @param boolean state whether Calendar subclass
+     * @param boolean $state whether Calendar subclass
      *
      * @return void
      * @access public
@@ -283,7 +283,7 @@ class Calendar
      */
     function adjust()
     {
-        $stamp = $this->getTimeStamp();
+        $stamp        = $this->getTimeStamp();
         $this->year   = $this->cE->stampToYear($stamp);
         $this->month  = $this->cE->stampToMonth($stamp);
         $this->day    = $this->cE->stampToDay($stamp);
@@ -295,7 +295,7 @@ class Calendar
     /**
      * Returns the date as an associative array (helper method)
      *
-     * @param mixed timestamp (leave empty for current timestamp)
+     * @param mixed $stamp timestamp (leave empty for current timestamp)
      *
      * @return array
      * @access public
@@ -318,10 +318,10 @@ class Calendar
     /**
      * Returns the value as an associative array (helper method)
      *
-     * @param string type of date object that return value represents
-     * @param string $format ['int' | 'array' | 'timestamp' | 'object']
-     * @param mixed timestamp (depending on Calendar engine being used)
-     * @param int integer default value (i.e. give me the answer quick)
+     * @param string $returnType type of date object that return value represents
+     * @param string $format     ['int' | 'array' | 'timestamp' | 'object']
+     * @param mixed  $stamp      timestamp (depending on Calendar engine being used)
+     * @param int    $default    default value (i.e. give me the answer quick)
      *
      * @return mixed
      * @access private
@@ -329,19 +329,19 @@ class Calendar
     function returnValue($returnType, $format, $stamp, $default)
     {
         switch (strtolower($format)) {
-            case 'int':
-                return $default;
-            case 'array':
-                return $this->toArray($stamp);
-                break;
-            case 'object':
-                require_once CALENDAR_ROOT.'Factory.php';
-                return Calendar_Factory::createByTimestamp($returnType,$stamp);
-                break;
-            case 'timestamp':
-            default:
-                return $stamp;
-                break;
+        case 'int':
+            return $default;
+        case 'array':
+            return $this->toArray($stamp);
+            break;
+        case 'object':
+            include_once CALENDAR_ROOT.'Factory.php';
+            return Calendar_Factory::createByTimestamp($returnType, $stamp);
+            break;
+        case 'timestamp':
+        default:
+            return $stamp;
+            break;
         }
     }
 
@@ -357,9 +357,8 @@ class Calendar
      */
     function build($sDates = array())
     {
-        require_once 'PEAR.php';
-        PEAR::raiseError(
-            'Calendar::build is abstract', null, PEAR_ERROR_TRIGGER,
+        include_once 'PEAR.php';
+        PEAR::raiseError('Calendar::build is abstract', null, PEAR_ERROR_TRIGGER,
             E_USER_NOTICE, 'Calendar::build()');
         return false;
     }
@@ -367,7 +366,7 @@ class Calendar
     /**
      * Abstract method for selected data objects called from build
      *
-     * @param array
+     * @param array $sDates array of Calendar objects to select
      *
      * @return boolean
      * @access public
@@ -446,7 +445,7 @@ class Calendar
     function & getValidator()
     {
         if (!isset($this->validator)) {
-            require_once CALENDAR_ROOT.'Validator.php';
+            include_once CALENDAR_ROOT.'Validator.php';
             $this->validator = & new Calendar_Validator($this);
         }
         return $this->validator;
@@ -500,7 +499,7 @@ class Calendar
     /**
      * Returns the value for the previous year
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 2002 or timestamp
      * @access public
@@ -514,7 +513,7 @@ class Calendar
     /**
      * Returns the value for this year
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 2003 or timestamp
      * @access public
@@ -528,7 +527,7 @@ class Calendar
     /**
      * Returns the value for next year
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 2004 or timestamp
      * @access public
@@ -542,7 +541,7 @@ class Calendar
     /**
      * Returns the value for the previous month
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 4 or Unix timestamp
      * @access public
@@ -556,7 +555,7 @@ class Calendar
     /**
      * Returns the value for this month
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 5 or timestamp
      * @access public
@@ -570,7 +569,7 @@ class Calendar
     /**
      * Returns the value for next month
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 6 or timestamp
      * @access public
@@ -584,7 +583,7 @@ class Calendar
     /**
      * Returns the value for the previous day
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 10 or timestamp
      * @access public
@@ -599,7 +598,7 @@ class Calendar
     /**
      * Returns the value for this day
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 11 or timestamp
      * @access public
@@ -614,7 +613,7 @@ class Calendar
     /**
      * Returns the value for the next day
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 12 or timestamp
      * @access public
@@ -629,7 +628,7 @@ class Calendar
     /**
      * Returns the value for the previous hour
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 13 or timestamp
      * @access public
@@ -644,7 +643,7 @@ class Calendar
     /**
      * Returns the value for this hour
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 14 or timestamp
      * @access public
@@ -659,7 +658,7 @@ class Calendar
     /**
      * Returns the value for the next hour
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 14 or timestamp
      * @access public
@@ -674,7 +673,7 @@ class Calendar
     /**
      * Returns the value for the previous minute
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 23 or timestamp
      * @access public
@@ -690,7 +689,7 @@ class Calendar
     /**
      * Returns the value for this minute
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 24 or timestamp
      * @access public
@@ -706,7 +705,7 @@ class Calendar
     /**
     * Returns the value for the next minute
     *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 25 or timestamp
      * @access public
@@ -722,7 +721,7 @@ class Calendar
     /**
      * Returns the value for the previous second
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 43 or timestamp
      * @access public
@@ -738,7 +737,7 @@ class Calendar
     /**
      * Returns the value for this second
      *
-    * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+    * @param string $format return value format ['int'|'timestamp'|'object'|'array']
     *
      * @return int e.g. 44 or timestamp
      * @access public
@@ -754,7 +753,7 @@ class Calendar
     /**
      * Returns the value for the next second
      *
-     * @param string return value format ['int' | 'timestamp' | 'object' | 'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 45 or timestamp
      * @access public

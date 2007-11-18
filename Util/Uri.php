@@ -153,7 +153,7 @@ class Calendar_Util_Uri
      */
     function this($Calendar, $unit)
     {
-       $method = 'this'.$unit;
+        $method = 'this'.$unit;
         $stamp  = $Calendar->{$method}('timestamp');
         return $this->buildUriString($Calendar, $method, $stamp);
     }

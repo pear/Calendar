@@ -130,7 +130,7 @@ class Calendar_Util_Uri
      * Gets the URI string for the previous calendar unit
      *
      * @param object $Calendar subclassed from Calendar e.g. Calendar_Month
-     * @param string calendar  unit (year|month|week|day|hour|minute|second)
+     * @param string $unit     calendar  unit (year|month|week|day|hour|minute|second)
      *
      * @return string
      * @access public
@@ -146,7 +146,7 @@ class Calendar_Util_Uri
      * Gets the URI string for the current calendar unit
      *
      * @param object $Calendar subclassed from Calendar e.g. Calendar_Month
-     * @param string calendar  unit (year|month|week|day|hour|minute|second)
+     * @param string $unit     calendar  unit (year|month|week|day|hour|minute|second)
      *
      * @return string
      * @access public

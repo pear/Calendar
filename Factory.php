@@ -97,7 +97,7 @@ class Calendar_Factory
         switch ($type) {
         case 'Day':
             include_once CALENDAR_ROOT.'Day.php';
-            return new Calendar_Day($y,$m,$d);
+            return new Calendar_Day($y, $m, $d);
         case 'Month':
             // Set default state for which month type to build
             if (!defined('CALENDAR_MONTH_STATE')) {
@@ -136,9 +136,8 @@ class Calendar_Factory
             return new Calendar_Year($y);
         default:
             include_once 'PEAR.php';
-            PEAR::raiseError(
-                'Calendar_Factory::create() unrecognised type: '.$type, null, PEAR_ERROR_TRIGGER,
-                E_USER_NOTICE, 'Calendar_Factory::create()');
+            PEAR::raiseError('Calendar_Factory::create() unrecognised type: '.$type,
+                null, PEAR_ERROR_TRIGGER, E_USER_NOTICE, 'Calendar_Factory::create()');
             return false;
         }
     }

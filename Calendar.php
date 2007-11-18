@@ -349,7 +349,7 @@ class Calendar
      * Abstract method for building the children of a calendar object.
      * Implemented by Calendar subclasses
      *
-     * @param array containing Calendar objects to select (optional)
+     * @param array $sDates array containing Calendar objects to select (optional)
      *
      * @return boolean
      * @access public
@@ -374,7 +374,7 @@ class Calendar
      */
     function setSelection($sDates)
     {
-        require_once 'PEAR.php';
+        include_once 'PEAR.php';
         PEAR::raiseError(
             'Calendar::setSelection is abstract', null, PEAR_ERROR_TRIGGER,
             E_USER_NOTICE, 'Calendar::setSelection()');
@@ -541,7 +541,7 @@ class Calendar
     /**
      * Returns the value for the previous month
      *
-     * @param string return value format ['int'|'timestamp'|'object'|'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 4 or Unix timestamp
      * @access public
@@ -569,7 +569,7 @@ class Calendar
     /**
      * Returns the value for next month
      *
-     * @param string return value format ['int'|'timestamp'|'object'|'array']
+     * @param string $format return value format ['int'|'timestamp'|'object'|'array']
      *
      * @return int e.g. 6 or timestamp
      * @access public

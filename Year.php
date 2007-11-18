@@ -106,7 +106,7 @@ class Calendar_Year extends Calendar
     {
         include_once CALENDAR_ROOT.'Factory.php';
         $this->firstDay = $this->defineFirstDayOfWeek($firstDay);
-        $monthsInYear = $this->cE->getMonthsInYear($this->thisYear());
+        $monthsInYear   = $this->cE->getMonthsInYear($this->thisYear());
         for ($i=1; $i <= $monthsInYear; $i++) {
             $this->children[$i] = Calendar_Factory::create('Month', $this->year, $i);
         }

@@ -164,7 +164,7 @@ class Calendar_Util_Textual
     /**
      * Returns textual representation of the month of the decorated calendar object
      *
-     * @param object subclass of Calendar e.g. Calendar_Month
+     * @param object $Calendar subclass of Calendar e.g. Calendar_Month
      * @param string $format   (optional) format of returned months (one,two,short or long)
      *
      * @return string

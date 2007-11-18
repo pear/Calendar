@@ -210,7 +210,8 @@ class Calendar_Decorator
      * @return boolean
      * @access public
      */
-    function isFirst() {
+    function isFirst()
+    {
         if (method_exists($this->calendar, 'isFirst')) {
             return $this->calendar->isFirst();
         }
@@ -434,10 +435,10 @@ class Calendar_Decorator
       */
     function prevWeek($format = 'n_in_month')
     {
-        if ( method_exists($this->calendar,'prevWeek')) {
+        if ( method_exists($this->calendar, 'prevWeek')) {
             return $this->calendar->prevWeek($format);
         } else {
-            require_once 'PEAR.php';
+            include_once 'PEAR.php';
             PEAR::raiseError(
                 'Cannot call prevWeek on Calendar object of type: '.
                 get_class($this->calendar), 133, PEAR_ERROR_TRIGGER,
@@ -456,10 +457,10 @@ class Calendar_Decorator
      */
     function thisWeek($format = 'n_in_month')
     {
-        if ( method_exists($this->calendar,'thisWeek')) {
+        if ( method_exists($this->calendar, 'thisWeek')) {
             return $this->calendar->thisWeek($format);
         } else {
-            require_once 'PEAR.php';
+            include_once 'PEAR.php';
             PEAR::raiseError(
                 'Cannot call thisWeek on Calendar object of type: '.
                 get_class($this->calendar), 133, PEAR_ERROR_TRIGGER,
@@ -478,10 +479,10 @@ class Calendar_Decorator
      */
     function nextWeek($format = 'n_in_month')
     {
-        if ( method_exists($this->calendar,'nextWeek')) {
+        if ( method_exists($this->calendar, 'nextWeek')) {
             return $this->calendar->nextWeek($format);
         } else {
-            require_once 'PEAR.php';
+            include_once 'PEAR.php';
             PEAR::raiseError(
                 'Cannot call thisWeek on Calendar object of type: '.
                 get_class($this->calendar), 133, PEAR_ERROR_TRIGGER,
@@ -498,7 +499,8 @@ class Calendar_Decorator
      * @return int e.g. 10 or timestamp
      * @access public
      */
-    function prevDay($format = 'int') {
+    function prevDay($format = 'int')
+    {
         return $this->calendar->prevDay($format);
     }
 

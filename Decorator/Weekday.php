@@ -138,7 +138,7 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
      */
     function thisWeekDay($format = 'int')
     {
-        $ts = $this->calendar->thisDay('timestamp');
+        $ts  = $this->calendar->thisDay('timestamp');
         $day = $this->calendar->cE->getDayOfWeek(
             $this->calendar->year,
             $this->calendar->month,
@@ -158,7 +158,7 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
      */
     function nextWeekDay($format = 'int')
     {
-        $ts = $this->calendar->nextDay('timestamp');
+        $ts  = $this->calendar->nextDay('timestamp');
         $Day = new Calendar_Day(2000, 1, 1);
         $Day->setTimeStamp($ts);
         $day = $this->calendar->cE->getDayOfWeek(

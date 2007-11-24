@@ -75,7 +75,7 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
     /**
      * Constructs Calendar_Decorator_Textual
      *
-     * @param object &$calendar subclass of Calendar
+     * @param object &$Calendar subclass of Calendar
      *
      * @access public
      */

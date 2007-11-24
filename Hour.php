@@ -99,7 +99,7 @@ class Calendar_Hour extends Calendar
         $mIH = $this->cE->getMinutesInHour($this->year, $this->month, $this->day,
                            $this->hour);
         for ($i=0; $i < $mIH; $i++) {
-            $this->children[$i]=
+            $this->children[$i] =
                 new Calendar_Minute($this->year, $this->month, $this->day,
                            $this->hour, $i);
         }

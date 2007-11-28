@@ -146,7 +146,7 @@ class Calendar_Validator
      */
     function isValidMonth()
     {
-        $m = $this->calendar->thisMonth();
+        $m   = $this->calendar->thisMonth();
         $min = 1;
         if ($min > $m) {
             $this->errors[] = new Calendar_Validation_Error(
@@ -170,7 +170,7 @@ class Calendar_Validator
      */
     function isValidDay()
     {
-        $d = $this->calendar->thisDay();
+        $d   = $this->calendar->thisDay();
         $min = 1;
         if ($min > $d) {
             $this->errors[] = new Calendar_Validation_Error(
@@ -197,7 +197,7 @@ class Calendar_Validator
      */
     function isValidHour()
     {
-        $h = $this->calendar->thisHour();
+        $h   = $this->calendar->thisHour();
         $min = 0;
         if ($min > $h) {
             $this->errors[] = new Calendar_Validation_Error(
@@ -221,7 +221,7 @@ class Calendar_Validator
      */
     function isValidMinute()
     {
-        $i = $this->calendar->thisMinute();
+        $i   = $this->calendar->thisMinute();
         $min = 0;
         if ($min > $i) {
             $this->errors[] = new Calendar_Validation_Error(
@@ -245,7 +245,7 @@ class Calendar_Validator
      */
     function isValidSecond()
     {
-        $s = $this->calendar->thisSecond();
+        $s   = $this->calendar->thisSecond();
         $min = 0;
         if ($min > $s) {
             $this->errors[] = new Calendar_Validation_Error(

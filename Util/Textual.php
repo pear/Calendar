@@ -267,15 +267,28 @@ class Calendar_Util_Textual
      * @access public
      * @static
      */
-    function orderedWeekdays($Calendar, $format='long')
+    function orderedWeekdays($Calendar, $format = 'long')
     {
         $days = Calendar_Util_Textual::weekdayNames($format);
         
-        // Not so good - need methods to access this information perhaps...
         if (isset($Calendar->tableHelper)) {
-            $ordereddays = $Calendar->tableHelper->daysOfWeek;
+            $ordereddays = $Calendar->tableHelper->getDaysOfWeek();
         } else {
-            $ordereddays = array(0, 1, 2, 3, 4, 5, 6);
+            //default: start from Sunday
+            $firstDay = 0;
+            //check if defined / set
+            if (defined('CALENDAR_FIRST_DAY_OF_WEEK')) {
+                $firstDay = CALENDAR_FIRST_DAY_OF_WEEK;
+            } elseif(isset($Calendar->firstDay)) {
+                $firstDay = $Calendar->firstDay;
+            }
+            $ordereddays = array();
+            for ($i = $firstDay; $i < 7; $i++) {
+                $ordereddays[] = $i;
+            }
+            for ($i = 0; $i < $firstDay; $i++) {
+                $ordereddays[] = $i;
+            }
         }
         
         $ordereddays = array_flip($ordereddays);

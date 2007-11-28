@@ -36,8 +36,8 @@ on lunar cycles).
   <email>greg@chiaraquartet.net</email>
   <active>yes</active>
  </helper>
- <date>2007-10-22</date>
- <time>13:47:45</time>
+ <date>2007-11-28</date>
+ <time>20:41:45</time>
  <version>
   <release>0.5.4</release>
   <api>0.5.4</api>
@@ -48,7 +48,8 @@ on lunar cycles).
  </stability>
  <license uri="http://www.php.net/license">PHP</license>
  <notes>* fixed return by reference NOTICE in Decorator
-* fixed Calendar_Week::thisYear() according the ISO-8601 standard (bug #8758)
+* fixed bug #8758: fixed Calendar_Week::thisYear() according the ISO-8601 standard
+* fixed bug #12542: Calendar_Util_Textual::orderedWeekdays() doesn't consider $firstDay
 * added new tests and fixed test to consider the CALENDAR_FIRST_DAY_OF_WEEK constant
 * switched to package.xml v.2
 * updated header comment blocks according to the Coding Standards

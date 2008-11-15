@@ -437,5 +437,27 @@ class Calendar_Engine_UnixTS /* implements Calendar_Engine_Interface */
     {
         return 60;
     }
+
+    /**
+     * Checks if the given day is the current day
+     *
+     * @param mixed $stamp Any timestamp format recognized by Pear::Date
+     *
+     * @return boolean
+     * @access protected
+     */
+    function isToday($stamp)
+    {
+        static $today = null;
+        if (is_null($today)) {
+            $today_date = @date('Y n j');
+            $today = sscanf($today_date, '%d %d %d');
+        }
+        $date = Calendar_Engine_UnixTS::stampCollection($stamp);
+        return (   $date[2] == $today[2]
+                && $date[1] == $today[1]
+                && $date[0] == $today[0]
+        );
+    }
 }
 ?>

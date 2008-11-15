@@ -96,7 +96,7 @@ class TestOfMonthWeeksBuild extends TestOfMonthWeeks {
     }
 */
     function testSelection() {
-        require_once CALENDAR_ROOT . 'Week.php';
+        include_once CALENDAR_ROOT . 'Week.php';
         $selection = array(new Calendar_Week(2003, 10, 12));
         $this->cal->build($selection);
         $i = 1;
@@ -105,7 +105,7 @@ class TestOfMonthWeeksBuild extends TestOfMonthWeeks {
             if ($i == $expected) {
                 //12-10-2003 is in the 2nd week of the month if firstDay is Monday,
                 //in the 3rd if firstDay is Sunday
-                break;  
+                break;
             }
             $i++;
         }

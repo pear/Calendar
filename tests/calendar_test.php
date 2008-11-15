@@ -111,5 +111,14 @@ class TestOfCalendar extends UnitTestCase {
         $stamp = mktime(13,32,43,10,25,2003);
         $this->assertEqual($stamp,$this->cal->getTimeStamp());
     }
+    function testIsToday() {
+        $stamp = mktime();
+        $this->cal->setTimestamp($stamp);
+        $this->assertTrue($this->cal->isToday());
+
+        $stamp += 1000000000;
+        $this->cal->setTimestamp($stamp);
+        $this->assertFalse($this->cal->isToday());
+    }
 }
 ?>

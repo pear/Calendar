@@ -36,8 +36,8 @@ on lunar cycles).
   <email>greg@chiaraquartet.net</email>
   <active>yes</active>
  </helper>
- <date>2007-11-28</date>
- <time>20:41:45</time>
+ <date>2008-11-15</date>
+ <time>21:19:45</time>
  <version>
   <release>0.5.4</release>
   <api>0.5.4</api>
@@ -51,6 +51,8 @@ on lunar cycles).
 * fixed bug #8758: fixed Calendar_Week::thisYear() according the ISO-8601 standard
 * fixed bug #12542: Calendar_Util_Textual::orderedWeekdays() doesn't consider $firstDay
 * added new tests and fixed test to consider the CALENDAR_FIRST_DAY_OF_WEEK constant
+* fixed getWeekNInYear() in the PearDate engine with new Date package
+* request #2642: added Calendar::isToday() method
 * switched to package.xml v.2
 * updated header comment blocks according to the Coding Standards
  </notes>
@@ -183,7 +185,7 @@ on lunar cycles).
     <min>4.0.5</min>
    </php>
    <pearinstaller>
-    <min>1.4.0b1</min>
+    <min>1.5.0</min>
    </pearinstaller>
   </required>
   <optional>

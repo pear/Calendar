@@ -114,6 +114,12 @@ class TestOfPearDateEngine extends UnitTestCase {
 
         $this->assertEqual($this->engine->getDayOfWeek($y, $m, $d), 3);
     }
+    function testIsToday() {
+        $stamp = date('Y-m-d H:i:s');
+        $this->assertTrue($this->engine->isToday($stamp));
+        $stamp = date('Y-m-d H:i:s', time() + 1000000000);
+        $this->assertFalse($this->engine->isToday($stamp));
+    }
 }
 
 if (!defined('TEST_RUNNING')) {

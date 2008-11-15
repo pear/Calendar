@@ -276,6 +276,17 @@ class Calendar
     }
 
     /**
+     * Checks if the current Calendar object is today's date
+     *
+     * @return boolean
+     * @access public
+     */
+    function isToday()
+    {
+        return $this->cE->isToday($this->getTimeStamp());
+    }
+
+    /**
      * Adjusts the date (helper method)
      *
      * @return void

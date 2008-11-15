@@ -160,6 +160,11 @@ class TestOfDecoratorTextual extends TestOfDecorator {
             5=>'Fri',
             6=>'Sat',
         );
+        $nShifts = CALENDAR_FIRST_DAY_OF_WEEK;
+        while ($nShifts-- > 0) {
+            $day = array_shift($weekdayNames);
+            array_push($weekdayNames, $day);
+        }
         $Textual = new Calendar_Decorator_Textual($this->mockcal);
         $this->assertEqual($weekdayNames,$Textual->orderedWeekdays('short'));
     }

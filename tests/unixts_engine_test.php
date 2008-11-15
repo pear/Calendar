@@ -94,6 +94,12 @@ class TestOfUnixTsEngine extends UnitTestCase {
         $stamp = mktime(13,30,45,10,15,2003);
         $this->assertEqual($this->engine->stampToYear($stamp),2003);
     }
+    function testIsToday() {
+        $stamp = mktime();
+        $this->assertTrue($this->engine->isToday($stamp));
+        $stamp += 1000000000;
+        $this->assertFalse($this->engine->isToday($stamp));
+    }
 }
 
 if (!defined('TEST_RUNNING')) {

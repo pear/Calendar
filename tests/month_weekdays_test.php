@@ -93,13 +93,14 @@ class TestOfMonthWeekdaysBuild extends TestOfMonthWeekdays {
         $this->assertEqual($children,$this->cal->fetchAll());
     }
     function testSelection() {
-        require_once CALENDAR_ROOT . 'Day.php';
+        include_once CALENDAR_ROOT . 'Day.php';
         $selection = array(new Calendar_Day(2003, 10, 25));
         $this->cal->build($selection);
+        $daysInPrevMonth = (0 == CALENDAR_FIRST_DAY_OF_WEEK) ? 3 : 2;
+        $end = 25 + $daysInPrevMonth;
         $i = 1;
-        $expected = (CALENDAR_FIRST_DAY_OF_WEEK == 0) ? 28 : 27;
         while ($Child = $this->cal->fetch()) {
-            if ($i == $expected) {
+            if ($i == $end) {
                 break;
             }
             $i++;

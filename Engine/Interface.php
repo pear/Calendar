@@ -361,5 +361,17 @@ class Calendar_Engine_Interface
     function getSecondsInMinute($y=null,$m=null,$d=null,$h=null,$i=null)
     {
     }
+
+    /**
+     * Checks if the given day is the current day
+     *
+     * @param int timestamp (depending on implementation)
+     *
+     * @return boolean
+     * @access protected
+     */
+    function isToday($stamp)
+    {
+    }
 }
 ?>

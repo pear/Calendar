@@ -482,5 +482,26 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
     {
         return 60;
     }
+
+    /**
+     * Checks if the given day is the current day
+     *
+     * @param mixed $stamp Any timestamp format recognized by Pear::Date
+     *
+     * @return boolean
+     * @access protected
+     */
+    function isToday($stamp)
+    {
+        static $today = null;
+        if (is_null($today)) {
+            $today = new Date();
+        }
+        $date = Calendar_Engine_PearDate::stampCollection($stamp);
+        return (   $date->day == $today->getDay()
+                && $date->month == $today->getMonth()
+                && $date->year == $today->getYear()
+        );
+    }
 }
 ?>

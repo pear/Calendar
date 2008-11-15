@@ -336,7 +336,9 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
      */
     function getWeekNInYear($y, $m, $d)
     {
-        return Date_Calc::weekOfYear($d, $m, $y); //beware, Date_Calc doesn't follow ISO-8601 standard!
+        //return Date_Calc::weekOfYear($d, $m, $y); //beware, Date_Calc doesn't follow ISO-8601 standard!
+        list($nYear, $nWeek) = Date_Calc::weekOfYear4th($d, $m, $y);
+        return $nWeek;
     }
 
     /**

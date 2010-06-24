@@ -49,7 +49,8 @@ on lunar cycles).
  <license uri="http://www.php.net/license">PHP</license>
  <notes>* fixed bug #17182: fixed Calendar_Month_Weeks' empty day handling
  (bug introduced in v.0.5.4)
- </notes>
+* PHP5 fixes
+</notes>
  <contents>
   <dir name="/">
    <dir name="Decorator">
@@ -176,7 +177,7 @@ on lunar cycles).
  <dependencies>
   <required>
    <php>
-    <min>4.0.5</min>
+    <min>5.0.0</min>
    </php>
    <pearinstaller>
     <min>1.5.0</min>

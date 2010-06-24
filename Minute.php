@@ -83,7 +83,7 @@ class Calendar_Minute extends Calendar
      */
     function Calendar_Minute($y, $m, $d, $h, $i)
     {
-        Calendar::Calendar($y, $m, $d, $h, $i);
+        parent::Calendar($y, $m, $d, $h, $i);
     }
 
     /**

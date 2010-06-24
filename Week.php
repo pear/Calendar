@@ -138,9 +138,9 @@ class Calendar_Week extends Calendar
     function Calendar_Week($y, $m, $d, $firstDay = null)
     {
         include_once CALENDAR_ROOT.'Table/Helper.php';
-        Calendar::Calendar($y, $m, $d);
+        parent::Calendar($y, $m, $d);
         $this->firstDay    = $this->defineFirstDayOfWeek($firstDay);
-        $this->tableHelper = & new Calendar_Table_Helper($this, $this->firstDay);
+        $this->tableHelper = new Calendar_Table_Helper($this, $this->firstDay);
         $this->thisWeek    = $this->tableHelper->getWeekStart($y, $m, $d, $this->firstDay);
         $this->prevWeek    = $this->tableHelper->getWeekStart(
             $y, 
@@ -313,21 +313,24 @@ class Calendar_Week extends Calendar
      */
     function thisYear($format = 'int')
     {
-        $tmp_cal = new Calendar();
-        $tmp_cal->setTimestamp($this->thisWeek);
-        $first_dow = $tmp_cal->thisDay('array');
-        $days_in_week = $tmp_cal->cE->getDaysInWeek($tmp_cal->year, $tmp_cal->month, $tmp_cal->day);
-        $tmp_cal->day += $days_in_week;
-        $last_dow  = $tmp_cal->thisDay('array');
+        if (null !== $this->thisWeek) {
+            $tmp_cal = new Calendar();
+            $tmp_cal->setTimestamp($this->thisWeek);
+            $first_dow = $tmp_cal->thisDay('array');
+            $days_in_week = $tmp_cal->cE->getDaysInWeek($tmp_cal->year, $tmp_cal->month, $tmp_cal->day);
+            $tmp_cal->day += $days_in_week;
+            $last_dow  = $tmp_cal->thisDay('array');
 
-        if ($first_dow['year'] == $last_dow['year']) {
+            if ($first_dow['year'] == $last_dow['year']) {
+                return $first_dow['year'];
+            }
+
+            if ($last_dow['day'] > floor($days_in_week / 2)) {
+                return $last_dow['year'];
+            }
             return $first_dow['year'];
         }
-
-        if ($last_dow['day'] > floor($days_in_week / 2)) {
-            return $last_dow['year'];
-        }
-        return $first_dow['year'];
+        return parent::thisYear();
     }
 
     /**

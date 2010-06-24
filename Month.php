@@ -81,7 +81,7 @@ class Calendar_Month extends Calendar
      */
     function Calendar_Month($y, $m, $firstDay=null)
     {
-        Calendar::Calendar($y, $m);
+        parent::Calendar($y, $m);
         $this->firstDay = $this->defineFirstDayOfWeek($firstDay);
     }
 

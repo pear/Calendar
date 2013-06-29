@@ -81,9 +81,9 @@ class Calendar_Engine_Factory
      * Returns an instance of the engine
      *
      * @return object instance of a calendar calculation engine
-     * @access protected
+     * @access public
      */
-    function & getEngine()
+    static public function & getEngine()
     {
         static $engine = false;
         switch (CALENDAR_ENGINE) {

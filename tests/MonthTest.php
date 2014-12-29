@@ -1,26 +1,18 @@
 <?php
-// $Id$
 
-require_once('simple_include.php');
-require_once('calendar_include.php');
-
-require_once('./calendar_test.php');
-
-class TestOfMonth extends TestOfCalendar {
-    function TestOfMonth() {
-        $this->UnitTestCase('Test of Month');
-    }
-    function setUp() {
+class MonthTest extends PHPUnit_Framework_TestCase
+{
+	function setUp() {
         $this->cal = new Calendar_Month(2003,10);
     }
     function testPrevMonth_Object() {
-        $this->assertEqual(new Calendar_Month(2003, 9), $this->cal->prevMonth('object'));
+        $this->assertEquals(new Calendar_Month(2003, 9), $this->cal->prevMonth('object'));
     }
     function testPrevDay () {
-        $this->assertEqual(30,$this->cal->prevDay());
+        $this->assertEquals(30,$this->cal->prevDay());
     }
     function testPrevDay_Array () {
-        $this->assertEqual(
+        $this->assertEquals(
             array(
                 'year'   => 2003,
                 'month'  => 9,
@@ -31,51 +23,45 @@ class TestOfMonth extends TestOfCalendar {
             $this->cal->prevDay('array'));
     }
     function testThisDay () {
-        $this->assertEqual(1,$this->cal->thisDay());
+        $this->assertEquals(1,$this->cal->thisDay());
     }
     function testNextDay () {
-        $this->assertEqual(2,$this->cal->nextDay());
+        $this->assertEquals(2,$this->cal->nextDay());
     }
     function testPrevHour () {
-        $this->assertEqual(23,$this->cal->prevHour());
+        $this->assertEquals(23,$this->cal->prevHour());
     }
     function testThisHour () {
-        $this->assertEqual(0,$this->cal->thisHour());
+        $this->assertEquals(0,$this->cal->thisHour());
     }
     function testNextHour () {
-        $this->assertEqual(1,$this->cal->nextHour());
+        $this->assertEquals(1,$this->cal->nextHour());
     }
     function testPrevMinute () {
-        $this->assertEqual(59,$this->cal->prevMinute());
+        $this->assertEquals(59,$this->cal->prevMinute());
     }
     function testThisMinute () {
-        $this->assertEqual(0,$this->cal->thisMinute());
+        $this->assertEquals(0,$this->cal->thisMinute());
     }
     function testNextMinute () {
-        $this->assertEqual(1,$this->cal->nextMinute());
+        $this->assertEquals(1,$this->cal->nextMinute());
     }
     function testPrevSecond () {
-        $this->assertEqual(59,$this->cal->prevSecond());
+        $this->assertEquals(59,$this->cal->prevSecond());
     }
     function testThisSecond () {
-        $this->assertEqual(0,$this->cal->thisSecond());
+        $this->assertEquals(0,$this->cal->thisSecond());
     }
     function testNextSecond () {
-        $this->assertEqual(1,$this->cal->nextSecond());
+        $this->assertEquals(1,$this->cal->nextSecond());
     }
     function testGetTimeStamp() {
         $stamp = mktime(0,0,0,10,1,2003);
-        $this->assertEqual($stamp,$this->cal->getTimeStamp());
-    }
-}
-
-class TestOfMonthBuild extends TestOfMonth {
-    function TestOfMonthBuild() {
-        $this->UnitTestCase('Test of Month::build()');
+        $this->assertEquals($stamp,$this->cal->getTimeStamp());
     }
     function testSize() {
         $this->cal->build();
-        $this->assertEqual(31,$this->cal->size());
+        $this->assertEquals(31,$this->cal->size());
     }
     function testFetch() {
         $this->cal->build();
@@ -83,7 +69,7 @@ class TestOfMonthBuild extends TestOfMonth {
         while ( $Child = $this->cal->fetch() ) {
             $i++;
         }
-        $this->assertEqual(31,$i);
+        $this->assertEquals(31,$i);
     }
     function testFetchAll() {
         $this->cal->build();
@@ -93,7 +79,7 @@ class TestOfMonthBuild extends TestOfMonth {
             $children[$i]=$Child;
             $i++;
         }
-        $this->assertEqual($children,$this->cal->fetchAll());
+        $this->assertEquals($children,$this->cal->fetchAll());
     }
     function testSelection() {
         require_once(CALENDAR_ROOT . 'Day.php');
@@ -109,11 +95,3 @@ class TestOfMonthBuild extends TestOfMonth {
     }
 }
 
-if (!defined('TEST_RUNNING')) {
-    define('TEST_RUNNING', true);
-    $test = &new TestOfMonth();
-    $test->run(new HtmlReporter());
-    $test = &new TestOfMonthBuild();
-    $test->run(new HtmlReporter());
-}
-?>

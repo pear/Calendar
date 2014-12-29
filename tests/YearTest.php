@@ -1,29 +1,21 @@
 <?php
-// $Id$
 
-require_once('simple_include.php');
-require_once('calendar_include.php');
-
-require_once('./calendar_test.php');
-
-class TestOfYear extends TestOfCalendar {
-    function TestOfYear() {
-        $this->UnitTestCase('Test of Year');
-    }
+class YearTest extends PHPUnit_Framework_TestCase
+{
     function setUp() {
         $this->cal = new Calendar_Year(2003);
     }
     function testPrevYear_Object() {
-        $this->assertEqual(new Calendar_Year(2002), $this->cal->prevYear('object'));
+        $this->assertEquals(new Calendar_Year(2002), $this->cal->prevYear('object'));
     }
     function testThisYear_Object() {
-        $this->assertEqual(new Calendar_Year(2003), $this->cal->thisYear('object'));
+        $this->assertEquals(new Calendar_Year(2003), $this->cal->thisYear('object'));
     }
     function testPrevMonth () {
-        $this->assertEqual(12,$this->cal->prevMonth());
+        $this->assertEquals(12,$this->cal->prevMonth());
     }
     function testPrevMonth_Array () {
-        $this->assertEqual(
+        $this->assertEquals(
             array(
                 'year'   => 2002,
                 'month'  => 12,
@@ -34,16 +26,16 @@ class TestOfYear extends TestOfCalendar {
             $this->cal->prevMonth('array'));
     }
     function testThisMonth () {
-        $this->assertEqual(1,$this->cal->thisMonth());
+        $this->assertEquals(1,$this->cal->thisMonth());
     }
     function testNextMonth () {
-        $this->assertEqual(2,$this->cal->nextMonth());
+        $this->assertEquals(2,$this->cal->nextMonth());
     }
     function testPrevDay () {
-        $this->assertEqual(31,$this->cal->prevDay());
+        $this->assertEquals(31,$this->cal->prevDay());
     }
     function testPrevDay_Array () {
-        $this->assertEqual(
+        $this->assertEquals(
             array(
                 'year'   => 2002,
                 'month'  => 12,
@@ -54,51 +46,45 @@ class TestOfYear extends TestOfCalendar {
             $this->cal->prevDay('array'));
     }
     function testThisDay () {
-        $this->assertEqual(1,$this->cal->thisDay());
+        $this->assertEquals(1,$this->cal->thisDay());
     }
     function testNextDay () {
-        $this->assertEqual(2,$this->cal->nextDay());
+        $this->assertEquals(2,$this->cal->nextDay());
     }
     function testPrevHour () {
-        $this->assertEqual(23,$this->cal->prevHour());
+        $this->assertEquals(23,$this->cal->prevHour());
     }
     function testThisHour () {
-        $this->assertEqual(0,$this->cal->thisHour());
+        $this->assertEquals(0,$this->cal->thisHour());
     }
     function testNextHour () {
-        $this->assertEqual(1,$this->cal->nextHour());
+        $this->assertEquals(1,$this->cal->nextHour());
     }
     function testPrevMinute () {
-        $this->assertEqual(59,$this->cal->prevMinute());
+        $this->assertEquals(59,$this->cal->prevMinute());
     }
     function testThisMinute () {
-        $this->assertEqual(0,$this->cal->thisMinute());
+        $this->assertEquals(0,$this->cal->thisMinute());
     }
     function testNextMinute () {
-        $this->assertEqual(1,$this->cal->nextMinute());
+        $this->assertEquals(1,$this->cal->nextMinute());
     }
     function testPrevSecond () {
-        $this->assertEqual(59,$this->cal->prevSecond());
+        $this->assertEquals(59,$this->cal->prevSecond());
     }
     function testThisSecond () {
-        $this->assertEqual(0,$this->cal->thisSecond());
+        $this->assertEquals(0,$this->cal->thisSecond());
     }
     function testNextSecond () {
-        $this->assertEqual(1,$this->cal->nextSecond());
+        $this->assertEquals(1,$this->cal->nextSecond());
     }
     function testGetTimeStamp() {
         $stamp = mktime(0,0,0,1,1,2003);
-        $this->assertEqual($stamp,$this->cal->getTimeStamp());
+        $this->assertEquals($stamp,$this->cal->getTimeStamp());
     }
-}
-
-class TestOfYearBuild extends TestOfYear {
-    function TestOfYearBuild() {
-        $this->UnitTestCase('Test of Year::build()');
-    }
-    function testSize() {
+        function testSize() {
         $this->cal->build();
-        $this->assertEqual(12,$this->cal->size());
+        $this->assertEquals(12,$this->cal->size());
     }
     function testFetch() {
         $this->cal->build();
@@ -106,7 +92,7 @@ class TestOfYearBuild extends TestOfYear {
         while ( $Child = $this->cal->fetch() ) {
             $i++;
         }
-        $this->assertEqual(12,$i);
+        $this->assertEquals(12,$i);
     }
     function testFetchAll() {
         $this->cal->build();
@@ -116,7 +102,7 @@ class TestOfYearBuild extends TestOfYear {
             $children[$i]=$Child;
             $i++;
         }
-        $this->assertEqual($children,$this->cal->fetchAll());
+        $this->assertEquals($children,$this->cal->fetchAll());
     }
     function testSelection() {
         require_once(CALENDAR_ROOT . 'Month.php');
@@ -131,12 +117,3 @@ class TestOfYearBuild extends TestOfYear {
         $this->assertTrue($Child->isSelected());
     }
 }
-
-if (!defined('TEST_RUNNING')) {
-    define('TEST_RUNNING', true);
-    $test = &new TestOfYear();
-    $test->run(new HtmlReporter());
-    $test = &new TestOfYearBuild();
-    $test->run(new HtmlReporter());
-}
-?>

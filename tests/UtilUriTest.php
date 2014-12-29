@@ -1,29 +1,22 @@
 <?php
-// $Id$
 
-require_once('simple_include.php');
-require_once('calendar_include.php');
-
-Mock::generate('Calendar_Day','Mock_Calendar_Day');
-Mock::generate('Calendar_Engine_Interface','Mock_Calendar_Engine');
-
-class TestOfUtilUri extends UnitTestCase {
-
+class UtilUriTest extends PHPUnit_Framework_TestCase
+{
     var $MockCal;
-    
-    function TestOfUtilUri() {
-        $this->UnitTestCase('Test of Calendar_Util_Uri');
-    }
-    
+
     function setUp() {
-        $this->MockCal = & new Mock_Calendar_Day($this);
-        $this->MockCal->setReturnValue('getEngine',new Mock_Calendar_Engine($this));
+        $mockEngine = $this->getMockBuilder('Calendar_Engine_Interface')
+                           ->getMock();
+        $this->MockCal = $this->getMockBuilder('Calendar_Day')
+                              ->disableOriginalConstructor()
+                              ->getMock();
+        $this->MockCal->method('getEngine')->willReturn($mockEngine);
     }
     
     function testFragments() {
         $Uri = new Calendar_Util_Uri('y','m','d','h','m','s');
         $Uri->setFragments('year','month','day','hour','minute','second');
-        $this->assertEqual(
+        $this->assertEquals(
             'year=&amp;month=&amp;day=&amp;hour=&amp;minute=&amp;second=',
             $Uri->this($this->MockCal, 'second')
         );
@@ -31,7 +24,7 @@ class TestOfUtilUri extends UnitTestCase {
     function testScalarFragments() {
         $Uri = new Calendar_Util_Uri('year','month','day','hour','minute','second');
         $Uri->scalar = true;
-        $this->assertEqual(
+        $this->assertEquals(
             '&amp;&amp;&amp;&amp;&amp;',
             $Uri->this($this->MockCal, 'second')
         );
@@ -39,16 +32,10 @@ class TestOfUtilUri extends UnitTestCase {
     function testSetSeperator() {
         $Uri = new Calendar_Util_Uri('year','month','day','hour','minute','second');
         $Uri->separator = '/';
-        $this->assertEqual(
+        $this->assertEquals(
             'year=/month=/day=/hour=/minute=/second=',
             $Uri->this($this->MockCal, 'second')
         );
     }
+    
 }
-
-if (!defined('TEST_RUNNING')) {
-    define('TEST_RUNNING', true);
-    $test = &new TestOfUtilUri();
-    $test->run(new HtmlReporter());
-}
-?>

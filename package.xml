@@ -53,125 +53,127 @@ on lunar cycles).
 </notes>
  <contents>
   <dir name="/">
-   <dir name="Decorator">
-    <file baseinstalldir="Calendar" name="Textual.php" role="php" />
-    <file baseinstalldir="Calendar" name="Uri.php" role="php" />
-    <file baseinstalldir="Calendar" name="Weekday.php" role="php" />
-    <file baseinstalldir="Calendar" name="Wrapper.php" role="php" />
-   </dir> <!-- /Decorator -->
+   <dir name="Calendar">
+     <dir name="Decorator">
+      <file name="Textual.php" role="php" />
+      <file name="Uri.php" role="php" />
+      <file name="Weekday.php" role="php" />
+      <file name="Wrapper.php" role="php" />
+     </dir> <!-- /Decorator -->
+     <dir name="Engine">
+      <file name="Interface.php" role="php" />
+      <file name="PearDate.php" role="php" />
+      <file name="UnixTS.php" role="php" />
+     </dir> <!-- /Engine -->
+     <dir name="Month">
+      <file name="Weekdays.php" role="php" />
+      <file name="Weeks.php" role="php" />
+     </dir> <!-- /Month -->
+     <dir name="Table">
+      <file name="Helper.php" role="php" />
+     </dir> <!-- /Table -->
+     <dir name="Util">
+      <file name="Textual.php" role="php" />
+      <file name="Uri.php" role="php" />
+     </dir> <!-- /Util -->
+     <file name="Calendar.php" role="php" />
+     <file name="Day.php" role="php" />
+     <file name="Decorator.php" role="php" />
+     <file name="Factory.php" role="php" />
+     <file name="Hour.php" role="php" />
+     <file name="Minute.php" role="php" />
+     <file name="Month.php" role="php" />
+     <file name="Second.php" role="php" />
+     <file name="Validator.php" role="php" />
+     <file name="Week.php" role="php" />
+     <file name="Year.php" role="php" />
+   </dir>
    <dir name="docs">
     <dir name="examples">
-     <file baseinstalldir="Calendar" name="1.php" role="doc" />
-     <file baseinstalldir="Calendar" name="1.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="2.php" role="doc" />
-     <file baseinstalldir="Calendar" name="2.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="3.php" role="doc" />
-     <file baseinstalldir="Calendar" name="3.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="4.php" role="doc" />
-     <file baseinstalldir="Calendar" name="4.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="5.php" role="doc" />
-     <file baseinstalldir="Calendar" name="5.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="6.php" role="doc" />
-     <file baseinstalldir="Calendar" name="6.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="7.php" role="doc" />
-     <file baseinstalldir="Calendar" name="7.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="8.php" role="doc" />
-     <file baseinstalldir="Calendar" name="8.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="9.php" role="doc" />
-     <file baseinstalldir="Calendar" name="9.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="10.php" role="doc" />
-     <file baseinstalldir="Calendar" name="10.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="11.php" role="doc" />
-     <file baseinstalldir="Calendar" name="11.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="12.php" role="doc" />
-     <file baseinstalldir="Calendar" name="12.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="13.php" role="doc" />
-     <file baseinstalldir="Calendar" name="13.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="14.php" role="doc" />
-     <file baseinstalldir="Calendar" name="14.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="15.php" role="doc" />
-     <file baseinstalldir="Calendar" name="15.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="16.php" role="doc" />
-     <file baseinstalldir="Calendar" name="16.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="17.php" role="doc" />
-     <file baseinstalldir="Calendar" name="17.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="18.php" role="doc" />
-     <file baseinstalldir="Calendar" name="18.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="19.php" role="doc" />
-     <file baseinstalldir="Calendar" name="19.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="20.php" role="doc" />
-     <file baseinstalldir="Calendar" name="20.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="21.php" role="doc" />
-     <file baseinstalldir="Calendar" name="21.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="22.php" role="doc" />
-     <file baseinstalldir="Calendar" name="22.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="23.php" role="doc" />
-     <file baseinstalldir="Calendar" name="23.phps" role="doc" />
-     <file baseinstalldir="Calendar" name="index.html" role="doc" />
+     <file name="1.php" role="doc" />
+     <file name="1.phps" role="doc" />
+     <file name="2.php" role="doc" />
+     <file name="2.phps" role="doc" />
+     <file name="3.php" role="doc" />
+     <file name="3.phps" role="doc" />
+     <file name="4.php" role="doc" />
+     <file name="4.phps" role="doc" />
+     <file name="5.php" role="doc" />
+     <file name="5.phps" role="doc" />
+     <file name="6.php" role="doc" />
+     <file name="6.phps" role="doc" />
+     <file name="7.php" role="doc" />
+     <file name="7.phps" role="doc" />
+     <file name="8.php" role="doc" />
+     <file name="8.phps" role="doc" />
+     <file name="9.php" role="doc" />
+     <file name="9.phps" role="doc" />
+     <file name="10.php" role="doc" />
+     <file name="10.phps" role="doc" />
+     <file name="11.php" role="doc" />
+     <file name="11.phps" role="doc" />
+     <file name="12.php" role="doc" />
+     <file name="12.phps" role="doc" />
+     <file name="13.php" role="doc" />
+     <file name="13.phps" role="doc" />
+     <file name="14.php" role="doc" />
+     <file name="14.phps" role="doc" />
+     <file name="15.php" role="doc" />
+     <file name="15.phps" role="doc" />
+     <file name="16.php" role="doc" />
+     <file name="16.phps" role="doc" />
+     <file name="17.php" role="doc" />
+     <file name="17.phps" role="doc" />
+     <file name="18.php" role="doc" />
+     <file name="18.phps" role="doc" />
+     <file name="19.php" role="doc" />
+     <file name="19.phps" role="doc" />
+     <file name="20.php" role="doc" />
+     <file name="20.phps" role="doc" />
+     <file name="21.php" role="doc" />
+     <file name="21.phps" role="doc" />
+     <file name="22.php" role="doc" />
+     <file name="22.phps" role="doc" />
+     <file name="23.php" role="doc" />
+     <file name="23.phps" role="doc" />
+     <file name="index.html" role="doc" />
     </dir> <!-- /docs/examples -->
-    <file baseinstalldir="Calendar" name="Readme" role="doc" />
+    <file name="Readme" role="doc" />
    </dir> <!-- /docs -->
-   <dir name="Engine">
-    <file baseinstalldir="Calendar" name="Interface.php" role="php" />
-    <file baseinstalldir="Calendar" name="PearDate.php" role="php" />
-    <file baseinstalldir="Calendar" name="UnixTS.php" role="php" />
-   </dir> <!-- /Engine -->
-   <dir name="Month">
-    <file baseinstalldir="Calendar" name="Weekdays.php" role="php" />
-    <file baseinstalldir="Calendar" name="Weeks.php" role="php" />
-   </dir> <!-- /Month -->
-   <dir name="Table">
-    <file baseinstalldir="Calendar" name="Helper.php" role="php" />
-   </dir> <!-- /Table -->
    <dir name="tests">
-    <file baseinstalldir="Calendar" name="all_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="calendar_engine_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="calendar_include.php" role="test" />
-    <file baseinstalldir="Calendar" name="calendar_tabular_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="calendar_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="calendar_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="day_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="decorator_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="decorator_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="decorator_textual_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="decorator_uri_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="helper_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="hour_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="minute_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="month_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="month_weekdays_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="month_weeks_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="peardate_engine_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="README" role="test" />
-    <file baseinstalldir="Calendar" name="second_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="simple_include.php" role="test" />
-    <file baseinstalldir="Calendar" name="table_helper_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="unixts_engine_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="util_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="util_textual_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="util_uri_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="validator_error_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="validator_tests.php" role="test" />
-    <file baseinstalldir="Calendar" name="validator_unit_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="week_firstday_0_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="week_test.php" role="test" />
-    <file baseinstalldir="Calendar" name="year_test.php" role="test" />
+    <file name="all_tests.php" role="test" />
+    <file name="calendar_engine_tests.php" role="test" />
+    <file name="calendar_include.php" role="test" />
+    <file name="calendar_tabular_tests.php" role="test" />
+    <file name="calendar_test.php" role="test" />
+    <file name="calendar_tests.php" role="test" />
+    <file name="day_test.php" role="test" />
+    <file name="decorator_test.php" role="test" />
+    <file name="decorator_tests.php" role="test" />
+    <file name="decorator_textual_test.php" role="test" />
+    <file name="decorator_uri_test.php" role="test" />
+    <file name="helper_test.php" role="test" />
+    <file name="hour_test.php" role="test" />
+    <file name="minute_test.php" role="test" />
+    <file name="month_test.php" role="test" />
+    <file name="month_weekdays_test.php" role="test" />
+    <file name="month_weeks_test.php" role="test" />
+    <file name="peardate_engine_test.php" role="test" />
+    <file name="README" role="test" />
+    <file name="second_test.php" role="test" />
+    <file name="simple_include.php" role="test" />
+    <file name="table_helper_tests.php" role="test" />
+    <file name="unixts_engine_test.php" role="test" />
+    <file name="util_tests.php" role="test" />
+    <file name="util_textual_test.php" role="test" />
+    <file name="util_uri_test.php" role="test" />
+    <file name="validator_error_test.php" role="test" />
+    <file name="validator_tests.php" role="test" />
+    <file name="validator_unit_test.php" role="test" />
+    <file name="week_firstday_0_test.php" role="test" />
+    <file name="week_test.php" role="test" />
+    <file name="year_test.php" role="test" />
    </dir> <!-- /tests -->
-   <dir name="Util">
-    <file baseinstalldir="Calendar" name="Textual.php" role="php" />
-    <file baseinstalldir="Calendar" name="Uri.php" role="php" />
-   </dir> <!-- /Util -->
-   <file baseinstalldir="Calendar" name="Calendar.php" role="php" />
-   <file baseinstalldir="Calendar" name="Day.php" role="php" />
-   <file baseinstalldir="Calendar" name="Decorator.php" role="php" />
-   <file baseinstalldir="Calendar" name="Factory.php" role="php" />
-   <file baseinstalldir="Calendar" name="Hour.php" role="php" />
-   <file baseinstalldir="Calendar" name="Minute.php" role="php" />
-   <file baseinstalldir="Calendar" name="Month.php" role="php" />
-   <file baseinstalldir="Calendar" name="Second.php" role="php" />
-   <file baseinstalldir="Calendar" name="Validator.php" role="php" />
-   <file baseinstalldir="Calendar" name="Week.php" role="php" />
-   <file baseinstalldir="Calendar" name="Year.php" role="php" />
   </dir> <!-- / -->
  </contents>
  <dependencies>

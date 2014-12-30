@@ -141,38 +141,28 @@ on lunar cycles).
     <file name="Readme" role="doc" />
    </dir> <!-- /docs -->
    <dir name="tests">
-    <file name="all_tests.php" role="test" />
-    <file name="calendar_engine_tests.php" role="test" />
-    <file name="calendar_include.php" role="test" />
-    <file name="calendar_tabular_tests.php" role="test" />
-    <file name="calendar_test.php" role="test" />
-    <file name="calendar_tests.php" role="test" />
-    <file name="day_test.php" role="test" />
-    <file name="decorator_test.php" role="test" />
-    <file name="decorator_tests.php" role="test" />
-    <file name="decorator_textual_test.php" role="test" />
-    <file name="decorator_uri_test.php" role="test" />
-    <file name="helper_test.php" role="test" />
-    <file name="hour_test.php" role="test" />
-    <file name="minute_test.php" role="test" />
-    <file name="month_test.php" role="test" />
-    <file name="month_weekdays_test.php" role="test" />
-    <file name="month_weeks_test.php" role="test" />
-    <file name="peardate_engine_test.php" role="test" />
-    <file name="README" role="test" />
-    <file name="second_test.php" role="test" />
-    <file name="simple_include.php" role="test" />
-    <file name="table_helper_tests.php" role="test" />
-    <file name="unixts_engine_test.php" role="test" />
-    <file name="util_tests.php" role="test" />
-    <file name="util_textual_test.php" role="test" />
-    <file name="util_uri_test.php" role="test" />
-    <file name="validator_error_test.php" role="test" />
-    <file name="validator_tests.php" role="test" />
-    <file name="validator_unit_test.php" role="test" />
-    <file name="week_firstday_0_test.php" role="test" />
-    <file name="week_test.php" role="test" />
-    <file name="year_test.php" role="test" />
+    <file name="CalendarTest.php" role="test" />
+    <file name="DayTest.php" role="test" />
+    <file name="DecoratorTest.php" role="test" />
+    <file name="DecoratorTextualTest.php" role="test" />
+    <file name="DecoratorUriTest.php" role="test" />
+    <file name="HelperTest.php" role="test" />
+    <file name="HourTest.php" role="test" />
+    <file name="MinuteTest.php" role="test" />
+    <file name="MockCalendarTestCase.php" role="test" />
+    <file name="MonthTest.php" role="test" />
+    <file name="MonthWeekdaysTest.php" role="test" />
+    <file name="MonthWeeksTest.php" role="test" />
+    <file name="PearDateEngineTest.php" role="test" />
+    <file name="SecondTest.php" role="test" />
+    <file name="UnixTsEngineTest.php" role="test" />
+    <file name="UtilTextualTest.php" role="test" />
+    <file name="UtilUriTest.php" role="test" />
+    <file name="ValidatorErrorTest.php" role="test" />
+    <file name="ValidatorUnitTest.php" role="test" />
+    <file name="WeekFirstDayZeroTest.php" role="test" />
+    <file name="WeekTest.php" role="test" />
+    <file name="YearTest.php" role="test" />
    </dir> <!-- /tests -->
   </dir> <!-- / -->
  </contents>

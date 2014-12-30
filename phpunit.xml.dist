@@ -1,4 +1,7 @@
 <phpunit bootstrap="vendor/autoload.php"  colors="true">
+    <php>
+        <ini name="error_reporting" value="22527" />
+    </php>
     <testsuite name="AllTests">
         <directory>tests</directory>
     </testsuite>

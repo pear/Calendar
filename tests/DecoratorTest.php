@@ -245,7 +245,7 @@ class DecoratorTest extends MockCalendarTestCase
                          ->disableOriginalConstructor()
                          ->getMock();
         $mockday->method('isFirst')->willReturn(true);
-        $Decorator =& new Calendar_Decorator($mockday);
+        $Decorator = new Calendar_Decorator($mockday);
         $this->assertTrue($Decorator->isFirst());
     }
     function testIsLast() {

@@ -30,7 +30,7 @@ class HelperTest extends PHPUnit_Framework_TestCase
     }
     function testGetFirstDay() {
         for ( $i = 0; $i <= 7; $i++ ) {
-            $Helper = & new Calendar_Table_Helper($this->mockcal,$i);
+            $Helper = new Calendar_Table_Helper($this->mockcal,$i);
             $this->assertEquals($Helper->getFirstDay(),$i);
         }
     }

@@ -137,45 +137,45 @@ class ValidatorUnitTest extends PHPUnit_Framework_TestCase
     }
     function testYear() {
         $Unit = new Calendar_Year(2038);
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $this->assertFalse($Validator->isValidYear());
     }
     function testMonth() {
         $Unit = new Calendar_Month(2000,13);
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $this->assertFalse($Validator->isValidMonth());
     }
 /*
     function testWeek() {
         $Unit = new Calendar_Week(2000,12,7);
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $this->assertFalse($Validator->isValidWeek());
     }
 */
     function testDay() {
         $Unit = new Calendar_Day(2000,12,32);
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $this->assertFalse($Validator->isValidDay());
     }
     function testHour() {
         $Unit = new Calendar_Hour(2000,12,20,24);
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $this->assertFalse($Validator->isValidHour());
     }
     function testMinute() {
         $Unit = new Calendar_Minute(2000,12,20,23,60);
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $this->assertFalse($Validator->isValidMinute());
     }
     function testSecond() {
         $Unit = new Calendar_Second(2000,12,20,23,59,60);
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $this->assertFalse($Validator->isValidSecond());
     }
     function testAllBad() {
         $Unit = new Calendar_Second(2000,13,32,24,60,60);
         $this->assertFalse($Unit->isValid());
-        $Validator = & $Unit->getValidator();
+        $Validator = $Unit->getValidator();
         $i = 0;
         while ( $Validator->fetch() ) {
             $i++;

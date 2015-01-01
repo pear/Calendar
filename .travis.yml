@@ -1,6 +1,7 @@
 language: php
 install:
   - pear install package.xml
+  - composer dumpautoload -o
 php:
   - 5.4
 script: phpunit tests/

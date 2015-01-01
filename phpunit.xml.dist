@@ -1,0 +1,41 @@
+<phpunit bootstrap="vendor/autoload.php"  colors="true">
+    <php>
+        <ini name="error_reporting" value="22527" />
+    </php>
+    <testsuite name="AllTests">
+        <directory>tests</directory>
+    </testsuite>
+    <testsuite name="CalendarTests">
+        <file>tests/CalendarTest.php</file>
+        <file>tests/YearTest.php</file>
+        <file>tests/MonthTest.php</file>
+        <file>tests/DayTest.php</file>
+        <file>tests/HourTest.php</file>
+        <file>tests/MinuteTest.php</file>
+        <file>tests/SecondTest.php</file>
+    </testsuite>
+    <testsuite name="CalendarEngineTests">
+        <file>tests/UnixTsEngineTest.php</file>
+    </testsuite>
+    <testsuite name="CalendarTabularTests">
+        <file>tests/MonthWeekdaysTest.php</file>
+        <file>tests/MonthWeeksTest.php</file>
+        <file>tests/WeekTest.php</file>
+    </testsuite>
+    <testsuite name="DecoratorTests">
+        <file>tests/DecoratorTest.php</file>
+        <file>tests/DecoratorTextualTest.php</file>
+        <file>tests/DecoratorUriTest.php</file>
+    </testsuite>
+    <testsuite name="TableHelperTests">
+        <file>tests/HelperTest.php</file>
+    </testsuite>
+    <testsuite name="UtilTests">
+        <file>tests/UtilTextualTest.php</file>
+        <file>tests/UtilUriTest.php</file>
+    </testsuite>
+    <testsuite name="ValidatorTests">
+        <file>tests/ValidatorErrorTest.php</file>
+        <file>tests/ValidatorUnitTest.php</file>
+    </testsuite>
+</phpunit>

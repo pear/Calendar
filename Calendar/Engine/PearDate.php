@@ -506,4 +506,3 @@ class Calendar_Engine_PearDate /* implements Calendar_Engine_Interface */
         );
     }
 }
-?>

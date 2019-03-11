@@ -374,4 +374,3 @@ class Calendar_Engine_Interface
     {
     }
 }
-?>

@@ -203,7 +203,7 @@ class Calendar
      *
      * @access protected
      */
-    function Calendar($y = 2000, $m = 1, $d = 1, $h = 0, $i = 0, $s = 0)
+    function __construct($y = 2000, $m = 1, $d = 1, $h = 0, $i = 0, $s = 0)
     {
         static $cE = null;
         if (!isset($cE)) {
@@ -777,4 +777,3 @@ class Calendar
         return $this->returnValue('Second', $format, $ts, $this->cE->stampToSecond($ts));
     }
 }
-?>

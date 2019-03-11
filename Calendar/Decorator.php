@@ -76,7 +76,7 @@ class Calendar_Decorator
      *
      * @param object &$calendar subclass to Calendar to decorate
      */
-    function Calendar_Decorator(&$calendar)
+    function __construct(&$calendar)
     {
         $this->calendar = & $calendar;
     }
@@ -647,4 +647,3 @@ class Calendar_Decorator
         return $this->calendar->nextSecond($format);
     }
 }
-?>

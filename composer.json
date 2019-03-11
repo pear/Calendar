@@ -36,7 +36,7 @@
         "pear/pear_exception": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "^4.8|^5.7"
     },
     "suggest": {
         "pear/date": "Install optionally via your project's composer.json"

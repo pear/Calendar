@@ -82,9 +82,11 @@ class Calendar_Second extends Calendar
     /**
      * Overwrite build
      *
+     * @param array $sDates array containing Calendar objects to select (optional)
+     *
      * @return NULL
      */
-    function build()
+    function build($sDates = array())
     {
         return null;
     }

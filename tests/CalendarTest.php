@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Calendar/Calendar.php';
+
 class CalendarTest extends PHPUnit_Framework_TestCase
 {
     var $cal;

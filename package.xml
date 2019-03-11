@@ -91,51 +91,28 @@ on lunar cycles).
    <dir name="docs">
     <dir name="examples">
      <file name="1.php" role="doc" />
-     <file name="1.phps" role="doc" />
      <file name="2.php" role="doc" />
-     <file name="2.phps" role="doc" />
      <file name="3.php" role="doc" />
-     <file name="3.phps" role="doc" />
      <file name="4.php" role="doc" />
-     <file name="4.phps" role="doc" />
      <file name="5.php" role="doc" />
-     <file name="5.phps" role="doc" />
      <file name="6.php" role="doc" />
-     <file name="6.phps" role="doc" />
      <file name="7.php" role="doc" />
-     <file name="7.phps" role="doc" />
      <file name="8.php" role="doc" />
-     <file name="8.phps" role="doc" />
      <file name="9.php" role="doc" />
-     <file name="9.phps" role="doc" />
      <file name="10.php" role="doc" />
-     <file name="10.phps" role="doc" />
      <file name="11.php" role="doc" />
-     <file name="11.phps" role="doc" />
      <file name="12.php" role="doc" />
-     <file name="12.phps" role="doc" />
      <file name="13.php" role="doc" />
-     <file name="13.phps" role="doc" />
      <file name="14.php" role="doc" />
-     <file name="14.phps" role="doc" />
      <file name="15.php" role="doc" />
-     <file name="15.phps" role="doc" />
      <file name="16.php" role="doc" />
-     <file name="16.phps" role="doc" />
      <file name="17.php" role="doc" />
-     <file name="17.phps" role="doc" />
      <file name="18.php" role="doc" />
-     <file name="18.phps" role="doc" />
      <file name="19.php" role="doc" />
-     <file name="19.phps" role="doc" />
      <file name="20.php" role="doc" />
-     <file name="20.phps" role="doc" />
      <file name="21.php" role="doc" />
-     <file name="21.phps" role="doc" />
      <file name="22.php" role="doc" />
-     <file name="22.phps" role="doc" />
      <file name="23.php" role="doc" />
-     <file name="23.phps" role="doc" />
      <file name="index.html" role="doc" />
     </dir> <!-- /docs/examples -->
     <file name="Readme" role="doc" />

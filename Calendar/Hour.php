@@ -134,4 +134,3 @@ class Calendar_Hour extends Calendar
         }
     }
 }
-?>

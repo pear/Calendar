@@ -192,4 +192,3 @@ class Calendar_Decorator_Weekday extends Calendar_Decorator
         }
     }
 }
-?>

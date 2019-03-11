@@ -647,4 +647,3 @@ class Calendar_Decorator
         return $this->calendar->nextSecond($format);
     }
 }
-?>

@@ -301,4 +301,3 @@ class Calendar_Util_Textual
         return $returndays;
     }
 }
-?>

@@ -777,4 +777,3 @@ class Calendar
         return $this->returnValue('Second', $format, $ts, $this->cE->stampToSecond($ts));
     }
 }
-?>

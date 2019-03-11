@@ -205,4 +205,3 @@ class Calendar_Decorator_Textual extends Calendar_Decorator
         return Calendar_Util_Textual::orderedWeekdays($this->calendar, $format);
     }
 }
-?>

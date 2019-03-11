@@ -467,4 +467,3 @@ class Calendar_Week extends Calendar
         }
     }
 }
-?>

@@ -374,4 +374,3 @@ class Calendar_Validation_Error
         return $this->unit.' = '.$this->value.' ['.$this->message.']';
     }
 }
-?>

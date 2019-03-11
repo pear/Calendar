@@ -121,4 +121,3 @@ class Calendar_Second extends Calendar
         return null;
     }
 }
-?>

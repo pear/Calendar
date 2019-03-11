@@ -180,4 +180,3 @@ class Calendar_Decorator_Uri extends Calendar_Decorator
         return $this->Uri->next($this, $method);
     }
 }
-?>

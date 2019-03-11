@@ -163,4 +163,3 @@ class Calendar_Month_Weeks extends Calendar_Month
         }
     }
 }
-?>

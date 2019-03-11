@@ -229,4 +229,3 @@ class Calendar_Day extends Calendar
         return $this->empty;
     }
 }
-?>

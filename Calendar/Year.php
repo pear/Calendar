@@ -137,4 +137,3 @@ class Calendar_Year extends Calendar
         }
     }
 }
-?>

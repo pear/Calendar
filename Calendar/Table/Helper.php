@@ -313,4 +313,3 @@ class Calendar_Table_Helper
         return $this->cE->dateToStamp($y, $m, $d);
     }
 }
-?>

@@ -201,4 +201,3 @@ class Calendar_Util_Uri
         return $uriString;
     }
 }
-?>

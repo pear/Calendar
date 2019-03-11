@@ -212,4 +212,3 @@ class Calendar_Month_Weekdays extends Calendar_Month
         }
     }
 }
-?>

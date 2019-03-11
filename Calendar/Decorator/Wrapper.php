@@ -112,4 +112,3 @@ class Calendar_Decorator_Wrapper extends Calendar_Decorator
         return $children;
     }
 }
-?>

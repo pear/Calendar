@@ -399,7 +399,7 @@ class Calendar_Week extends Calendar
             return $this->toArray($this->thisWeek);
         case 'object':
             include_once CALENDAR_ROOT.'Factory.php';
-            return Calendar_Factory::createByTimestamp('Week', $this->thisWeek);
+            return (new Calendar_Factory)->createByTimestamp('Week', $this->thisWeek);
         case 'timestamp':
         default:
             return $this->thisWeek;
@@ -429,7 +429,7 @@ class Calendar_Week extends Calendar
             return $this->toArray($this->nextWeek);
         case 'object':
             include_once CALENDAR_ROOT.'Factory.php';
-            return Calendar_Factory::createByTimestamp('Week', $this->nextWeek);
+            return (new Calendar_Factory)->createByTimestamp('Week', $this->nextWeek);
         case 'timestamp':
         default:
             return $this->nextWeek;

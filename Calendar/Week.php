@@ -356,7 +356,7 @@ class Calendar_Week extends Calendar
             return $this->toArray($this->prevWeek);
         case 'object':
             include_once CALENDAR_ROOT.'Factory.php';
-            return Calendar_Factory::createByTimestamp('Week', $this->prevWeek);
+            return (new Calendar_Factory)->createByTimestamp('Week', $this->prevWeek);
         case 'timestamp':
         default:
             return $this->prevWeek;

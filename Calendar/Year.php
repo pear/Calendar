@@ -108,7 +108,7 @@ class Calendar_Year extends Calendar
         $this->firstDay = $this->defineFirstDayOfWeek($firstDay);
         $monthsInYear   = $this->cE->getMonthsInYear($this->thisYear());
         for ($i=1; $i <= $monthsInYear; $i++) {
-            $this->children[$i] = Calendar_Factory::create('Month', $this->year, $i);
+            $this->children[$i] = (new Calendar_Factory)->create('Month', $this->year, $i);
         }
         if (count($sDates) > 0) {
             $this->setSelection($sDates);
